@@ -62,8 +62,8 @@ public class GeneralValidations {
 		assert WebUI.getCSSValue(Element, 'color').contains(color)
 		System.out.println(WebUI.getCSSValue(Element, 'color'))
 		TestObject ElementIDOfAttribute = findTestObject(elementIDOfAttribute)
-		
-		if (attribute != " ") {
+
+		if (attribute != " " && elementIDOfAttribute != " ") {
 			WebUI.waitForElementAttributeValue(ElementIDOfAttribute, "class", attribute, GlobalVariable.pageLoadTimeOut)
 			assert WebUI.getAttribute(ElementIDOfAttribute, "class").contains(attribute)
 		}
