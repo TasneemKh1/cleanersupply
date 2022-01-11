@@ -1,4 +1,4 @@
-package helpers
+package actions
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -16,37 +16,17 @@ import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-import com.kms.katalon.entity.global.GlobalVariableEntity
 
 import internal.GlobalVariable
-import actions.Navigations
-import validations.GeneralValidations
-public class GeneralHelpers {
+
+public class SelectCategoriesActions {
 	/***
-	 * initial Scenario
+	 * hover On Tags And Form Menu
 	 * @author fatma
 	 */
-	public static void initScenario() {
-		WebUI.openBrowser('');
-		WebUI.maximizeWindow()
-
-		Navigations.navigateToHomePage();
-		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimeOut)
-
-		GeneralValidations.verifyCurrentPageTitleIsNotEmpty()
-		GeneralValidations.verifyCurrentPageURL(GlobalVariable.baseURL)
-	}
-
-	/***
-	 * check title is not empty  and check the current url for each page when it is opened
-	 * @author Tasneem
-	 * @param expectedURL
-	 */
-	public static void newPageIsOpened(String expectedURL) {
-		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimeOut)
-		GeneralValidations.verifyCurrentPageTitleIsNotEmpty()
-		GeneralValidations.verifyCurrentPageURL(expectedURL)
+	public static void hoverOnTagsAndFormMenu() {
+		TestObject tagsAndActionsMenu = findTestObject("Object Repository/Header/a_tagsAndForm");
+		WebUI.mouseOver(tagsAndActionsMenu)
 	}
 }
