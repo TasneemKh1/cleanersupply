@@ -46,4 +46,26 @@ public class GeneralValidations {
 	public static void verifyCurrentPageURL(String expectedURL) {
 		assert WebUI.getUrl().contains(expectedURL)
 	}
+	/***
+	 * verify Hover On element
+	 * @param elementID elementID
+	 * @param backGround background of element style
+	 * @param color color of element style
+	 * @param elementIDOfAttribute element ID Of Attribute
+	 * @param attribute attribute of element
+	 * @author fatma
+	 */
+	public static void verifyHover(String elementID,String backGround ,String color,String elementIDOfAttribute,String attribute) {
+		TestObject Element = findTestObject(elementID)
+		assert WebUI.getCSSValue(Element, 'background').contains(backGround)
+		System.out.println(WebUI.getCSSValue(Element, 'background'))
+		assert WebUI.getCSSValue(Element, 'color').contains(color)
+		System.out.println(WebUI.getCSSValue(Element, 'color'))
+		TestObject ElementIDOfAttribute = findTestObject(elementIDOfAttribute)
+		
+		if (attribute != " ") {
+			WebUI.waitForElementAttributeValue(ElementIDOfAttribute, "class", attribute, GlobalVariable.pageLoadTimeOut)
+			assert WebUI.getAttribute(ElementIDOfAttribute, "class").contains(attribute)
+		}
+	}
 }

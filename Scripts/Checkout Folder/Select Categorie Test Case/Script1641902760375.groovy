@@ -17,6 +17,10 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import helpers.GeneralHelpers
+import actions.SelectCategoriesActions
+import validations.GeneralValidations
 
 
-GeneralHelpers.initScenario()
+GeneralHelpers.initScenario();
+SelectCategoriesActions.hoverOnTagsAndFormMenu();
+GeneralValidations.verifyHover("Object Repository/Header/a_tagsAndForm","rgb(255, 255, 255)","rgba(82, 36, 127, 1)","Object Repository/Header/ul_tagsAndForm","open-desktop");
