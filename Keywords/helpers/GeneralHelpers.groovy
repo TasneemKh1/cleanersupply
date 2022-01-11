@@ -19,6 +19,22 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
-
+import actions.Navigations
+import internal.GlobalVariable
+import validations.GeneralValidations
 public class GeneralHelpers {
+	/***
+	 * initial Scenario
+	 * @author fatma
+	 */
+	public static void initScenario() {
+		WebUI.openBrowser('');
+		WebUI.maximizeWindow()
+
+		Navigations.navigateToHomePage();
+		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimeOut)
+
+		GeneralValidations.verifyCurrentPageTitleIsNotEmpty()
+		GeneralValidations.verifyCurrentPageURL(GlobalVariable.baseURL)
+	}
 }

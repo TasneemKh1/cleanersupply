@@ -1,4 +1,4 @@
-package validations
+package actions
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -20,30 +20,12 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class GeneralValidations {
+public class Navigations {
 	/***
-	 * Verify Current Page Title Is Not Empty
-	 * @author fatma
+	 * navigate To Home Page
+	 * @auther fatma
 	 */
-	public static void verifyCurrentPageTitleIsNotEmpty() {
-		assert !WebUI.getWindowTitle().isEmpty()
-	}
-
-	/***
-	 * verify current page title match the expected title
-	 * @param expectedTitle
-	 * @author fatma
-	 */
-	public static void verifyCurrentPageTitleValue(String expectedTitle) {
-		assert WebUI.getWindowTitle().equals(expectedTitle)
-	}
-
-	/**
-	 * Verify Current Page URL matched the passed url
-	 * @param expectedURL expectedURL or part of expectedURL
-	 * @author fatma
-	 */
-	public static void verifyCurrentPageURL(String expectedURL) {
-		assert WebUI.getUrl().contains(expectedURL)
+	public static void navigateToHomePage() {
+		WebUI.navigateToUrl(GlobalVariable.baseURL)
 	}
 }
