@@ -46,4 +46,11 @@ public class GeneralValidations {
 	public static void verifyCurrentPageURL(String expectedURL) {
 		assert WebUI.getUrl().contains(expectedURL)
 	}
+	/**
+	 * @author tasneem
+	 * */
+	public static void verifyCurrentPageHeading(String testObjID,String expectedHeading) {
+		assert WebUI.getText(findTestObject('Object Repository/QuickOrder/span-QuickOrderHeading')).contains(expectedHeading)
+	
+	}
 }

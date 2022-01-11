@@ -14,4 +14,24 @@
       <initValue>10</initValue>
       <name>pageLoadTimeOut</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['SAF1', 'TEM1', 'TEE1', 'TES263', 'TES288', 'RA20', 'LAB12', 'HA1000', 'TEF7', 'HSM2000']</initValue>
+      <name>productIDList</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>5</initValue>
+      <name>visiablityItemTimeOut</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>50</initValue>
+      <name>maxQuantityNumber</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>5</initValue>
+      <name>minQuantityNumber</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
