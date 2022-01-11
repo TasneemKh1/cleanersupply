@@ -9,4 +9,9 @@
       <initValue>'https://www.cleanersupply.com/'</initValue>
       <name>baseURL</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'10'</initValue>
+      <name>pageLoadTimeOut</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
