@@ -1,0 +1,136 @@
+# cleanersupply
+![katalon](https://mma.prnewswire.com/media/1551615/Katalon_Logo.jpg?p=twitter)
+
+###Prerequisites for katalon Installation
+1.  [Java (JDK)](https://www.guru99.com/install-java.html)
+2.  [Katalon studio](https://docs.katalon.com/katalon-studio/docs/getting-started.html)
+3.  [Chrome WebDriver](https://www.automationtestinghub.com/download-chrome-driver/)
+
+
+### How to start using this script
+```
+git clone https://github.com/TasneemKh1/cleanersupply.git
+```
+
+**To run the code**
+1. File > open project (give the location for the cloned file)
+2. Open test suit collection from test suites folder
+```
+https://github.com/TasneemKh1/cleanersupply/blob/master/Test%20Suites/Test%20Suite%20Collection.ts
+```
+3. Click execute button 
+
+### Test cases covered by this app
+Checkout Scenarios suite => 
+
+###Scenario 1
+
+1- Navigate to https://www.cleanersupply.com/
+
+2- Search for 'Plastic' term.
+
+3- Select 'Packing Products' and 'Plastic Bags' options from category filter.
+
+4- Select 'Green' from color group filter.
+
+5- Navigte to the resulted product page.
+
+6- Select 'X-Large' size, and 'Green' color.
+
+7- Edit quantity value to be 5.
+
+8- Add this item to the cart.
+
+9- Select blue color, and large size for the same product.
+
+10- add 3 items from this item.
+
+11- Navigate to the cart.
+
+12- Modify products quantities to be 4, and 4.
+
+13- Click on 'Proceed To Checkout'
+
+14- Select 'Checkut As Guest' and move to the next step.
+
+15- Fill Shipping Address and payment method with fake data.
+
+16- Navigate to next step (Review Order).
+
+17- Observe the Checkout Review page content.
+
+18- Close the browser
+
+to do update on the test file for senario 1 follow the path to find all of the test cases
+```
+https://github.com/TasneemKh1/cleanersupply/blob/master/Test%20Cases/Checkout%20Folder/Search%20for%20product%20Test%20Case.tc
+```
+
+***********************************************
+
+###Scenario 2
+
+1- Navigate to https://www.cleanersupply.com/
+
+2- Hover on 'Tags & Forms' header items.
+
+3- Select 'Computers & Registers' category.
+
+4- From the manufacturer section, select the 'Casio' manufacturer and select 'SP1000' Model.
+
+5- Enter the resulted product and 10 items from it to the cart.
+
+6- Navigate to the cart.
+
+7- Click on 'Proceed To Checkout'
+
+8- Select 'Checkut As Guest' and move to the next step.
+
+9- Fill Shipping Address and payment method with fake data.
+
+10- Navigate to next step (Review Order).
+
+11- Observe the Checkout Review page content.
+
+12- Close the browser
+
+to do update on the test file for senario 2 follow the path to find all of the test cases
+```
+https://github.com/TasneemKh1/cleanersupply/blob/master/Test%20Cases/Checkout%20Folder/Select%20Categorie%20Test%20Case.tc
+```
+
+***********************************************
+###Scenario 3
+
+1- Navigate to quick order page from the header.
+
+2- Add any 5 products to the quick order list with random quantites between 5 and 50.
+
+3- Add them to the cart
+
+4- Navigate to the cart.
+
+5- Click on 'Proceed To Checkout'
+
+6- Select 'Checkut As Guest' and move to the next step.
+
+7- Fill Shipping Address and payment method with fake data.
+
+8- Navigate to next step (Review Order).
+
+9- Observe the Checkout Review page content.
+
+10- Close the browser
+
+to do update on the test file for senario 3 follow the path to find all of the test cases
+```
+https://github.com/TasneemKh1/cleanersupply/blob/master/Test%20Cases/Checkout%20Folder/Quick%20order%20Test%20Case.tc
+```
+***********************************************
+
+Header Test Scenario: write test cases for the header section.
+
+Footer Test Scenario: write test cases for the footer section.
+
+
+***********************************************
