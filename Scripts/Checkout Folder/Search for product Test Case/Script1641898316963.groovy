@@ -14,15 +14,23 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import actions.HeaderActions as HeaderActions
 import helpers.GeneralHelpers as GeneralHelpers
 import internal.GlobalVariable as GlobalVariable
 import validations.HeaderValidations as HeaderValidations
 import org.openqa.selenium.Keys as Keys
 
-// ------------------------------------------------------
+// --------- Navigate to 'Home Page' ---------
 GeneralHelpers.initScenario()
 HeaderValidations.verifyCartItemsNumber(0)
 HeaderValidations.verifyCartLabel('Cart')
 HeaderValidations.verifySearchInputPlaceholderIsNotEmpty()
+HeaderValidations.verifySearchInputIsEmpty()
 
-// ------------------------------------------------------
+// --------- Type term in 'Search Input' ---------
+HeaderActions.typeIntoSearchInput(GlobalVariable.searchTerm)
+HeaderValidations.verifySearchInputValue(GlobalVariable.searchTerm)
+HeaderValidations.verifySearchAutoCompleteDropdownVisible()
+HeaderValidations.verifySearchAutoCompleteDropdownHeader(GlobalVariable.searchTerm)
+HeaderValidations.verifySearchAutoCompleteContentLabels()
+HeaderValidations.verifySearchAutoCompleteCategories(GlobalVariable.searchTerm)

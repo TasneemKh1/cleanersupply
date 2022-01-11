@@ -19,4 +19,9 @@
       <initValue>'Plastic'</initValue>
       <name>searchTerm</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>5</initValue>
+      <name>elementVisibilityWait</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

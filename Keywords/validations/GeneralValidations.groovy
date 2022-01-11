@@ -46,4 +46,14 @@ public class GeneralValidations {
 	public static void verifyCurrentPageURL(String expectedURL) {
 		assert WebUI.getUrl().contains(expectedURL)
 	}
+
+	/***
+	 * Verify if input value matches the typed one
+	 * @author moham
+	 * @param inputTestObject
+	 * @param expectedValue
+	 */
+	public static void verifyInputValue (TestObject inputTestObject, String expectedValue) {
+		assert WebUI.getAttribute(inputTestObject, "value").trim().equals(expectedValue)
+	}
 }

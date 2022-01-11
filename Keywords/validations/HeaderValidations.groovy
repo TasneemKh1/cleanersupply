@@ -6,6 +6,8 @@ import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
+import org.openqa.selenium.WebElement
+
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
@@ -50,5 +52,68 @@ public class HeaderValidations {
 		TestObject searchInput = findTestObject('Object Repository/Header/input_search')
 		String placeholder = WebUI.getAttribute(searchInput, "placeholder")
 		assert !placeholder.isEmpty()
+	}
+
+	/***
+	 * Verify if search input is empty
+	 * @author moham
+	 */
+	public static void verifySearchInputIsEmpty () {
+		TestObject searchInput = findTestObject('Object Repository/Header/input_search')
+		assert WebUI.getAttribute(searchInput, "value").isEmpty()
+	}
+
+	/***
+	 * Verify if search input value matches the typed one
+	 * @author moham
+	 * @param expectedValue
+	 */
+	public static void verifySearchInputValue (String expectedValue) {
+		GeneralValidations.verifyInputValue(findTestObject('Object Repository/Header/input_search'), expectedValue)
+	}
+
+	/***
+	 * verify if search autoComplete dropdown is visible
+	 * @author moham
+	 */
+	public static void verifySearchAutoCompleteDropdownVisible () {
+		TestObject searchAutoCompleteDropdown = findTestObject('Object Repository/Header/div_searchAutoCompleteDropdown')
+		WebUI.waitForElementVisible(searchAutoCompleteDropdown, GlobalVariable.elementVisibilityWait)
+		WebUI.verifyElementVisible(searchAutoCompleteDropdown)
+	}
+
+	/***
+	 * Verify if search autoComplete dropdown header includes the search term
+	 * @author moham
+	 * @param expectedTerm
+	 */
+	public static void verifySearchAutoCompleteDropdownHeader (String expectedTerm) {
+		TestObject searchAutoCompleteHeader = findTestObject('Object Repository/Header/p_searchAutoCompleteHeader')
+		assert WebUI.getText(searchAutoCompleteHeader).toLowerCase().contains(expectedTerm.toLowerCase())
+	}
+
+	/***
+	 * Verify if search autoComplete content labels contain both categories and products
+	 * @author moham
+	 */
+	public static void verifySearchAutoCompleteContentLabels () {
+		List<WebElement> searchAutoCompleteContentLabels = WebUI.findWebElements(findTestObject('Object Repository/Header/div_searchAutoCompleteContentLabels'), GlobalVariable.elementVisibilityWait)
+		TestObject firstLabelTestObject = WebUI.convertWebElementToTestObject(searchAutoCompleteContentLabels.get(0))
+		TestObject secondLabelTestObject = WebUI.convertWebElementToTestObject(searchAutoCompleteContentLabels.get(1))
+		assert WebUI.getText(firstLabelTestObject).trim().toLowerCase().equals("categories")
+		assert WebUI.getText(secondLabelTestObject).trim().toLowerCase().equals("products")
+	}
+
+	/***
+	 * Verify if search autoComplete categories include the search term
+	 * @author moham
+	 * @param expectedTerm
+	 */
+	public static void verifySearchAutoCompleteCategories (String expectedTerm) {
+		List<WebElement> searchAutoCompleteCategories = WebUI.findWebElements(findTestObject('Object Repository/Header/a_searchAutoCompleteCategories'), GlobalVariable.elementVisibilityWait)
+		for (int i = 0; i++; i < searchAutoCompleteCategories.size()) {
+			TestObject categoriesTestObject = WebUI.convertWebElementToTestObject(searchAutoCompleteCategories.get(i))
+			assert WebUI.getText(categoriesTestObject).toLowerCase().contains(expectedTerm.toLowerCase())
+		}
 	}
 }
