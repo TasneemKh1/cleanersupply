@@ -11,7 +11,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'10'</initValue>
+      <initValue>10</initValue>
       <name>pageLoadTimeOut</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

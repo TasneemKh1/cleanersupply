@@ -1,4 +1,4 @@
-package helpers
+package actions
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -19,32 +19,24 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
-import actions.Navigations
-import validations.GeneralValidations
-public class GeneralHelpers {
-	/***
-	 * initial Scenario
-	 * @author fatma
-	 */
-	public static void initScenario() {
-		WebUI.openBrowser('');
-		WebUI.maximizeWindow()
 
-		Navigations.navigateToHomePage();
-		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimeOut)
-
-		GeneralValidations.verifyCurrentPageTitleIsNotEmpty()
-		GeneralValidations.verifyCurrentPageURL(GlobalVariable.baseURL)
+public class HeaderActions {
+	/**
+	 * @author tasneem
+	 * 
+	 * */
+	public static String mouseOverNavItem(String testObjID) {
+		TestObject NavItem=findTestObject(testObjID)
+		WebUI.mouseOver(NavItem);
+		String linkToQuickOrder=WebUI.getAttribute(NavItem, "href")
+		return linkToQuickOrder
 	}
-
-	/***
-	 * check title is not empty  and check the current url for each page when it is opened
-	 * @author Tasneem
-	 * @param expectedURL
-	 */
-	public static void newPageIsOpened(String expectedURL) {
-		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimeOut)
-		GeneralValidations.verifyCurrentPageTitleIsNotEmpty()
-		GeneralValidations.verifyCurrentPageURL(expectedURL)
+	/**
+	 * @author tasneem
+	 *
+	 * */
+	public static void clickANavItem(String testObjID) {
+		TestObject NavItem=findTestObject(testObjID)
+		WebUI.click(NavItem)
 	}
 }
