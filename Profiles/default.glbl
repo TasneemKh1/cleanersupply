@@ -14,4 +14,9 @@
       <initValue>10</initValue>
       <name>pageLoadTimeOut</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Plastic'</initValue>
+      <name>searchTerm</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
