@@ -21,7 +21,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-       <initValue>'https://www.cleanersupply.com/Tags-Forms/Computer-Register/'</initValue>
+      <initValue>'https://www.cleanersupply.com/Tags-Forms/Computer-Register/'</initValue>
       <name>computerAndRegisterPageUrl</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -33,5 +33,20 @@
       <description></description>
       <initValue>'Quick Order - Cleaner\'s Supply'</initValue>
       <name>titleOfQuikOrderPage</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>5</initValue>
+      <name>visiablityItemTimeOut</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>50</initValue>
+      <name>maxQuantityNumber</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>5</initValue>
+      <name>minQuantityNumber</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
