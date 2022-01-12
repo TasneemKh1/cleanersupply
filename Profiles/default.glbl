@@ -14,4 +14,14 @@
       <initValue>10</initValue>
       <name>pageLoadTimeOut</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://www.cleanersupply.com/Tags-Forms/Computer-Register/'</initValue>
+      <name>computerAndRegisterPageUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Computer &amp; Register - Cleaner\'s Supply'</initValue>
+      <name>titleOfComputerRegisterPage</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
