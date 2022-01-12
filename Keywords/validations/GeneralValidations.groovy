@@ -73,6 +73,5 @@ public class GeneralValidations {
 			assert WebUI.getCSSValue(Element, 'background').contains(backGround)
 			System.out.println(WebUI.getCSSValue(Element, 'background'))
 		}
-
 	}
 }
