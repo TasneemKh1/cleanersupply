@@ -16,6 +16,7 @@ import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
@@ -28,5 +29,21 @@ public class SelectCategoriesActions {
 	public static void hoverOnTagsAndFormMenu() {
 		TestObject tagsAndActionsMenu = findTestObject("Object Repository/Header/a_tagsAndForm");
 		WebUI.mouseOver(tagsAndActionsMenu)
+	}
+	/***
+	 * hover On Computer And RegisterTab
+	 * @author fatma
+	 */
+	public static void hoverOnComputerAndRegisterTab() {
+		TestObject computerAndRegisterTab = findTestObject("Object Repository/CategoryPage/a_ComputerAndRegister");
+		WebUI.mouseOver(computerAndRegisterTab)
+	}
+	/***
+	 * click On Computer And Register Tab
+	 * @author fatma
+	 */
+	public static void clickOnComputerAndRegisterTab() {
+	   TestObject computerAndRegisterTab = findTestObject("Object Repository/CategoryPage/a_ComputerAndRegister");
+	   WebUI.click(computerAndRegisterTab);
 	}
 }

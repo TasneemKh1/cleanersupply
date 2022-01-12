@@ -42,11 +42,14 @@ public class GeneralHelpers {
 	/***
 	 * check title is not empty  and check the current url for each page when it is opened
 	 * @author Tasneem
+	 * @author fatma
 	 * @param expectedURL
+	 * @param pageTitle the title of page
 	 */
-	public static void newPageIsOpened(String expectedURL) {
+	public static void newPageIsOpened(String expectedURL,String pageTitle) {
 		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimeOut)
 		GeneralValidations.verifyCurrentPageTitleIsNotEmpty()
 		GeneralValidations.verifyCurrentPageURL(expectedURL)
+		GeneralValidations.verifyCurrentPageTitleValue(pageTitle)
 	}
 }

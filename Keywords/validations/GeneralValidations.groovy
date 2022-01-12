@@ -64,15 +64,14 @@ public class GeneralValidations {
 	 */
 	public static void verifyHover(String elementID,String backGround ,String color,String elementIDOfAttribute,String attribute) {
 		TestObject Element = findTestObject(elementID)
-		assert WebUI.getCSSValue(Element, 'background').contains(backGround)
-		System.out.println(WebUI.getCSSValue(Element, 'background'))
 		assert WebUI.getCSSValue(Element, 'color').contains(color)
 		System.out.println(WebUI.getCSSValue(Element, 'color'))
-		TestObject ElementIDOfAttribute = findTestObject(elementIDOfAttribute)
-
-		if (attribute != " " && elementIDOfAttribute != " ") {
+		if (attribute != " " && elementIDOfAttribute != " " && backGround != " ") {
+			TestObject ElementIDOfAttribute = findTestObject(elementIDOfAttribute)
 			WebUI.waitForElementAttributeValue(ElementIDOfAttribute, "class", attribute, GlobalVariable.pageLoadTimeOut)
 			assert WebUI.getAttribute(ElementIDOfAttribute, "class").contains(attribute)
+			assert WebUI.getCSSValue(Element, 'background').contains(backGround)
+			System.out.println(WebUI.getCSSValue(Element, 'background'))
 		}
 
 	}
