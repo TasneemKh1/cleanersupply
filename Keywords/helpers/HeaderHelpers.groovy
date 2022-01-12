@@ -2,7 +2,7 @@ package helpers
 
 import actions.HeaderActions
 import validations.GeneralValidations
-
+import internal.GlobalVariable
 
 
 public class HeaderHelpers {
@@ -13,7 +13,7 @@ public class HeaderHelpers {
 	public static void navigatingToQuickOrder() {
 		String linkToQuickOrder=HeaderActions.mouseOverNavItem('Object Repository/Header/a_QuickOrder')
 		HeaderActions.clickANavItem('Object Repository/Header/a_QuickOrder')
-		GeneralHelpers.newPageIsOpened(linkToQuickOrder)
+		GeneralHelpers.newPageIsOpened(linkToQuickOrder,GlobalVariable.titleOfQuikOrderPage)
 		GeneralValidations.verifyCurrentPageTitleValue("Quick Order - Cleaner's Supply")
 	}
 }
