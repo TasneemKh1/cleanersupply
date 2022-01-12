@@ -1,11 +1,10 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
-import org.openqa.selenium.WebDriver
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebElement
 
 import com.kms.katalon.core.testobject.ConditionType
 import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import helpers.GeneralHelpers
@@ -50,6 +49,7 @@ for (int i = 0; i < StockInput.size(); ++i) {
 
 	TestObject div= new TestObject().addProperty("xpath", ConditionType.EQUALS, '//div[@class="page-content"]/section/section/div[@class="container"]')
 	WebUI.click(div)
+	
 	assert WebUI.getAttribute(stockInputField, 'value').contains(GlobalVariable.productIDList[i])
 
 	List<WebElement> QuantityInput = WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/input-Quantity'),
@@ -67,8 +67,7 @@ for (int i = 0; i < StockInput.size(); ++i) {
 	List<WebElement> inStockQuickOrder = WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/div-inStock'),
 			GlobalVariable.visiablityItemTimeOut)
 
-	List<WebElement> priceHolderQuickOrder = WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/div-priceHolder'),
-			GlobalVariable.visiablityItemTimeOut)
+	
 
 	int getRandomValue = ((Math.random() * (GlobalVariable.maxQuantityNumber - GlobalVariable.minQuantityNumber)) as int) +
 			GlobalVariable.minQuantityNumber
@@ -81,7 +80,8 @@ for (int i = 0; i < StockInput.size(); ++i) {
 
 	//WebUI.clearText(QuantityInputField)
 	WebUI.clearText(QuantityInputField)
-	WebUI.setText(QuantityInputField, quntityTxt)
+	WebUI.sendKeys(QuantityInputField,Keys.chord(Keys.BACK_SPACE))
+	WebUI.sendKeys(QuantityInputField, quntityTxt)
 	
 	List<WebElement> removeBtns=WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/btn-remove'),GlobalVariable.visiablityItemTimeOut)
 	assert WebUI.verifyElementVisible(WebUI.convertWebElementToTestObject(removeBtns.get(i)))
@@ -105,6 +105,9 @@ for (int i = 0; i < StockInput.size(); ++i) {
 	TestObject inStockQuickOrderField = WebUI.convertWebElementToTestObject(inStockQuickOrder.get(i))
 
 	assert WebUI.getText(inStockQuickOrderField).contains('In Stock!')
+	WebUI.delay(GlobalVariable.visiablityItemTimeOut)
+	List<WebElement> priceHolderQuickOrder = WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/div-priceHolder'),
+		GlobalVariable.visiablityItemTimeOut)
 
 	String price = WebUI.getText(WebUI.convertWebElementToTestObject(priceHolderQuickOrder.get(i))).replace('$', '')
 
@@ -113,9 +116,12 @@ for (int i = 0; i < StockInput.size(); ++i) {
 	List<WebElement> totalPriceQuickOrder = WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/div-totalPrice'),
 			GlobalVariable.visiablityItemTimeOut)
 
-	WebUI.getText(WebUI.convertWebElementToTestObject(totalPriceQuickOrder.get(i)))
-	//assert WebUI.getText(WebUI.convertWebElementToTestObject(totalPriceQuickOrder.get(i))).contains(Float.toString((Float.parseFloat(price)*getRandomValue.0f));
-	
+	WebUI.getText(WebUI.convertWebElementToTestObject(totalPriceQuickOrder.get(i)));
+	//assert WebUI.getText(WebUI.convertWebElementToTestObject(totalPriceQuickOrder.get(i))).contains(Float.toString(Float.parseFloat(price)*getRandomValue));
+	System.out.println(price+ " "+getRandomValue)
+	System.out.println(Double.parseDouble(price)*getRandomValue)
+	System.out.println("total"+String.format("%.2f", new BigDecimal(Double.parseDouble(price))*getRandomValue));
+	//assert WebUI.getText(WebUI.convertWebElementToTestObject(totalPriceQuickOrder.get(i))).contains(Float.toString())
 	
 }
 
