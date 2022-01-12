@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input-Quantity</name>
+   <name>btn-remove</name>
    <tag></tag>
-   <elementGuidId>d7532cff-0143-4eaa-a54a-5ef132c57018</elementGuidId>
+   <elementGuidId>8f337b4c-6a23-4c4f-8eb7-3d6001c2e188</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.hidden-xs .increment-btn+input.form-control</value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>.hidden-xs .increment-btn+input.form-control</value>
+         <value>td>[type=&quot;button&quot;]</value>
       </entry>
       <entry>
          <key>BASIC</key>

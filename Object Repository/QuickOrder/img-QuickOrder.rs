@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input-Quantity</name>
+   <name>img-QuickOrder</name>
    <tag></tag>
-   <elementGuidId>d7532cff-0143-4eaa-a54a-5ef132c57018</elementGuidId>
+   <elementGuidId>5f4af7cf-085c-40d4-9414-57d58b741377</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.hidden-xs .increment-btn+input.form-control</value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>.hidden-xs .increment-btn+input.form-control</value>
+         <value>.hidden-xs [class=&quot;product-table__image&quot;] img</value>
       </entry>
       <entry>
          <key>BASIC</key>
