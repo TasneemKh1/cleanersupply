@@ -74,4 +74,23 @@ public class GeneralValidations {
 			System.out.println(WebUI.getCSSValue(Element, 'background'))
 		}
 	}
+
+	/***
+	 * verify Breadcrump Text
+	 * @param element id of element
+	 * @param BreadCrumbText the text of breadcrump
+	 * @author fatma
+	 */
+	public static void verifyBreadcrump(String elementID,String BreadcrumbText) {
+		TestObject Element = findTestObject(elementID)
+		assert WebUI.getText(Element).contains(BreadcrumbText);
+	}
+	/***
+	 * verify Title Of Heading
+	 * @param Title the title of heading section
+	 * @author fatma
+	 */
+	public static void verifyTitleOfHeading(String Title) {
+		assert WebUI.getText(findTestObject('//*[@id="search-container"]//h1')).contains(Title);
+	}
 }

@@ -28,6 +28,8 @@ SelectCategoriesActions.hoverOnComputerAndRegisterTab();
 GeneralValidations.verifyHover("Object Repository/CategoryPage/a_ComputerAndRegister"," ","rgba(82, 36, 127, 1)"," "," ");
 SelectCategoriesActions.clickOnComputerAndRegisterTab();
 GeneralHelpers.newPageIsOpened(GlobalVariable.computerAndRegisterPageUrl, GlobalVariable.titleOfComputerRegisterPage)
+GeneralValidations.verifyBreadcrump('//li[@class="active"]//a[@href="/Tags-Forms/Computer-Register/"]', GlobalVariable.breadcrumpOfComputerAndRegister)
+GeneralValidations.verifyTitleOfHeading(GlobalVariable.headingTitleOFComputerAndRegisterPage)
 
 
 
