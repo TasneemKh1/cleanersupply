@@ -74,6 +74,5 @@ public class GeneralValidations {
 			WebUI.waitForElementAttributeValue(ElementIDOfAttribute, "class", attribute, GlobalVariable.pageLoadTimeOut)
 			assert WebUI.getAttribute(ElementIDOfAttribute, "class").contains(attribute)
 		}
-
 	}
 }

@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input-Quantity</name>
+   <name>btn-addToCart</name>
    <tag></tag>
-   <elementGuidId>d7532cff-0143-4eaa-a54a-5ef132c57018</elementGuidId>
+   <elementGuidId>eab20f3c-aee5-4d05-9cee-f83c7ae02fea</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.hidden-xs .increment-btn+input.form-control</value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>.hidden-xs .increment-btn+input.form-control</value>
+         <value>[class=&quot;button default large pull-right hidden-xs&quot;]</value>
       </entry>
       <entry>
          <key>BASIC</key>
