@@ -28,4 +28,11 @@ public class Navigations {
 	public static void navigateToHomePage() {
 		WebUI.navigateToUrl(GlobalVariable.baseURL)
 	}
+	/***
+	 * navigate to cart page
+	 * @author fatma
+	 */
+	public static void navigateToCart() {
+		WebUI.navigateToUrl(GlobalVariable.cartUrl)
+	}
 }

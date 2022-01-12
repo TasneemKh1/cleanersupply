@@ -20,16 +20,22 @@ import helpers.GeneralHelpers
 import actions.SelectCategoriesActions
 import validations.GeneralValidations
 
-
+import helpers.CheckOutHelpers
 GeneralHelpers.initScenario();
 SelectCategoriesActions.hoverOnTagsAndFormMenu();
 GeneralValidations.verifyHover("Object Repository/Header/a_tagsAndForm","rgb(255, 255, 255)","rgba(82, 36, 127, 1)","Object Repository/Header/ul_tagsAndForm","open-desktop");
 SelectCategoriesActions.hoverOnComputerAndRegisterTab();
-GeneralValidations.verifyHover("Object Repository/CategoryPage/a_ComputerAndRegister"," ","rgba(82, 36, 127, 1)"," "," ");
+//GeneralValidations.verifyHover("Object Repository/CategoryPage/a_ComputerAndRegister"," ","rgba(82, 36, 127, 1)"," "," ");
 SelectCategoriesActions.clickOnComputerAndRegisterTab();
-GeneralHelpers.newPageIsOpened(GlobalVariable.computerAndRegisterPageUrl, GlobalVariable.titleOfComputerRegisterPage)
-GeneralValidations.verifyBreadcrump('//li[@class="active"]//a[@href="/Tags-Forms/Computer-Register/"]', GlobalVariable.breadcrumpOfComputerAndRegister)
-GeneralValidations.verifyTitleOfHeading(GlobalVariable.headingTitleOFComputerAndRegisterPage)
+//GeneralHelpers.newPageIsOpened(GlobalVariable.computerAndRegisterPageUrl, GlobalVariable.titleOfComputerRegisterPage)
+//GeneralValidations.verifyBreadcrump('//li[@class="active"]//a[@href="/Tags-Forms/Computer-Register/"]', GlobalVariable.breadcrumpOfComputerAndRegister)
+//GeneralValidations.verifyTitleOfHeading(GlobalVariable.headingTitleOFComputerAndRegisterPage)
+TestObject product=findTestObject('Object Repository/ProductPage/a_ComputerProduct')
+WebUI.click(product)
+TestObject addToCart=findTestObject('Object Repository/ProductPage/button_addToCart')
+WebUI.click(addToCart)
+
+CheckOutHelpers.checkOutSenario()
 
 
 
