@@ -2,6 +2,7 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import org.openqa.selenium.WebElement
 
+import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
@@ -63,7 +64,7 @@ for(int i=0 ;i<4;++i) {
 		GeneralHelpers.newPageIsOpened(GlobalVariable.baseURL,"Log In - Cleaner's Supply")
 	}else if (i==2) {
 		//assert WebUI.getUrl().contains(hrefVal)
-		GeneralHelpers.newPageIsOpened(hrefVal,'Quick Order - Cleaner's Supply')
+		GeneralHelpers.newPageIsOpened(hrefVal,"Quick Order - Cleaner's Supply")
 	}else {
 		System.out.println("fliphtml5 is opened")
 	}
@@ -71,4 +72,22 @@ for(int i=0 ;i<4;++i) {
 	WebUI.back()
 	GeneralHelpers.newPageIsOpened(GlobalVariable.baseURL,"Cleaner's Supply - Dry Cleaning Supplies")
 	
+	
+	
 }
+
+TestObject email=findTestObject('Object Repository/Footer/input-email');
+WebUI.sendKeys(email, 'tasneem@mailinator.com')
+assert WebUI.getAttribute(email, "value").equals('tasneem@mailinator.com')
+TestObject signUpBtn=findTestObject('Object Repository/Footer/a-signUp-btn');
+WebUI.mouseOver(signUpBtn)
+assert WebUI.getCSSValue(signUpBtn, 'box-shadow').equals('0 0 10px 2px rgb(0 0 0 / 30%)')
+WebUI.click(signUpBtn)
+
+TestObject SuccessMessage=findTestObject('Object Repository/Footer/span-successAlert');
+ WebUI.verifyElementPresent(SuccessMessage, GlobalVariable.visiablityItemTimeOut,FailureHandling.OPTIONAL)
+ 
+ List<WebElement> socialIcons = WebUI.findWebElements(findTestObject('Object Repository/Footer/a-socialIcon'), GlobalVariable.visiablityItemTimeOut)
+ TestObject aScrollTagLink = WebUI.convertWebElementToTestObject(aScrollTags.get(i))
+ 
+ 
