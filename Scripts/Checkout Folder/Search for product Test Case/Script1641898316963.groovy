@@ -30,6 +30,8 @@ String packagingProductsLinkUrl
 int plasticBagsNumber
 String plasticBagsLinkUrl
 int filtersGroupsNumber
+String greenProductsLinkUrl
+int greenProductsNumber
 
 // --------- Navigate to 'Home Page' ---------
 GeneralHelpers.initScenario()
@@ -68,3 +70,10 @@ plasticBagsLinkUrl = FiltersActions.storePlasticBagsLinkUrl()
 FiltersActions.clickOnPlasticBagsLink()
 FiltersValidations.verifyBlasticBagsFilterApplied(plasticBagsLinkUrl, plasticBagsNumber + packagingProductsNumber, filtersGroupsNumber, 
     'Plastic Bags')
+
+// --------- Select 'Green' from color group filter ---------
+FiltersActions.expandColorCard()
+greenProductsNumber = FiltersActions.storeGreenProductsNumber()
+greenProductsLinkUrl = FiltersActions.storeGreenProductsLinkUrl()
+FiltersActions.clickOnGreenProductsLink()
+FiltersValidations.verifyGreenProductsFilterApplied(greenProductsLinkUrl, greenProductsNumber, filtersGroupsNumber, 'Green')

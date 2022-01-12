@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>a_greenProductsLink</name>
+   <tag></tag>
+   <elementGuidId>a0369960-0a27-4cc2-b43c-30f7ced313b3</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>a[href=&quot;https://www.cleanersupply.com/search-results/?Color+Group=Green&amp;Category=Packaging+Products_Plastic+Bags&amp;q=Plastic&amp;r=true&quot;]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>CSS</selectorMethod>
+   <useRalativeImagePath>false</useRalativeImagePath>
+</WebElementEntity>

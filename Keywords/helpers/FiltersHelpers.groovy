@@ -31,7 +31,7 @@ public class FiltersHelpers {
 	public static Integer storeFilteredProductNumber (TestObject categoryLinkTestObject) {
 		String categoryLinkText = WebUI.getText(categoryLinkTestObject)
 		String [] stringArray = categoryLinkText.split("\\s+")
-		String stringNumber = stringArray.getAt(2).trim()
+		String stringNumber = stringArray.getAt(stringArray.length-1).trim()
 		return Integer.parseInt(stringNumber.substring(1, stringNumber.length() - 1))
 	}
 

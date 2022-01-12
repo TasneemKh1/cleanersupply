@@ -31,7 +31,6 @@ public class FiltersValidations {
 	 * @param filterName
 	 */
 	public static void verifyPackingProductsFilterApplied (String expectedURL, int packagingProductNumber, int filtersGroupsNumber, String filterName) {
-		TestObject packagingProductsLink = findTestObject('Object Repository/Filters/a_packagingProductsLink')
 		TestObject packagingProductsLinkParent = findTestObject('Object Repository/Filters/li_packagingProductsLinkParent')
 		FiltersHelpers.verifyFilterApplied(expectedURL, packagingProductNumber, filtersGroupsNumber, packagingProductsLinkParent, filterName)
 	}
@@ -44,9 +43,21 @@ public class FiltersValidations {
 	 * @param filtersGroupsNumber
 	 * @param filterName
 	 */
-	public static void verifyBlasticBagsFilterApplied (String expectedURL, int plasticBagsNumber, int filtersGroupsNumber, String filterName) {
-		TestObject plasticBagsLink = findTestObject('Object Repository/Filters/a_plasticBagsLink')
+	public static void verifyBlasticBagsFilterApplied (String expectedURL, int productsNumber, int filtersGroupsNumber, String filterName) {
 		TestObject plasticBagsLinkParent = findTestObject('Object Repository/Filters/li_plasticBagsLinkParent')
-		FiltersHelpers.verifyFilterApplied(expectedURL, plasticBagsNumber, filtersGroupsNumber,  plasticBagsLinkParent, filterName)
+		FiltersHelpers.verifyFilterApplied(expectedURL, productsNumber, filtersGroupsNumber,  plasticBagsLinkParent, filterName)
+	}
+
+	/***
+	 * Verify current URL, filters groups numbers, if filter is selected, applied criteria and number of products in subheading
+	 * @author moham
+	 * @param expectedURL
+	 * @param greenProductsNumber
+	 * @param filtersGroupsNumber
+	 * @param filterName
+	 */
+	public static void verifyGreenProductsFilterApplied (String expectedURL, int greenProductsNumber, int filtersGroupsNumber, String filterName) {
+		TestObject greenProductsLinkParent = findTestObject('Object Repository/Filters/li_greenProductsLinkParent')
+		FiltersHelpers.verifyFilterApplied(expectedURL, greenProductsNumber, filtersGroupsNumber,  greenProductsLinkParent, filterName)
 	}
 }
