@@ -82,6 +82,7 @@ for (int i = 0; i < StockInput.size(); ++i) {
 	WebUI.clearText(QuantityInputField)
 	WebUI.sendKeys(QuantityInputField,Keys.chord(Keys.BACK_SPACE))
 	WebUI.sendKeys(QuantityInputField, quntityTxt)
+	WebUI.click(div)
 	
 	List<WebElement> removeBtns=WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/btn-remove'),GlobalVariable.visiablityItemTimeOut)
 	assert WebUI.verifyElementVisible(WebUI.convertWebElementToTestObject(removeBtns.get(i)))
@@ -105,29 +106,34 @@ for (int i = 0; i < StockInput.size(); ++i) {
 	TestObject inStockQuickOrderField = WebUI.convertWebElementToTestObject(inStockQuickOrder.get(i))
 
 	assert WebUI.getText(inStockQuickOrderField).contains('In Stock!')
-	WebUI.delay(GlobalVariable.visiablityItemTimeOut)
+	//WebUI.delay(GlobalVariable.visiablityItemTimeOut)
+	
 	List<WebElement> priceHolderQuickOrder = WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/div-priceHolder'),
 		GlobalVariable.visiablityItemTimeOut)
 
-	String price = WebUI.getText(WebUI.convertWebElementToTestObject(priceHolderQuickOrder.get(i))).replace('$', '')
+	String [] price = WebUI.getText(WebUI.convertWebElementToTestObject(priceHolderQuickOrder.get(i))).replace('$', '').split(" ")
 
-	QuickStockTable.add(price)
+	QuickStockTable.add(price[0])
 
 	List<WebElement> totalPriceQuickOrder = WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/div-totalPrice'),
 			GlobalVariable.visiablityItemTimeOut)
 
-	WebUI.getText(WebUI.convertWebElementToTestObject(totalPriceQuickOrder.get(i)));
+	TestObject total=WebUI.convertWebElementToTestObject(totalPriceQuickOrder.get(i));
+	
 	//assert WebUI.getText(WebUI.convertWebElementToTestObject(totalPriceQuickOrder.get(i))).contains(Float.toString(Float.parseFloat(price)*getRandomValue));
-	System.out.println(price+ " "+getRandomValue)
-	System.out.println(Double.parseDouble(price)*getRandomValue)
-	System.out.println("total"+String.format("%.2f", new BigDecimal(Double.parseDouble(price))*getRandomValue));
-	//assert WebUI.getText(WebUI.convertWebElementToTestObject(totalPriceQuickOrder.get(i))).contains(Float.toString())
+	System.out.println(price[0]+ " "+getRandomValue)
+	System.out.println(Double.parseDouble(price[0])*getRandomValue)
+	System.out.println("total"+String.format("%.2f", new BigDecimal(Double.parseDouble(price[0]))*getRandomValue));
+	String totalVal=String.format("%.2f", new BigDecimal(Double.parseDouble(price[0]))*getRandomValue);
+	assert WebUI.getText(total).replace(",",'').contains(totalVal);
 	
 }
 
 TestObject addToCartBtn=findTestObject('Object Repository/QuickOrder/btn-addToCart')
 
 WebUI.click(addToCartBtn)
+
+
 
 
 //    TestObject dropDownForStockId = findTestObject('Object Repository/QuickOrder/dropDownForStockId', [('row') : i])
