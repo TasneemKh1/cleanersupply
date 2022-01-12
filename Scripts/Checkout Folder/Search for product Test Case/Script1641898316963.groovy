@@ -18,6 +18,7 @@ import actions.HeaderActions as HeaderActions
 import helpers.GeneralHelpers as GeneralHelpers
 import internal.GlobalVariable as GlobalVariable
 import validations.HeaderValidations as HeaderValidations
+import validations.SearchResults as SearchResults
 import org.openqa.selenium.Keys as Keys
 
 // --------- Navigate to 'Home Page' ---------
@@ -34,3 +35,11 @@ HeaderValidations.verifySearchAutoCompleteDropdownVisible()
 HeaderValidations.verifySearchAutoCompleteDropdownHeader(GlobalVariable.searchTerm)
 HeaderValidations.verifySearchAutoCompleteContentLabels()
 HeaderValidations.verifySearchAutoCompleteCategories(GlobalVariable.searchTerm)
+
+// --------- Click on 'Search Icon' ---------
+HeaderActions.cliclOnSearchButton()
+GeneralHelpers.verifyCurrentUrlAndPageTitle(GlobalVariable.searchTerm, 'search results')
+HeaderValidations.verifySearchInputPlaceholderIsNotEmpty()
+HeaderValidations.verifySearchInputIsEmpty()
+SearchResults.verifysearchResultsPageHeading('search results')
+SearchResults.verifysearchResultsPageSubHeading(GlobalVariable.searchTerm)

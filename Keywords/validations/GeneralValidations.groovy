@@ -48,6 +48,15 @@ public class GeneralValidations {
 	}
 
 	/***
+	 * Verify current page title match the expected title
+	 * @author moham
+	 * @param expectedTitle expectedTitle or part of expectedTitle
+	 */
+	public static void verifyCurrentPageTitle(String expectedTitle) {
+		assert WebUI.getWindowTitle().toLowerCase().contains(expectedTitle.toLowerCase())
+	}
+
+	/***
 	 * Verify if input value matches the typed one
 	 * @author moham
 	 * @param inputTestObject

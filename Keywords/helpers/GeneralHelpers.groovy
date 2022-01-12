@@ -47,4 +47,16 @@ public class GeneralHelpers {
 		GeneralValidations.verifyCurrentPageTitleIsNotEmpty()
 		GeneralValidations.verifyCurrentPageURL(expectedURL)
 	}
+
+	/***
+	 * Verify page title and current URL
+	 * @author moham
+	 * @param expectedUrl expectedUrl or part of expectedUrl
+	 * @param expectedTitle expectedTitle or part of expectedTitle
+	 */
+	public static void verifyCurrentUrlAndPageTitle (String expectedUrl, String expectedTitle) {
+		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimeOut)
+		GeneralValidations.verifyCurrentPageURL(expectedUrl)
+		GeneralValidations.verifyCurrentPageTitle(expectedTitle)
+	}
 }

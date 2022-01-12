@@ -1,4 +1,4 @@
-package actions
+package validations
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -20,36 +20,22 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class HeaderActions {
-	/**
-	 * @author tasneem
-	 * 
-	 * */
-	public static String mouseOverNavItem(String testObjID) {
-		TestObject NavItem=findTestObject(testObjID)
-		WebUI.mouseOver(NavItem);
-		String linkToQuickOrder=WebUI.getAttribute(NavItem, "href")
-		return linkToQuickOrder
-	}
-	/**
-	 * @author tasneem
-	 *
-	 * */
-	public static void clickANavItem(String testObjID) {
-		TestObject NavItem=findTestObject(testObjID)
-		WebUI.click(NavItem)
+public class SearchResults {
+	/***
+	 * Verify if search results page heading matches with the expected one
+	 * @author moham
+	 * @param expectedHeading
+	 */
+	public static void verifysearchResultsPageHeading(String expectedHeading) {
+		WebUI.getText(findTestObject('Object Repository/SearchResultPage/h1_pageHeading')).toLowerCase().equals(expectedHeading.toLowerCase())
 	}
 
 	/***
-	 * Type into search input field
+	 * Verify if search results page sub heading matches with the expected one
 	 * @author moham
-	 * @param value
+	 * @param expectedSubHeading expectedSubHeading or part of expectedSubHeading
 	 */
-	public static void typeIntoSearchInput (String value) {
-		GeneralActions.typeIntoInputField(findTestObject('Object Repository/Header/input_search'), value)
-	}
-
-	public static void cliclOnSearchButton () {
-		WebUI.click(findTestObject('Object Repository/Header/button_searchAction'))
+	public static void verifysearchResultsPageSubHeading(String expectedSubHeading) {
+		WebUI.getText(findTestObject('Object Repository/SearchResultPage/h2_pageSubHeading')).toLowerCase().contains(expectedSubHeading.toLowerCase())
 	}
 }
