@@ -1,4 +1,4 @@
-package actions
+package helpers
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -16,34 +16,22 @@ import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import actions.Navigations
 
 import internal.GlobalVariable
+import validations.GeneralValidations
 
-public class SelectCategoriesActions {
-	/***
-	 * hover On Tags And Form Menu
-	 * @author fatma
-	 */
-	public static void hoverOnTagsAndFormMenu() {
-		TestObject tagsAndActionsMenu = findTestObject("Object Repository/Header/a_tagsAndForm");
-		WebUI.mouseOver(tagsAndActionsMenu)
-	}
-	/***
-	 * hover On Computer And RegisterTab
-	 * @author fatma
-	 */
-	public static void hoverOnComputerAndRegisterTab() {
-		TestObject computerAndRegisterTab = findTestObject("Object Repository/CategoryPage/a_ComputerAndRegister");
-		WebUI.mouseOver(computerAndRegisterTab)
-	}
-	/***
-	 * click On Computer And Register Tab
-	 * @author fatma
-	 */
-	public static void clickOnComputerAndRegisterTab() {
-		TestObject computerAndRegisterTab = findTestObject("Object Repository/CategoryPage/a_ComputerAndRegister");
-		WebUI.click(computerAndRegisterTab);
+public class CheckOutHelpers {
+	public static void checkOutSenario() {
+		//Navigate to the cart
+		Navigations.navigateToCart();
+		//Click on 'Proceed To Checkout'
+		GeneralValidations.verifyCartProductData(['f'], ['20'], ['10'])
+//		TestObject processedToCheckOutButton = findTestObject('Object Repository/Cart/button_ProceedToCheckout')
+//		WebUI.click(processedToCheckOutButton)
+//		GeneralHelpers.newPageIsOpened(GlobalVariable.cartUrl, ' Shopping Cart ')
+//		GeneralValidations.verifyTitleOfHeading(' Shopping Cart ')
+	
 	}
 }

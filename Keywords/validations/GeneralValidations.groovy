@@ -6,6 +6,8 @@ import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
+import org.openqa.selenium.WebElement
+
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
@@ -17,6 +19,7 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import org.openqa.selenium.WebElement
 
 import internal.GlobalVariable
 
@@ -72,6 +75,40 @@ public class GeneralValidations {
 			assert WebUI.getAttribute(ElementIDOfAttribute, "class").contains(attribute)
 			assert WebUI.getCSSValue(Element, 'background').contains(backGround)
 			System.out.println(WebUI.getCSSValue(Element, 'background'))
+		}
+	}
+	/***
+	 * verify Breadcrump Text
+	 * @param element id of element
+	 * @param BreadCrumbText the text of breadcrump
+	 * @author fatma
+	 */
+	public static void verifyBreadcrump(String elementID,String BreadcrumbText) {
+		TestObject Element = findTestObject(elementID)
+		assert WebUI.getText(Element).contains(BreadcrumbText);
+	}
+	/***
+	 * verify Title Of Heading
+	 * @param Title the title of heading section
+	 * @author fatma
+	 */
+	public static void verifyTitleOfHeading(String Title) {
+		assert WebUI.getText(findTestObject('//*[@id="search-container"]//h1')).contains(Title);
+	}
+
+	public static  void verifyCartProductData(List productName,List quantity ,List price) {
+		List<WebElement> titleOfProduct = WebUI.findWebElements(findTestObject('Object Repository/Cart/List_TitleOfProductsCart'), GlobalVariable.visiablityItemTimeOut)
+		List<WebElement> priceOfProduct = WebUI.findWebElements(findTestObject('Object Repository/Cart/List_PriceOfProductsCart'), GlobalVariable.visiablityItemTimeOut)
+		List<WebElement> stockNotificationOfProduct =  WebUI.findWebElements(findTestObject('Object Repository/Cart/ListStockNotificationOfProduct'), GlobalVariable.visiablityItemTimeOut)
+		List<WebElement> QuantityOfProducts =  WebUI.findWebElements(findTestObject('Object Repository/Cart/List_QuantityOfProductsCart'), GlobalVariable.visiablityItemTimeOut)
+		List<WebElement> rows_table =  WebUI.findWebElements(findTestObject('Object Repository/Cart/ListOfRowsInCart'), GlobalVariable.visiablityItemTimeOut)
+		for(int i = 0; i <= rows_table.size(); ++i) {
+			//			assert titleOfProduct.get(i).getText().contains(productName[i]);
+			System.out.println(titleOfProduct.get(i).getText())
+//						assert QuantityOfProducts.get(i).getText().contains(quantity[i]);
+//			System.out.println(QuantityOfProducts.get(i).getAttribute('value'))
+//			assert WebUI.getText( WebUI.convertWebElementToTestObject(priceOfProduct.get(i))).replace('$', '').split(" ").contains(price[i]);
+			System.out.println(WebUI.getText(WebUI.convertWebElementToTestObject(priceOfProduct.get(i))).replace('$', ''))
 		}
 	}
 }

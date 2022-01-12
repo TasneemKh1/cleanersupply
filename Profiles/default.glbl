@@ -71,6 +71,13 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
+      <initValue>'https://www.cleanersupply.com/shopping-cart/'</initValue>
+      <name>cartUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['#TM290']</initValue>
+      <name>productTitleSenario2</name>
       <initValue>['Log In - Cleaner\'s Supply', 'Cleaner\'s Supply - Dry Cleaning Supplies', 'Track Order Guest - Cleaner\'s Supply', 'Our Story - Cleaner\'s Supply', 'Fast, Free Shipping - Cleaner\'s Supply', 'Customer Service - Cleaner\'s Supply', 'International Orders &amp; Shipping Information - Cleaner\'s Supply', 'Newsroom - Cleaner\'s Supply', 'Careers - Cleaner\'s Supply']</initValue>
       <name>titleListForFooter</name>
    </GlobalVariableEntity>
