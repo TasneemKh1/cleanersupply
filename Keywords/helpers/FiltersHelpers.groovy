@@ -1,4 +1,4 @@
-package actions
+package helpers
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -20,14 +20,11 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class GeneralActions {
-	/***
-	 * Type into input field
-	 * @author moham
-	 * @param inputTestObject
-	 * @param value
-	 */
-	public static void typeIntoInputField (TestObject inputTestObject, String value) {
-		WebUI.sendKeys(inputTestObject, value)
+public class FiltersHelpers {
+	public static Integer storeFilteredProductNumber (TestObject categoryLinkTestObject) {
+		String categoryLinkText = WebUI.getText(categoryLinkTestObject)
+		String [] stringArray = categoryLinkText.split("\\s+")
+		String stringNumber = stringArray.getAt(2).trim()
+		return Integer.parseInt(stringNumber.substring(1, stringNumber.length() - 1)) 
 	}
 }

@@ -1,4 +1,4 @@
-package actions
+package validations
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -20,14 +20,5 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class GeneralActions {
-	/***
-	 * Type into input field
-	 * @author moham
-	 * @param inputTestObject
-	 * @param value
-	 */
-	public static void typeIntoInputField (TestObject inputTestObject, String value) {
-		WebUI.sendKeys(inputTestObject, value)
-	}
+public class FiltersValidations {
 }

@@ -1,4 +1,4 @@
-package actions
+package validations
 
 import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
 import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
@@ -20,14 +20,22 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class GeneralActions {
+public class SearchResults {
 	/***
-	 * Type into input field
+	 * Verify if search results page heading matches with the expected one
 	 * @author moham
-	 * @param inputTestObject
-	 * @param value
+	 * @param expectedHeading
 	 */
-	public static void typeIntoInputField (TestObject inputTestObject, String value) {
-		WebUI.sendKeys(inputTestObject, value)
+	public static void verifysearchResultsPageHeading(String expectedHeading) {
+		WebUI.getText(findTestObject('Object Repository/SearchResultPage/h1_pageHeading')).toLowerCase().equals(expectedHeading.toLowerCase())
+	}
+
+	/***
+	 * Verify if search results page sub heading matches with the expected one
+	 * @author moham
+	 * @param expectedSubHeading expectedSubHeading or part of expectedSubHeading
+	 */
+	public static void verifysearchResultsPageSubHeading(String expectedSubHeading) {
+		WebUI.getText(findTestObject('Object Repository/SearchResultPage/h2_pageSubHeading')).toLowerCase().contains(expectedSubHeading.toLowerCase())
 	}
 }

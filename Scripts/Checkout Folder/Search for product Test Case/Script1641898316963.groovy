@@ -14,6 +14,40 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+
+import actions.FiltersActions
+import actions.HeaderActions as HeaderActions
+import helpers.GeneralHelpers as GeneralHelpers
 import internal.GlobalVariable as GlobalVariable
+import validations.HeaderValidations as HeaderValidations
+import validations.SearchResults as SearchResults
 import org.openqa.selenium.Keys as Keys
 
+int packingProductNumber
+
+// --------- Navigate to 'Home Page' ---------
+GeneralHelpers.initScenario()
+HeaderValidations.verifyCartItemsNumber(0)
+HeaderValidations.verifyCartLabel('Cart')
+HeaderValidations.verifySearchInputPlaceholderIsNotEmpty()
+HeaderValidations.verifySearchInputIsEmpty()
+
+// --------- Type term in 'Search Input' ---------
+HeaderActions.typeIntoSearchInput(GlobalVariable.searchTerm)
+HeaderValidations.verifySearchInputValue(GlobalVariable.searchTerm)
+HeaderValidations.verifySearchAutoCompleteDropdownVisible()
+HeaderValidations.verifySearchAutoCompleteDropdownHeader(GlobalVariable.searchTerm)
+HeaderValidations.verifySearchAutoCompleteContentLabels()
+HeaderValidations.verifySearchAutoCompleteCategories(GlobalVariable.searchTerm)
+
+// --------- Click on 'Search Icon' ---------
+HeaderActions.cliclOnSearchButton()
+GeneralHelpers.verifyCurrentUrlAndPageTitle(GlobalVariable.searchTerm, 'search results')
+HeaderValidations.verifySearchInputPlaceholderIsNotEmpty()
+HeaderValidations.verifySearchInputIsEmpty()
+SearchResults.verifysearchResultsPageHeading('search results')
+SearchResults.verifysearchResultsPageSubHeading(GlobalVariable.searchTerm)
+
+// --------- Select 'Packing Products' option from category filter ---------
+packingProductNumber = FiltersActions.storePackingProductNumber()
+println(packingProductNumber)

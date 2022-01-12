@@ -18,16 +18,15 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
+import helpers.FiltersHelpers
 import internal.GlobalVariable
 
-public class GeneralActions {
-	/***
-	 * Type into input field
-	 * @author moham
-	 * @param inputTestObject
-	 * @param value
-	 */
-	public static void typeIntoInputField (TestObject inputTestObject, String value) {
-		WebUI.sendKeys(inputTestObject, value)
+public class FiltersActions {
+	public static Integer storePackingProductNumber () {
+		TestObject categoryLinkTestObject = findTestObject('Object Repository/Filters/a_packingProductsLink')
+		return FiltersHelpers.storeFilteredProductNumber(categoryLinkTestObject)
+	}
+
+	public static Integer storePlasticBagsNumber () {
 	}
 }

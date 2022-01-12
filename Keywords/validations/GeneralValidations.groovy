@@ -28,8 +28,7 @@ public class GeneralValidations {
 	public static void verifyCurrentPageTitleIsNotEmpty() {
 		assert !WebUI.getWindowTitle().isEmpty()
 	}
-
-	/***
+  /***
 	 * verify current page title match the expected title
 	 * @param expectedTitle
 	 * @author fatma
@@ -46,7 +45,23 @@ public class GeneralValidations {
 	public static void verifyCurrentPageURL(String expectedURL) {
 		assert WebUI.getUrl().contains(expectedURL)
 	}
-
+	/***
+	 * Verify current page title match the expected title
+	 * @author moham
+	 * @param expectedTitle expectedTitle or part of expectedTitle
+	 */
+	public static void verifyCurrentPageTitle(String expectedTitle) {
+		assert WebUI.getWindowTitle().toLowerCase().contains(expectedTitle.toLowerCase())
+	}
+	/***
+	 * Verify if input value matches the typed one
+	 * @author moham
+	 * @param inputTestObject
+	 * @param expectedValue
+	 */
+	public static void verifyInputValue (TestObject inputTestObject, String expectedValue) {
+		assert WebUI.getAttribute(inputTestObject, "value").trim().equals(expectedValue)
+	}
 	/**
 	 * @author tasneem
 	 * */
