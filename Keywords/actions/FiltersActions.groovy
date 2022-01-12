@@ -58,6 +58,28 @@ public class FiltersActions {
 		WebUI.click(findTestObject('Filters/a_packagingProductsLink'))
 	}
 
+	/***
+	 * @author moham
+	 * @return plastic bags number
+	 */
 	public static Integer storePlasticBagsNumber () {
+		TestObject categoryLinkTestObject = findTestObject('Object Repository/Filters/a_plasticBagsLink')
+		return FiltersHelpers.storeFilteredProductNumber(categoryLinkTestObject)
+	}
+
+	/***
+	 * @author moham
+	 * @return plastic bags link Url
+	 */
+	public static String storePlasticBagsLinkUrl () {
+		TestObject categoryLinkTestObject = findTestObject('Object Repository/Filters/a_plasticBagsLink')
+		return FiltersHelpers.storeFilteredProductLinkUrl(categoryLinkTestObject)
+	}
+
+	/***
+	 * @author moham
+	 */
+	public static void clickOnPlasticBagsLink () {
+		WebUI.click(findTestObject('Object Repository/Filters/a_plasticBagsLink'))
 	}
 }

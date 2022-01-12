@@ -29,11 +29,24 @@ public class FiltersValidations {
 	 * @param packagingProductNumber
 	 * @param filtersGroupsNumber
 	 * @param filterName
-	 * @return updated products number after filtering
 	 */
-	public static Integer verifyPackingProductsFilterApplied (String expectedURL, int packagingProductNumber, int filtersGroupsNumber, String filterName) {
+	public static void verifyPackingProductsFilterApplied (String expectedURL, int packagingProductNumber, int filtersGroupsNumber, String filterName) {
 		TestObject packagingProductsLink = findTestObject('Object Repository/Filters/a_packagingProductsLink')
 		TestObject packagingProductsLinkParent = findTestObject('Object Repository/Filters/li_packagingProductsLinkParent')
-		return  FiltersHelpers.verifyFilterApplied(expectedURL, packagingProductNumber, filtersGroupsNumber, packagingProductsLink, packagingProductsLinkParent, filterName)
+		FiltersHelpers.verifyFilterApplied(expectedURL, packagingProductNumber, filtersGroupsNumber, packagingProductsLinkParent, filterName)
+	}
+
+	/***
+	 * Verify current URL, filters groups numbers, if filter is selected, applied criteria and number of products in subheading
+	 * @author moham
+	 * @param expectedURL
+	 * @param plasticBagsNumber
+	 * @param filtersGroupsNumber
+	 * @param filterName
+	 */
+	public static void verifyBlasticBagsFilterApplied (String expectedURL, int plasticBagsNumber, int filtersGroupsNumber, String filterName) {
+		TestObject plasticBagsLink = findTestObject('Object Repository/Filters/a_plasticBagsLink')
+		TestObject plasticBagsLinkParent = findTestObject('Object Repository/Filters/li_plasticBagsLinkParent')
+		FiltersHelpers.verifyFilterApplied(expectedURL, plasticBagsNumber, filtersGroupsNumber,  plasticBagsLinkParent, filterName)
 	}
 }

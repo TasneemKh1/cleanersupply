@@ -14,13 +14,12 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-
-import actions.FiltersActions
-import actions.HeaderActions
-import helpers.FiltersHelpers
+import actions.FiltersActions as FiltersActions
+import actions.HeaderActions as HeaderActions
+import helpers.FiltersHelpers as FiltersHelpers
 import helpers.GeneralHelpers as GeneralHelpers
-import internal.GlobalVariable
-import validations.FiltersValidations
+import internal.GlobalVariable as GlobalVariable
+import validations.FiltersValidations as FiltersValidations
 import validations.HeaderValidations as HeaderValidations
 import validations.SearchResults as SearchResults
 import org.openqa.selenium.Keys as Keys
@@ -28,6 +27,8 @@ import org.openqa.selenium.Keys as Keys
 // --------- Variables ---------
 int packagingProductsNumber
 String packagingProductsLinkUrl
+int plasticBagsNumber
+String plasticBagsLinkUrl
 int filtersGroupsNumber
 
 // --------- Navigate to 'Home Page' ---------
@@ -58,4 +59,12 @@ packagingProductsNumber = FiltersActions.storePackingProductsNumber()
 packagingProductsLinkUrl = FiltersActions.storePackingProductsLinkUrl()
 filtersGroupsNumber = FiltersActions.storeFiltersGroupsNumber()
 FiltersActions.clickOnPackingProductsLink()
-filtersGroupsNumber =  FiltersValidations.verifyPackingProductsFilterApplied(packagingProductsLinkUrl, packagingProductsNumber, filtersGroupsNumber, "Packaging Products")
+FiltersValidations.verifyPackingProductsFilterApplied(packagingProductsLinkUrl, packagingProductsNumber, filtersGroupsNumber, 
+    'Packaging Products')
+
+// --------- Select 'Plastic Bags' option from category filter ---------
+plasticBagsNumber = FiltersActions.storePlasticBagsNumber()
+plasticBagsLinkUrl = FiltersActions.storePlasticBagsLinkUrl()
+FiltersActions.clickOnPlasticBagsLink()
+FiltersValidations.verifyBlasticBagsFilterApplied(plasticBagsLinkUrl, plasticBagsNumber + packagingProductsNumber, filtersGroupsNumber, 
+    'Plastic Bags')
