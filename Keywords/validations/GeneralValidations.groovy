@@ -46,6 +46,13 @@ public class GeneralValidations {
 	public static void verifyCurrentPageURL(String expectedURL) {
 		assert WebUI.getUrl().contains(expectedURL)
 	}
+
+	/**
+	 * @author tasneem
+	 * */
+	public static void verifyCurrentPageHeading(String testObjID,String expectedHeading) {
+		assert WebUI.getText(findTestObject('Object Repository/QuickOrder/span-QuickOrderHeading')).contains(expectedHeading)
+	}
 	/***
 	 * verify Hover On element
 	 * @param elementID elementID
@@ -66,5 +73,6 @@ public class GeneralValidations {
 			assert WebUI.getCSSValue(Element, 'background').contains(backGround)
 			System.out.println(WebUI.getCSSValue(Element, 'background'))
 		}
+
 	}
 }
