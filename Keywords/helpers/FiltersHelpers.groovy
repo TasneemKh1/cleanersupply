@@ -57,7 +57,7 @@ public class FiltersHelpers {
 		TestObject pageSubHeading = findTestObject('Object Repository/SearchResultPage/h2_pageSubHeading')
 		TestObject lastAppliedCriteriaLink = findTestObject('Filters/a_appliedCriteria')
 		// Wait until overlay is disappeared
-		WebUI.waitForElementNotVisible(findTestObject('Object Repository/General/div_overlay'), GlobalVariable.visiablityItemTimeOut)
+		WebUI.waitForElementNotVisible(findTestObject('Object Repository/General/div_overlay'), 2)
 		// Verify current URL
 		GeneralValidations.verifyCurrentPageURL(expectedURL)
 		// Verify filters groups numbers
