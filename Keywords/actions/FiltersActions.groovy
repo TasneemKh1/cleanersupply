@@ -6,6 +6,8 @@ import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
+import org.openqa.selenium.WebElement
+
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
@@ -22,9 +24,38 @@ import helpers.FiltersHelpers
 import internal.GlobalVariable
 
 public class FiltersActions {
-	public static Integer storePackingProductNumber () {
-		TestObject categoryLinkTestObject = findTestObject('Object Repository/Filters/a_packingProductsLink')
+	/***
+	 * @author moham
+	 * @return filters groups number
+	 */
+	public static int storeFiltersGroupsNumber () {
+		List<WebElement> filtersGroups = WebUI.findWebElements(findTestObject('Object Repository/Filters/div_filtersGroups'), GlobalVariable.visiablityItemTimeOut)
+		return filtersGroups.size()
+	}
+
+	/***
+	 * @author moham
+	 * @return packing products number
+	 */
+	public static Integer storePackingProductsNumber () {
+		TestObject categoryLinkTestObject = findTestObject('Filters/a_packagingProductsLink')
 		return FiltersHelpers.storeFilteredProductNumber(categoryLinkTestObject)
+	}
+
+	/***
+	 * @author moham
+	 * @return packing products link Url
+	 */
+	public static String storePackingProductsLinkUrl () {
+		TestObject categoryLinkTestObject = findTestObject('Filters/a_packagingProductsLink')
+		return FiltersHelpers.storeFilteredProductLinkUrl(categoryLinkTestObject)
+	}
+
+	/***
+	 * @author moham
+	 */
+	public static void clickOnPackingProductsLink () {
+		WebUI.click(findTestObject('Filters/a_packagingProductsLink'))
 	}
 
 	public static Integer storePlasticBagsNumber () {

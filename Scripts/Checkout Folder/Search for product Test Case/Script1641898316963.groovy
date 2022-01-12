@@ -16,14 +16,19 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import actions.FiltersActions
-import actions.HeaderActions as HeaderActions
+import actions.HeaderActions
+import helpers.FiltersHelpers
 import helpers.GeneralHelpers as GeneralHelpers
-import internal.GlobalVariable as GlobalVariable
+import internal.GlobalVariable
+import validations.FiltersValidations
 import validations.HeaderValidations as HeaderValidations
 import validations.SearchResults as SearchResults
 import org.openqa.selenium.Keys as Keys
 
-int packingProductNumber
+// --------- Variables ---------
+int packagingProductsNumber
+String packagingProductsLinkUrl
+int filtersGroupsNumber
 
 // --------- Navigate to 'Home Page' ---------
 GeneralHelpers.initScenario()
@@ -49,5 +54,8 @@ SearchResults.verifysearchResultsPageHeading('search results')
 SearchResults.verifysearchResultsPageSubHeading(GlobalVariable.searchTerm)
 
 // --------- Select 'Packing Products' option from category filter ---------
-packingProductNumber = FiltersActions.storePackingProductNumber()
-println(packingProductNumber)
+packagingProductsNumber = FiltersActions.storePackingProductsNumber()
+packagingProductsLinkUrl = FiltersActions.storePackingProductsLinkUrl()
+filtersGroupsNumber = FiltersActions.storeFiltersGroupsNumber()
+FiltersActions.clickOnPackingProductsLink()
+filtersGroupsNumber =  FiltersValidations.verifyPackingProductsFilterApplied(packagingProductsLinkUrl, packagingProductsNumber, filtersGroupsNumber, "Packaging Products")

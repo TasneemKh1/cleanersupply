@@ -35,9 +35,10 @@ public class GeneralValidations {
 	 * verify current page title match the expected title
 	 * @param expectedTitle
 	 * @author fatma
+	 *  @author Tasneem
 	 */
 	public static void verifyCurrentPageTitleValue(String expectedTitle) {
-		assert WebUI.getWindowTitle().equals(expectedTitle)
+		assert WebUI.getWindowTitle().contains(expectedTitle)
 	}
 
 	/**
@@ -48,28 +49,12 @@ public class GeneralValidations {
 	public static void verifyCurrentPageURL(String expectedURL) {
 		assert WebUI.getUrl().contains(expectedURL)
 	}
-	/***
-	 * Verify current page title match the expected title
-	 * @author moham
-	 * @param expectedTitle expectedTitle or part of expectedTitle
-	 */
-	public static void verifyCurrentPageTitle(String expectedTitle) {
-		assert WebUI.getWindowTitle().toLowerCase().contains(expectedTitle.toLowerCase())
-	}
-	/***
-	 * Verify if input value matches the typed one
-	 * @author moham
-	 * @param inputTestObject
-	 * @param expectedValue
-	 */
-	public static void verifyInputValue (TestObject inputTestObject, String expectedValue) {
-		assert WebUI.getAttribute(inputTestObject, "value").trim().equals(expectedValue)
-	}
+
 	/**
 	 * @author tasneem
 	 * */
 	public static void verifyCurrentPageHeading(String testObjID,String expectedHeading) {
-		assert WebUI.getText(findTestObject('Object Repository/QuickOrder/span-QuickOrderHeading')).contains(expectedHeading)
+		assert WebUI.getText(findTestObject(testObjID)).contains(expectedHeading)
 	}
 	/***
 	 * verify Hover On element
@@ -92,7 +77,6 @@ public class GeneralValidations {
 			System.out.println(WebUI.getCSSValue(Element, 'background'))
 		}
 	}
-
 	/***
 	 * verify Breadcrump Text
 	 * @param element id of element
