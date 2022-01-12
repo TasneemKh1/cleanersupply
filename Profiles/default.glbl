@@ -36,17 +36,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>5</initValue>
-      <name>visiablityItemTimeOut</name>
+      <initValue>'Computer &amp; Register'</initValue>
+      <name>breadcrumpOfComputerAndRegister</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>50</initValue>
-      <name>maxQuantityNumber</name>
-   </GlobalVariableEntity>
-   <GlobalVariableEntity>
-      <description></description>
-      <initValue>5</initValue>
-      <name>minQuantityNumber</name>
+      <initValue>'Computer &amp; Register Tags &amp; Forms'</initValue>
+      <name>headingTitleOFComputerAndRegisterPage</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
