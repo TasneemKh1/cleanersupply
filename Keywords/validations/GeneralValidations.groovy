@@ -40,6 +40,22 @@ public class GeneralValidations {
 	public static void verifyCurrentPageTitleValue(String expectedTitle) {
 		assert WebUI.getWindowTitle().contains(expectedTitle)
 	}
+	/***
+	* @param expectedTitle expectedTitle or part of expectedTitle
+	*/
+	public static void verifyCurrentPageTitle(String expectedTitle) {
+	assert WebUI.getWindowTitle().toLowerCase().contains(expectedTitle.toLowerCase())
+	}
+	
+	/***
+	 * verify Current Url And Page Title
+	 * @author fatma
+	 */
+	public static void verifyCurrentUrlAndPageTitle (String expectedUrl, String expectedTitle) {
+		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimeOut)
+		GeneralValidations.verifyCurrentPageURL(expectedUrl)
+		GeneralValidations.verifyCurrentPageTitle(expectedTitle)
+	}
 
 	/**
 	 * Verify Current Page URL matched the passed url
@@ -105,10 +121,20 @@ public class GeneralValidations {
 		for(int i = 0; i <= rows_table.size(); ++i) {
 			//			assert titleOfProduct.get(i).getText().contains(productName[i]);
 			System.out.println(titleOfProduct.get(i).getText())
-//						assert QuantityOfProducts.get(i).getText().contains(quantity[i]);
-//			System.out.println(QuantityOfProducts.get(i).getAttribute('value'))
-//			assert WebUI.getText( WebUI.convertWebElementToTestObject(priceOfProduct.get(i))).replace('$', '').split(" ").contains(price[i]);
+			System.out.println(priceOfProduct.get(i).getText()+" size "+priceOfProduct.size())
+			//						assert QuantityOfProducts.get(i).getText().contains(quantity[i]);
+			//			System.out.println(QuantityOfProducts.get(i).getAttribute('value'))
+			//			assert WebUI.getText( WebUI.convertWebElementToTestObject(priceOfProduct.get(i))).replace('$', '').split(" ").contains(price[i]);
 			System.out.println(WebUI.getText(WebUI.convertWebElementToTestObject(priceOfProduct.get(i))).replace('$', ''))
 		}
+	}
+	/***
+	 * Verify if input value matches the typed one
+	 * @author moham
+	 * @param inputTestObject
+	 * @param expectedValue
+	 */
+	public static void verifyInputValue (TestObject inputTestObject, String expectedValue) {
+		assert WebUI.getAttribute(inputTestObject, "value").trim().equals(expectedValue)
 	}
 }
