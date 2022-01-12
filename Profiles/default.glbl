@@ -21,9 +21,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>5</initValue>
-      <name>elementVisibilityWait</name>
-      <initValue>['RT100BL', 'TEM1', 'TEE1', 'TES263', 'TES288', 'RA20', 'LAB12', 'HA1000', 'TEF7', 'HSM2000']</initValue>
+      <initValue>['TEE1', 'TES263', 'TES288', 'RA20', 'LAB12', 'HA1000', 'TEF7', 'HSM2000', 'TEM1']</initValue>
       <name>productIDList</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -33,7 +31,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>5</initValue>
+      <initValue>10</initValue>
       <name>visiablityItemTimeOut</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -70,5 +68,20 @@
       <description></description>
       <initValue>'Computer &amp; Register Tags &amp; Forms'</initValue>
       <name>headingTitleOFComputerAndRegisterPage</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['Log In - Cleaner\'s Supply', 'Cleaner\'s Supply - Dry Cleaning Supplies', 'Track Order Guest - Cleaner\'s Supply', 'Our Story - Cleaner\'s Supply', 'Fast, Free Shipping - Cleaner\'s Supply', 'Customer Service - Cleaner\'s Supply', 'International Orders &amp; Shipping Information - Cleaner\'s Supply', 'Newsroom - Cleaner\'s Supply', 'Careers - Cleaner\'s Supply']</initValue>
+      <name>titleListForFooter</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['DRY CLEANING TAGS, FORMS &amp; INVOICES', 'STORE COUNTER &amp; CHECK-IN SUPPLIES', 'DRY CLEANING BAGS', 'PRESSING, SPOTTING TOOLS &amp; SUPPLIES', 'PACKAGING SUPPLIES', 'RACKS &amp; RACK ACCESSORIES', 'TAILORING SUPPLIES', 'LAUNDROMAT SUPPLIES']</initValue>
+      <name>headingListForsecCol</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['Dry Cleaning Tags, Forms &amp; Invoices - Cleaner\'s Supply', 'Store Counter &amp; Check-In Supplies - Cleaner\'s Supply', 'Dry Cleaning Bags - Cleaner\'s Supply', 'Pressing, Spotting Tools &amp; Supplies - Cleaner\'s Supply', 'Packaging Supplies - Cleaner\'s Supply', 'Racks &amp; Rack Accessories - Cleaner\'s Supply', 'Tailoring Supplies - Cleaner\'s Supply', 'Laundromat Supplies - Cleaner\'s Supply']</initValue>
+      <name>titleListFor2ColInFooter</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

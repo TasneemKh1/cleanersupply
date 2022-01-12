@@ -28,7 +28,7 @@ public class HeaderActions {
 	public static String mouseOverNavItem(String testObjID) {
 		TestObject NavItem=findTestObject(testObjID)
 		WebUI.mouseOver(NavItem);
-		
+
 		//hover
 		String linkToQuickOrder=WebUI.getAttribute(NavItem, "href")
 		return linkToQuickOrder
@@ -40,18 +40,5 @@ public class HeaderActions {
 	public static void clickANavItem(String testObjID) {
 		TestObject NavItem=findTestObject(testObjID)
 		WebUI.click(NavItem)
-	}
-
-	/***
-	 * Type into search input field
-	 * @author moham
-	 * @param value
-	 */
-	public static void typeIntoSearchInput (String value) {
-		GeneralActions.typeIntoInputField(findTestObject('Object Repository/Header/input_search'), value)
-	}
-
-	public static void cliclOnSearchButton () {
-		WebUI.click(findTestObject('Object Repository/Header/button_searchAction'))
 	}
 }
