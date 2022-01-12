@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_packingProductsLink</name>
+   <name>div_overlay</name>
    <tag></tag>
-   <elementGuidId>d4f19638-00f8-4e67-a3f9-6082f53543fe</elementGuidId>
+   <elementGuidId>e89a4150-c8c2-487f-ab09-37ea63635be8</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
@@ -11,7 +11,7 @@
       </entry>
       <entry>
          <key>CSS</key>
-         <value>a[href=&quot;https://www.cleanersupply.com/search-results/?Category=Packaging+Products&amp;q=Plastic&amp;r=true&quot;]</value>
+         <value>div.page-overlay</value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

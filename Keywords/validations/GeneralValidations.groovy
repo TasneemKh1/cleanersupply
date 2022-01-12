@@ -28,7 +28,6 @@ public class GeneralValidations {
 	public static void verifyCurrentPageTitleIsNotEmpty() {
 		assert !WebUI.getWindowTitle().isEmpty()
 	}
-
 	/***
 	 * verify current page title match the expected title
 	 * @param expectedTitle

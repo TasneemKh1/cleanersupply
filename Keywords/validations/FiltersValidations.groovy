@@ -18,7 +18,22 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
+import helpers.FiltersHelpers
 import internal.GlobalVariable
 
 public class FiltersValidations {
+	/***
+	 * Verify current URL, filters groups numbers, if filter is selected, applied criteria and number of products in subheading
+	 * @author moham
+	 * @param expectedURL
+	 * @param packagingProductNumber
+	 * @param filtersGroupsNumber
+	 * @param filterName
+	 * @return updated products number after filtering
+	 */
+	public static Integer verifyPackingProductsFilterApplied (String expectedURL, int packagingProductNumber, int filtersGroupsNumber, String filterName) {
+		TestObject packagingProductsLink = findTestObject('Object Repository/Filters/a_packagingProductsLink')
+		TestObject packagingProductsLinkParent = findTestObject('Object Repository/Filters/li_packagingProductsLinkParent')
+		return  FiltersHelpers.verifyFilterApplied(expectedURL, packagingProductNumber, filtersGroupsNumber, packagingProductsLink, packagingProductsLinkParent, filterName)
+	}
 }
