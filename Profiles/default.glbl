@@ -23,5 +23,32 @@
       <description></description>
       <initValue>5</initValue>
       <name>elementVisibilityWait</name>
+      <initValue>['RT100BL', 'TEM1', 'TEE1', 'TES263', 'TES288', 'RA20', 'LAB12', 'HA1000', 'TEF7', 'HSM2000']</initValue>
+      <name>productIDList</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://www.cleanersupply.com/Tags-Forms/Computer-Register/'</initValue>
+      <name>computerAndRegisterPageUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Computer &amp; Register - Cleaner\'s Supply'</initValue>
+      <name>titleOfComputerRegisterPage</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Quick Order - Cleaner\'s Supply'</initValue>
+      <name>titleOfQuikOrderPage</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Computer &amp; Register'</initValue>
+      <name>breadcrumpOfComputerAndRegister</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Computer &amp; Register Tags &amp; Forms'</initValue>
+      <name>headingTitleOFComputerAndRegisterPage</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

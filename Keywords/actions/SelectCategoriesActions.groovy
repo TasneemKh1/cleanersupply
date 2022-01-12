@@ -16,42 +16,34 @@ import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
-public class HeaderActions {
-	/**
-	 * @author tasneem
-	 * 
-	 * */
-	public static String mouseOverNavItem(String testObjID) {
-		TestObject NavItem=findTestObject(testObjID)
-		WebUI.mouseOver(NavItem);
-		
-		//hover
-		String linkToQuickOrder=WebUI.getAttribute(NavItem, "href")
-		return linkToQuickOrder
-	}
-	/**
-	 * @author tasneem
-	 *
-	 * */
-	public static void clickANavItem(String testObjID) {
-		TestObject NavItem=findTestObject(testObjID)
-		WebUI.click(NavItem)
-	}
-
+public class SelectCategoriesActions {
 	/***
-	 * Type into search input field
-	 * @author moham
-	 * @param value
+	 * hover On Tags And Form Menu
+	 * @author fatma
 	 */
-	public static void typeIntoSearchInput (String value) {
-		GeneralActions.typeIntoInputField(findTestObject('Object Repository/Header/input_search'), value)
+	public static void hoverOnTagsAndFormMenu() {
+		TestObject tagsAndActionsMenu = findTestObject("Object Repository/Header/a_tagsAndForm");
+		WebUI.mouseOver(tagsAndActionsMenu)
 	}
-
-	public static void cliclOnSearchButton () {
-		WebUI.click(findTestObject('Object Repository/Header/button_searchAction'))
+	/***
+	 * hover On Computer And RegisterTab
+	 * @author fatma
+	 */
+	public static void hoverOnComputerAndRegisterTab() {
+		TestObject computerAndRegisterTab = findTestObject("Object Repository/CategoryPage/a_ComputerAndRegister");
+		WebUI.mouseOver(computerAndRegisterTab)
+	}
+	/***
+	 * click On Computer And Register Tab
+	 * @author fatma
+	 */
+	public static void clickOnComputerAndRegisterTab() {
+	   TestObject computerAndRegisterTab = findTestObject("Object Repository/CategoryPage/a_ComputerAndRegister");
+	   WebUI.click(computerAndRegisterTab);
 	}
 }

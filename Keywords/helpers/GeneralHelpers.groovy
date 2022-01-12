@@ -16,7 +16,9 @@ import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.webui.keyword.internal.WebUIAbstractKeyword
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import com.kms.katalon.entity.global.GlobalVariableEntity
 
 import internal.GlobalVariable
 import actions.Navigations
@@ -40,12 +42,15 @@ public class GeneralHelpers {
 	/***
 	 * check title is not empty  and check the current url for each page when it is opened
 	 * @author Tasneem
+	 * @author fatma
 	 * @param expectedURL
+	 * @param pageTitle the title of page
 	 */
-	public static void newPageIsOpened(String expectedURL) {
+	public static void newPageIsOpened(String expectedURL,String pageTitle) {
 		WebUI.waitForPageLoad(GlobalVariable.pageLoadTimeOut)
 		GeneralValidations.verifyCurrentPageTitleIsNotEmpty()
 		GeneralValidations.verifyCurrentPageURL(expectedURL)
+		GeneralValidations.verifyCurrentPageTitleValue(pageTitle)
 	}
 
 	/***

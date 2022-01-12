@@ -28,8 +28,7 @@ public class GeneralValidations {
 	public static void verifyCurrentPageTitleIsNotEmpty() {
 		assert !WebUI.getWindowTitle().isEmpty()
 	}
-
-	/***
+  /***
 	 * verify current page title match the expected title
 	 * @param expectedTitle
 	 * @author fatma
@@ -46,7 +45,6 @@ public class GeneralValidations {
 	public static void verifyCurrentPageURL(String expectedURL) {
 		assert WebUI.getUrl().contains(expectedURL)
 	}
-
 	/***
 	 * Verify current page title match the expected title
 	 * @author moham
@@ -55,7 +53,6 @@ public class GeneralValidations {
 	public static void verifyCurrentPageTitle(String expectedTitle) {
 		assert WebUI.getWindowTitle().toLowerCase().contains(expectedTitle.toLowerCase())
 	}
-
 	/***
 	 * Verify if input value matches the typed one
 	 * @author moham
@@ -64,5 +61,51 @@ public class GeneralValidations {
 	 */
 	public static void verifyInputValue (TestObject inputTestObject, String expectedValue) {
 		assert WebUI.getAttribute(inputTestObject, "value").trim().equals(expectedValue)
+	}
+	/**
+	 * @author tasneem
+	 * */
+	public static void verifyCurrentPageHeading(String testObjID,String expectedHeading) {
+		assert WebUI.getText(findTestObject('Object Repository/QuickOrder/span-QuickOrderHeading')).contains(expectedHeading)
+	}
+	/***
+	 * verify Hover On element
+	 * @param elementID elementID
+	 * @param backGround background of element style
+	 * @param color color of element style
+	 * @param elementIDOfAttribute element ID Of Attribute
+	 * @param attribute attribute of element
+	 * @author fatma
+	 */
+	public static void verifyHover(String elementID,String backGround ,String color,String elementIDOfAttribute,String attribute) {
+		TestObject Element = findTestObject(elementID)
+		assert WebUI.getCSSValue(Element, 'color').contains(color)
+		System.out.println(WebUI.getCSSValue(Element, 'color'))
+		if (attribute != " " && elementIDOfAttribute != " " && backGround != " ") {
+			TestObject ElementIDOfAttribute = findTestObject(elementIDOfAttribute)
+			WebUI.waitForElementAttributeValue(ElementIDOfAttribute, "class", attribute, GlobalVariable.pageLoadTimeOut)
+			assert WebUI.getAttribute(ElementIDOfAttribute, "class").contains(attribute)
+			assert WebUI.getCSSValue(Element, 'background').contains(backGround)
+			System.out.println(WebUI.getCSSValue(Element, 'background'))
+		}
+	}
+
+	/***
+	 * verify Breadcrump Text
+	 * @param element id of element
+	 * @param BreadCrumbText the text of breadcrump
+	 * @author fatma
+	 */
+	public static void verifyBreadcrump(String elementID,String BreadcrumbText) {
+		TestObject Element = findTestObject(elementID)
+		assert WebUI.getText(Element).contains(BreadcrumbText);
+	}
+	/***
+	 * verify Title Of Heading
+	 * @param Title the title of heading section
+	 * @author fatma
+	 */
+	public static void verifyTitleOfHeading(String Title) {
+		assert WebUI.getText(findTestObject('//*[@id="search-container"]//h1')).contains(Title);
 	}
 }
