@@ -78,7 +78,7 @@ public class HeaderValidations {
 	 */
 	public static void verifySearchAutoCompleteDropdownVisible () {
 		TestObject searchAutoCompleteDropdown = findTestObject('Object Repository/Header/div_searchAutoCompleteDropdown')
-		WebUI.waitForElementVisible(searchAutoCompleteDropdown, GlobalVariable.elementVisibilityWait)
+		WebUI.waitForElementVisible(searchAutoCompleteDropdown, GlobalVariable.visiablityItemTimeOut)
 		WebUI.verifyElementVisible(searchAutoCompleteDropdown)
 	}
 
@@ -97,7 +97,7 @@ public class HeaderValidations {
 	 * @author moham
 	 */
 	public static void verifySearchAutoCompleteContentLabels () {
-		List<WebElement> searchAutoCompleteContentLabels = WebUI.findWebElements(findTestObject('Object Repository/Header/div_searchAutoCompleteContentLabels'), GlobalVariable.elementVisibilityWait)
+		List<WebElement> searchAutoCompleteContentLabels = WebUI.findWebElements(findTestObject('Object Repository/Header/div_searchAutoCompleteContentLabels'), GlobalVariable.visiablityItemTimeOut)
 		TestObject firstLabelTestObject = WebUI.convertWebElementToTestObject(searchAutoCompleteContentLabels.get(0))
 		TestObject secondLabelTestObject = WebUI.convertWebElementToTestObject(searchAutoCompleteContentLabels.get(1))
 		assert WebUI.getText(firstLabelTestObject).trim().toLowerCase().equals("categories")
@@ -110,7 +110,7 @@ public class HeaderValidations {
 	 * @param expectedTerm
 	 */
 	public static void verifySearchAutoCompleteCategories (String expectedTerm) {
-		List<WebElement> searchAutoCompleteCategories = WebUI.findWebElements(findTestObject('Object Repository/Header/a_searchAutoCompleteCategories'), GlobalVariable.elementVisibilityWait)
+		List<WebElement> searchAutoCompleteCategories = WebUI.findWebElements(findTestObject('Object Repository/Header/a_searchAutoCompleteCategories'), GlobalVariable.visiablityItemTimeOut)
 		for (int i = 0; i++; i < searchAutoCompleteCategories.size()) {
 			TestObject categoriesTestObject = WebUI.convertWebElementToTestObject(searchAutoCompleteCategories.get(i))
 			assert WebUI.getText(categoriesTestObject).toLowerCase().contains(expectedTerm.toLowerCase())
