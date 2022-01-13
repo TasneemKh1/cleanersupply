@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>List_PriceOfProductsCart</name>
+   <name>span_CheckoutAsGuestRadio</name>
    <tag></tag>
-   <elementGuidId>b1d8e4bc-b4e3-434c-a4fb-de38142f9c1a</elementGuidId>
+   <elementGuidId>757262d8-368c-4e2f-b4f7-ba40ef3133ba</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//section[@id='shopping-cart-page']//table//tbody//td[4]</value>
-      </entry>
-      <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>.product-table .product-table__price</value>
+         <key>XPATH</key>
+         <value>//*[@id=&quot;interstitial-cart&quot;]//form/div[1]//label/span[1]/span[@class='custom-checkb']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -30,4 +30,22 @@ public class GeneralActions {
 	public static void typeIntoInputField (TestObject inputTestObject, String value) {
 		WebUI.sendKeys(inputTestObject, value)
 	}
+	/***
+	 * clickOnElement
+	 * @param testObjID the Id of element
+	 * @author fatma
+	 */
+	public static void clickOnElement(String testObjID) {
+		TestObject Element=findTestObject(testObjID)
+		WebUI.click(Element)
+	}
+	/***
+	 * mouse Over On Element
+	 * @param testObjID the Id of element 
+	 * @author fatma
+	 */
+	public static String mouseOverOnElement(String testObjID) {
+		TestObject Element=findTestObject(testObjID)
+		WebUI.mouseOver(Element);
+	}
 }

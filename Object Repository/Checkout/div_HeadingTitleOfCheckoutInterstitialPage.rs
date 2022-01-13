@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>List_PriceOfProductsCart</name>
+   <name>div_HeadingTitleOfCheckoutInterstitialPage</name>
    <tag></tag>
-   <elementGuidId>b1d8e4bc-b4e3-434c-a4fb-de38142f9c1a</elementGuidId>
+   <elementGuidId>083f7278-8233-479c-b84a-26f8349a2a7a</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//section[@id='shopping-cart-page']//table//tbody//td[4]</value>
+         <value>//div[@class='heading']</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>.product-table .product-table__price</value>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

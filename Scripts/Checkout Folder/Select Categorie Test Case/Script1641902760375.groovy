@@ -36,6 +36,7 @@ TestObject addToCart=findTestObject('Object Repository/ProductPage/button_addToC
 WebUI.click(addToCart)
 
 CheckOutHelpers.checkOutSenario()
+CheckOutHelpers.proceedToCheckOut()
 
 
 
