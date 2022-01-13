@@ -41,12 +41,12 @@ public class GeneralValidations {
 		assert WebUI.getWindowTitle().contains(expectedTitle)
 	}
 	/***
-	* @param expectedTitle expectedTitle or part of expectedTitle
-	*/
+	 * @param expectedTitle expectedTitle or part of expectedTitle
+	 */
 	public static void verifyCurrentPageTitle(String expectedTitle) {
-	assert WebUI.getWindowTitle().toLowerCase().contains(expectedTitle.toLowerCase())
+		assert WebUI.getWindowTitle().toLowerCase().contains(expectedTitle.toLowerCase())
 	}
-	
+
 	/***
 	 * verify Current Url And Page Title
 	 * @author fatma
