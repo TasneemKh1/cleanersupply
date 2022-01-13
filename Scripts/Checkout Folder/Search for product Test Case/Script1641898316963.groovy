@@ -16,6 +16,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import actions.FiltersActions as FiltersActions
 import actions.HeaderActions as HeaderActions
+import actions.ProductActions as ProductActions
 import helpers.FiltersHelpers as FiltersHelpers
 import helpers.GeneralHelpers as GeneralHelpers
 import internal.GlobalVariable as GlobalVariable
@@ -23,6 +24,8 @@ import validations.FiltersValidations as FiltersValidations
 import validations.HeaderValidations as HeaderValidations
 import validations.SearchResults as SearchResults
 import org.openqa.selenium.Keys as Keys
+import java.util.HashMap as HashMap
+import java.util.Map as Map
 
 // --------- Variables ---------
 int packagingProductsNumber
@@ -32,6 +35,7 @@ String plasticBagsLinkUrl
 int filtersGroupsNumber
 String greenProductsLinkUrl
 int greenProductsNumber
+HashMap<String, String> firstProductMap
 
 // --------- Navigate to 'Home Page' ---------
 GeneralHelpers.initScenario()
@@ -77,3 +81,15 @@ greenProductsNumber = FiltersActions.storeGreenProductsNumber()
 greenProductsLinkUrl = FiltersActions.storeGreenProductsLinkUrl()
 FiltersActions.clickOnGreenProductsLink()
 FiltersValidations.verifyGreenProductsFilterApplied(greenProductsLinkUrl, greenProductsNumber, filtersGroupsNumber, 'Green')
+
+// --------- Navigate to the resulted product page ---------
+firstProductMap = ProductActions.storeFirstProductDetails()
+//println(firstProductMap.get("productUrl"))
+//println(firstProductMap.get("productTitle"))
+//println(firstProductMap.get("minPrice"))
+//println(firstProductMap.get("maxPrice"))
+//println(firstProductMap.get("minListPrice"))
+//println(firstProductMap.get("maxListPrice"))
+//println(firstProductMap.get("availableColors"))
+ProductActions.clickOnViewDetailsButton()
+GeneralHelpers.verifyCurrentUrlAndPageTitle(firstProductMap.get("productUrl"), firstProductMap.get("productTitle"))
