@@ -36,7 +36,7 @@ TestObject addToCart=findTestObject('Object Repository/ProductPage/button_addToC
 WebUI.click(addToCart)
 
 CheckOutHelpers.checkOutSenario()
-CheckOutHelpers.proceedToCheckOut()
+CheckOutHelpers.proceedToCheckOut(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
 
 
 

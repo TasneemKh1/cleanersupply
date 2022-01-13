@@ -98,11 +98,11 @@
       <description></description>
       <initValue>'Checkout Interstitial - Cleaner\'s Supply'</initValue>
       <name>titleOfCheckoutInterstitialCleanerSupply</name>
-     </GlobalVariableEntity>
-  <GlobalVariableEntity>
-  <description></description>
-  <initValue>['Request A Catalog – Free Monthly Printed Catalog - Cleaner\'s Supply', 'Classifieds List - Cleaner\'s Supply']</initValue>
-  <name>titleListForCol4</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['Request A Catalog – Free Monthly Printed Catalog - Cleaner\'s Supply', 'Classifieds List - Cleaner\'s Supply']</initValue>
+      <name>titleListForCol4</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
@@ -128,5 +128,15 @@
       <description></description>
       <initValue>'Gateway'</initValue>
       <name>CompanyName</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://www.cleanersupply.com/checkout/'</initValue>
+      <name>checkoutUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Checkout - Cleaner\'s Supply'</initValue>
+      <name>titleOfCheckoutPage</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
