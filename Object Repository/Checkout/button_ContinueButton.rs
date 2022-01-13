@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>List_QuantityOfMyCart</name>
+   <name>button_ContinueButton</name>
    <tag></tag>
-   <elementGuidId>a7ad33b5-5ee4-499f-8540-0cdcb7564261</elementGuidId>
+   <elementGuidId>d4b3c876-c908-4069-86b8-78f6f42d3f8e</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//input[@name=&quot;quantity&quot;]</value>
-      </entry>
-      <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//button[@onclick=&quot;goToCheckout()&quot;]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

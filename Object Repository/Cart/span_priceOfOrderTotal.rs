@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>List_QuantityOfMyCart</name>
+   <name>span_priceOfOrderTotal</name>
    <tag></tag>
-   <elementGuidId>a7ad33b5-5ee4-499f-8540-0cdcb7564261</elementGuidId>
+   <elementGuidId>24988f60-4867-46fb-97e4-ddbfbcdcf467</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//input[@name=&quot;quantity&quot;]</value>
-      </entry>
-      <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//*[@id=&quot;interstitial-cart&quot;]/div/div[2]//div/span</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -6,8 +6,11 @@
    <elementGuidId>2757441a-9a48-4833-9f32-0f8aa1a27e06</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>XPATH</key>
          <value></value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
       </entry>
       <entry>
          <key>CSS</key>

@@ -7,16 +7,16 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//section[@id='shopping-cart-page']//table//tbody//td[3]</value>
+         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
       </entry>
       <entry>
          <key>CSS</key>
-         <value>.product-table__description input</value>
+         <value>table.product-table td.product-table__quantity input[name=&quot;quantity&quot;]</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>
