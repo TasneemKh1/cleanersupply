@@ -1,26 +1,14 @@
 package helpers
-import actions.GeneralActions
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import org.openqa.selenium.WebElement
 
-
-
-
-
-
-
-
-
-
-
+import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-
-
+import actions.GeneralActions
 import actions.Navigations
-
 import internal.GlobalVariable
-import org.openqa.selenium.WebElement
 import validations.GeneralValidations
 
 
