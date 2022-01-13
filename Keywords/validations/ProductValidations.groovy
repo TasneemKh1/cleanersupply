@@ -17,6 +17,9 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+
+import helpers.ProductHelpers
+
 import org.openqa.selenium.WebElement
 
 import internal.GlobalVariable
@@ -56,8 +59,8 @@ public class ProductValidations {
 	}
 
 	public static void verifyVolumePricing (double productPrice) {
-		List<WebElement> productPricesElements = WebUI.findWebElements(findTestObject('Object Repository/ProductPage/span_productPrices'), GlobalVariable.visiablityItemTimeOut)
-		List<WebElement> productSavesElements = WebUI.findWebElements(findTestObject('Object Repository/ProductPage/span_productSaves'), GlobalVariable.visiablityItemTimeOut)
+		List<WebElement> productPricesElements = WebUI.findWebElements(findTestObject('ProductPage/td_productPrices'), GlobalVariable.visiablityItemTimeOut)
+		List<WebElement> productSavesElements = WebUI.findWebElements(findTestObject('ProductPage/td_productSaves'), GlobalVariable.visiablityItemTimeOut)
 		for (int i = 1; i < productPricesElements.size(); i++) {
 			String price =  WebUI.getText(WebUI.convertWebElementToTestObject(productPricesElements.get(i)))
 			String save = WebUI.getText(WebUI.convertWebElementToTestObject(productSavesElements.get(i)))
@@ -65,5 +68,29 @@ public class ProductValidations {
 			System.out.println((double) Math.round(expectedPrice * 100) / 100)
 			assert formatPrice(price) == (double) Math.round(expectedPrice * 100) / 100
 		}
+	}
+
+	public static String verifyProductSKU () {
+		String productSKU = WebUI.getText(findTestObject('Object Repository/ProductPage/span_productSKU')).trim()
+		assert WebUI.getUrl().endsWith(productSKU)
+		return productSKU
+	}
+
+	public static void verifyIfXLargeFilterIsSelected () {
+		ProductHelpers.verifyIfFilterButtonIsSelected(findTestObject('Object Repository/ProductPage/a_xLargeLink'))
+	}
+
+	public static void verifyIfGreenFilterIsSelected () {
+		ProductHelpers.verifyIfFilterButtonIsSelected(findTestObject('Object Repository/ProductPage/a_greenProductsLink'))
+	}
+	
+	public static void verifyIfDiscountIsApplied (double discountedPrice) {
+		TestObject productPriceTestObject = findTestObject('Object Repository/ProductPage/span_productPrice')
+		double actualPrice = formatPrice(WebUI.getText(productPriceTestObject))
+		assert discountedPrice.equals(actualPrice)
+	}
+	
+	public static void verifyStockNotification() {
+		assert WebUI.getAttribute(findTestObject('Object Repository/ProductPage/div_stockNotification'), "class").contains("in-stock")
 	}
 }

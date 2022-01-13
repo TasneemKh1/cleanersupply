@@ -19,6 +19,17 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
+import validations.ProductValidations
 
 public class ProductHelpers {
+	public static void verifyIfFilterButtonIsSelected (TestObject buttonTestObject) {
+		assert WebUI.getAttribute(buttonTestObject, "class").contains("selected")
+	}
+	
+	public static double verifypriceAndListPriceAndVolumePrice (String minPrice, String maxPrice, String minListPrice, String maxListPrice) {
+		double actualPrice =  ProductValidations.verifyProductPrice(minPrice, maxPrice)
+		ProductValidations.verifyProductPriceList(minListPrice, maxListPrice)
+		ProductValidations.verifyVolumePricing(actualPrice)
+		return actualPrice
+	}
 }

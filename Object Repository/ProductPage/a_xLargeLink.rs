@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>span_productSaves</name>
+   <name>a_xLargeLink</name>
    <tag></tag>
-   <elementGuidId>c7272ea0-66ec-4db3-a4a9-a125e8e1dceb</elementGuidId>
+   <elementGuidId>4fa59cb1-9f6a-4179-9a7f-d3b7981e9d2a</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@class, 'volume-table-container')]/table/tbody/tr[3]/td[position()>1]</value>
+         <value>//div[contains(@class, 'container-selector')]//a[contains(text(),'X-Large')]</value>
       </entry>
       <entry>
          <key>BASIC</key>

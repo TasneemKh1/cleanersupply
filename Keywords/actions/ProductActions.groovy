@@ -60,4 +60,16 @@ public class ProductActions {
 	public static void clickOnViewDetailsButton () {
 		WebUI.click(findTestObject('Object Repository/ProductPage/button_firstProductViewDetails'))
 	}
+
+	public static void clickOnXlargeButton () {
+		WebUI.click(findTestObject('Object Repository/ProductPage/a_xLargeLink'))
+	}
+
+	public static void clickOnGreenButton () {
+		WebUI.click(findTestObject('Object Repository/ProductPage/a_greenProductsLink'))
+	}
+	
+	public static String storeDiscountedPrice() {
+		return WebUI.getText(findTestObject('Object Repository/ProductPage/td_productDiscountedPrice'))
+	}
 }
