@@ -20,8 +20,10 @@ import actions.ProductActions as ProductActions
 import helpers.FiltersHelpers as FiltersHelpers
 import helpers.GeneralHelpers as GeneralHelpers
 import internal.GlobalVariable as GlobalVariable
-import validations.FiltersValidations as FiltersValidations
-import validations.HeaderValidations as HeaderValidations
+import validations.FiltersValidations
+import validations.GeneralValidations
+import validations.HeaderValidations
+import validations.ProductValidations
 import validations.SearchResults as SearchResults
 import org.openqa.selenium.Keys as Keys
 import java.util.HashMap as HashMap
@@ -84,12 +86,10 @@ FiltersValidations.verifyGreenProductsFilterApplied(greenProductsLinkUrl, greenP
 
 // --------- Navigate to the resulted product page ---------
 firstProductMap = ProductActions.storeFirstProductDetails()
-//println(firstProductMap.get("productUrl"))
-//println(firstProductMap.get("productTitle"))
-//println(firstProductMap.get("minPrice"))
-//println(firstProductMap.get("maxPrice"))
-//println(firstProductMap.get("minListPrice"))
-//println(firstProductMap.get("maxListPrice"))
-//println(firstProductMap.get("availableColors"))
 ProductActions.clickOnViewDetailsButton()
 GeneralHelpers.verifyCurrentUrlAndPageTitle(firstProductMap.get("productUrl"), firstProductMap.get("productTitle"))
+double productPrice =  ProductValidations.verifyProductPrice(firstProductMap.get("minPrice"), firstProductMap.get("maxPrice"))
+ProductValidations.verifyProductPriceList(firstProductMap.get("minListPrice"), firstProductMap.get("maxListPrice"))
+ProductValidations.verifybreadcrumbIsVisible()
+ProductValidations.verifyNumberOfAvailableColors(firstProductMap.get("availableColors"))
+ProductValidations.verifyVolumePricing(productPrice)
