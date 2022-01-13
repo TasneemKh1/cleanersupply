@@ -31,7 +31,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>10</initValue>
+      <initValue>11</initValue>
       <name>visiablityItemTimeOut</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -76,8 +76,6 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>['#TM290']</initValue>
-      <name>productTitleSenario2</name>
       <initValue>['Log In - Cleaner\'s Supply', 'Cleaner\'s Supply - Dry Cleaning Supplies', 'Track Order Guest - Cleaner\'s Supply', 'Our Story - Cleaner\'s Supply', 'Fast, Free Shipping - Cleaner\'s Supply', 'Customer Service - Cleaner\'s Supply', 'International Orders &amp; Shipping Information - Cleaner\'s Supply', 'Newsroom - Cleaner\'s Supply', 'Careers - Cleaner\'s Supply']</initValue>
       <name>titleListForFooter</name>
    </GlobalVariableEntity>
@@ -90,5 +88,35 @@
       <description></description>
       <initValue>['Dry Cleaning Tags, Forms &amp; Invoices - Cleaner\'s Supply', 'Store Counter &amp; Check-In Supplies - Cleaner\'s Supply', 'Dry Cleaning Bags - Cleaner\'s Supply', 'Pressing, Spotting Tools &amp; Supplies - Cleaner\'s Supply', 'Packaging Supplies - Cleaner\'s Supply', 'Racks &amp; Rack Accessories - Cleaner\'s Supply', 'Tailoring Supplies - Cleaner\'s Supply', 'Laundromat Supplies - Cleaner\'s Supply']</initValue>
       <name>titleListFor2ColInFooter</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['Request A Catalog – Free Monthly Printed Catalog - Cleaner\'s Supply', 'Classifieds List - Cleaner\'s Supply']</initValue>
+      <name>titleListForCol4</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['LET’S GET STARTED', 'CLASSIFIEDS']</initValue>
+      <name>headingForCol4</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['Terms of Use - Cleaner\'s Supply', 'Privacy Policy - Cleaner\'s Supply']</initValue>
+      <name>titleForReservedRights</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['Cleaner\'s Supply - Home', 'Cleaner\'s Supply - YouTube', 'Cleaner\'s Supply (@cleanerssupply) • Instagram photos and videos', 'LinkedIn']</initValue>
+      <name>soccialTitles</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Cleaner\'s Supply - Dry Cleaning Supplies'</initValue>
+      <name>titleOfMainPage</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Gateway'</initValue>
+      <name>CompanyName</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
