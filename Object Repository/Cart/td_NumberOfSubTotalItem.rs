@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>List_PriceOfProductsCart</name>
+   <name>td_NumberOfSubTotalItem</name>
    <tag></tag>
-   <elementGuidId>b1d8e4bc-b4e3-434c-a4fb-de38142f9c1a</elementGuidId>
+   <elementGuidId>66bdd80e-d751-4500-a553-5f3839f29d31</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//section[@id='shopping-cart-page']//table//tbody//td[4]</value>
-      </entry>
-      <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>.product-table .product-table__price</value>
+         <key>XPATH</key>
+         <value>//table[@class=&quot;order-summary__totals&quot;]//tr[1]//td[1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

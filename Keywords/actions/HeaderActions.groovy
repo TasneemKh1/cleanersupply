@@ -42,14 +42,14 @@ public class HeaderActions {
 		WebUI.click(NavItem)
 	}
 	/***
- 	 * Type into search input field
- 	 * @author moham
- 	 * @param value
- 	 */
- 	public static void typeIntoSearchInput (String value) {
- 		GeneralActions.typeIntoInputField(findTestObject('Object Repository/Header/input_search'), value)
- 	}
-	 public static void cliclOnSearchButton () {
+	 * Type into search input field
+	 * @author moham
+	 * @param value
+	 */
+	public static void typeIntoSearchInput (String value) {
+		GeneralActions.typeIntoInputField(findTestObject('Object Repository/Header/input_search'), value)
+	}
+	public static void cliclOnSearchButton () {
 		WebUI.click(findTestObject('Object Repository/Header/button_searchAction'))
 	}
 }
