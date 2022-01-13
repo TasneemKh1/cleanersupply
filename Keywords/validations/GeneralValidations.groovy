@@ -105,10 +105,11 @@ public class GeneralValidations {
 		for(int i = 0; i <= rows_table.size(); ++i) {
 			//			assert titleOfProduct.get(i).getText().contains(productName[i]);
 			System.out.println(titleOfProduct.get(i).getText())
-//						assert QuantityOfProducts.get(i).getText().contains(quantity[i]);
-//			System.out.println(QuantityOfProducts.get(i).getAttribute('value'))
-//			assert WebUI.getText( WebUI.convertWebElementToTestObject(priceOfProduct.get(i))).replace('$', '').split(" ").contains(price[i]);
+			//						assert QuantityOfProducts.get(i).getText().contains(quantity[i]);
+			//			System.out.println(QuantityOfProducts.get(i).getAttribute('value'))
+			//			assert WebUI.getText( WebUI.convertWebElementToTestObject(priceOfProduct.get(i))).replace('$', '').split(" ").contains(price[i]);
 			System.out.println(WebUI.getText(WebUI.convertWebElementToTestObject(priceOfProduct.get(i))).replace('$', ''))
 		}
 	}
+	
 }
