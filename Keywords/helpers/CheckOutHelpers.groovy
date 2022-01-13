@@ -1,9 +1,7 @@
 package helpers
-
-import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
-import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import actions.GeneralActions
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+
 import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
 import com.kms.katalon.core.annotation.Keyword
@@ -24,6 +22,8 @@ import actions.Navigations
 import internal.GlobalVariable
 import org.openqa.selenium.WebElement
 import validations.GeneralValidations
+import internal.GlobalVariable
+
 
 public class CheckOutHelpers {
 	public static void checkOutSenario() {
@@ -115,6 +115,11 @@ public class CheckOutHelpers {
 		GeneralValidations.verifyActionOnButton('Object Repository/Cart/button_ProceedToCheckout',"box-shadow","rgba(0, 0, 0, 0.3) 0px 0px 10px 2px")
 		GeneralActions.clickOnElement('Object Repository/Cart/button_ProceedToCheckout')
 	
+	public static void EnterValuesForShippingAddress(){
+		GeneralActions.typeIntoInputField(findTestObject('Object Repository/Checkout/shipping Address Section/input-Company'), GlobalVariable.CompanyName)
+		GeneralActions.typeIntoInputField(findTestObject('Object Repository/Checkout/shipping Address Section/firstName'), GlobalVariable.CompanyName)
+
 		
 	}
+	
 }

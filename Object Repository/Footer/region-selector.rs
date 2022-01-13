@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_plasticBagsLink</name>
+   <name>region-selector</name>
    <tag></tag>
-   <elementGuidId>2c205ec8-0fe6-402b-823b-fe5cc7c3abae</elementGuidId>
+   <elementGuidId>779c7283-f664-4a95-a062-904b0b5f6767</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>CSS</key>
+         <value>[id=&quot;region&quot;]</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>a[href=&quot;https://www.cleanersupply.com/search-results/?Category=Packaging+Products_Plastic+Bags&amp;q=Plastic&amp;r=true&quot;]</value>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

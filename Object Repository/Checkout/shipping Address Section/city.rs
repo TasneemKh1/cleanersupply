@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_plasticBagsLink</name>
+   <name>city</name>
    <tag></tag>
-   <elementGuidId>2c205ec8-0fe6-402b-823b-fe5cc7c3abae</elementGuidId>
+   <elementGuidId>ffd7d20c-5473-4e70-910e-4b29c7856caa</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>CSS</key>
+         <value>[id=&quot;shp1-city&quot;]</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>a[href=&quot;https://www.cleanersupply.com/search-results/?Category=Packaging+Products_Plastic+Bags&amp;q=Plastic&amp;r=true&quot;]</value>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

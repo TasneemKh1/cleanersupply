@@ -14,21 +14,28 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-
-import actions.FiltersActions
-import actions.HeaderActions
-import helpers.FiltersHelpers
+import actions.FiltersActions as FiltersActions
+import actions.HeaderActions as HeaderActions
+import actions.ProductActions as ProductActions
+import helpers.FiltersHelpers as FiltersHelpers
 import helpers.GeneralHelpers as GeneralHelpers
-import internal.GlobalVariable
-import validations.FiltersValidations
+import internal.GlobalVariable as GlobalVariable
+import validations.FiltersValidations as FiltersValidations
 import validations.HeaderValidations as HeaderValidations
 import validations.SearchResults as SearchResults
 import org.openqa.selenium.Keys as Keys
+import java.util.HashMap as HashMap
+import java.util.Map as Map
 
 // --------- Variables ---------
 int packagingProductsNumber
 String packagingProductsLinkUrl
+int plasticBagsNumber
+String plasticBagsLinkUrl
 int filtersGroupsNumber
+String greenProductsLinkUrl
+int greenProductsNumber
+HashMap<String, String> firstProductMap
 
 // --------- Navigate to 'Home Page' ---------
 GeneralHelpers.initScenario()
@@ -58,4 +65,31 @@ packagingProductsNumber = FiltersActions.storePackingProductsNumber()
 packagingProductsLinkUrl = FiltersActions.storePackingProductsLinkUrl()
 filtersGroupsNumber = FiltersActions.storeFiltersGroupsNumber()
 FiltersActions.clickOnPackingProductsLink()
-filtersGroupsNumber =  FiltersValidations.verifyPackingProductsFilterApplied(packagingProductsLinkUrl, packagingProductsNumber, filtersGroupsNumber, "Packaging Products")
+FiltersValidations.verifyPackingProductsFilterApplied(packagingProductsLinkUrl, packagingProductsNumber, filtersGroupsNumber, 
+    'Packaging Products')
+
+// --------- Select 'Plastic Bags' option from category filter ---------
+plasticBagsNumber = FiltersActions.storePlasticBagsNumber()
+plasticBagsLinkUrl = FiltersActions.storePlasticBagsLinkUrl()
+FiltersActions.clickOnPlasticBagsLink()
+FiltersValidations.verifyBlasticBagsFilterApplied(plasticBagsLinkUrl, plasticBagsNumber + packagingProductsNumber, filtersGroupsNumber, 
+    'Plastic Bags')
+
+// --------- Select 'Green' from color group filter ---------
+FiltersActions.expandColorCard()
+greenProductsNumber = FiltersActions.storeGreenProductsNumber()
+greenProductsLinkUrl = FiltersActions.storeGreenProductsLinkUrl()
+FiltersActions.clickOnGreenProductsLink()
+FiltersValidations.verifyGreenProductsFilterApplied(greenProductsLinkUrl, greenProductsNumber, filtersGroupsNumber, 'Green')
+
+// --------- Navigate to the resulted product page ---------
+firstProductMap = ProductActions.storeFirstProductDetails()
+//println(firstProductMap.get("productUrl"))
+//println(firstProductMap.get("productTitle"))
+//println(firstProductMap.get("minPrice"))
+//println(firstProductMap.get("maxPrice"))
+//println(firstProductMap.get("minListPrice"))
+//println(firstProductMap.get("maxListPrice"))
+//println(firstProductMap.get("availableColors"))
+ProductActions.clickOnViewDetailsButton()
+GeneralHelpers.verifyCurrentUrlAndPageTitle(firstProductMap.get("productUrl"), firstProductMap.get("productTitle"))

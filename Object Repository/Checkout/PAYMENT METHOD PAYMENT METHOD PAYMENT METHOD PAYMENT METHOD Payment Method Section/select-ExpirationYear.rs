@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_plasticBagsLink</name>
+   <name>select-ExpirationYear</name>
    <tag></tag>
-   <elementGuidId>2c205ec8-0fe6-402b-823b-fe5cc7c3abae</elementGuidId>
+   <elementGuidId>0e544891-1828-4f63-a5b7-2e3d5450a135</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>CSS</key>
+         <value>select[name=&quot;expiry-year&quot;]</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>a[href=&quot;https://www.cleanersupply.com/search-results/?Category=Packaging+Products_Plastic+Bags&amp;q=Plastic&amp;r=true&quot;]</value>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>a_plasticBagsLink</name>
+   <name>h2_firstProductTitle</name>
    <tag></tag>
-   <elementGuidId>2c205ec8-0fe6-402b-823b-fe5cc7c3abae</elementGuidId>
+   <elementGuidId>c4966178-f6e3-4fb2-88f1-5560ba6959e8</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>CSS</key>
+         <value>div.product-list-container div:nth-child(3) > div:nth-child(1) a .product-title</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>a[href=&quot;https://www.cleanersupply.com/search-results/?Category=Packaging+Products_Plastic+Bags&amp;q=Plastic&amp;r=true&quot;]</value>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>

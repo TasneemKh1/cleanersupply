@@ -58,6 +58,61 @@ public class FiltersActions {
 		WebUI.click(findTestObject('Filters/a_packagingProductsLink'))
 	}
 
+	/***
+	 * @author moham
+	 * @return plastic bags number
+	 */
 	public static Integer storePlasticBagsNumber () {
+		TestObject categoryLinkTestObject = findTestObject('Object Repository/Filters/a_plasticBagsLink')
+		return FiltersHelpers.storeFilteredProductNumber(categoryLinkTestObject)
+	}
+
+	/***
+	 * @author moham
+	 * @return plastic bags link Url
+	 */
+	public static String storePlasticBagsLinkUrl () {
+		TestObject categoryLinkTestObject = findTestObject('Object Repository/Filters/a_plasticBagsLink')
+		return FiltersHelpers.storeFilteredProductLinkUrl(categoryLinkTestObject)
+	}
+
+	/***
+	 * @author moham
+	 */
+	public static void clickOnPlasticBagsLink () {
+		WebUI.click(findTestObject('Object Repository/Filters/a_plasticBagsLink'))
+	}
+
+	/***
+	 * @author moham
+	 */
+	public static void expandColorCard () {
+		WebUI.click(findTestObject('Object Repository/Filters/div_colorFilterCard'))
+		WebUI.waitForElementVisible(findTestObject('Object Repository/Filters/ul_colorOptionsList'), GlobalVariable.visiablityItemTimeOut)
+	}
+
+	/***
+	 * @author moham
+	 * @return green products number
+	 */
+	public static Integer storeGreenProductsNumber () {
+		TestObject categoryLinkTestObject = findTestObject('Object Repository/Filters/a_greenProductsLink')
+		return FiltersHelpers.storeFilteredProductNumber(categoryLinkTestObject)
+	}
+
+	/***
+	 * @author moham
+	 * @return green products link Url
+	 */
+	public static String storeGreenProductsLinkUrl () {
+		TestObject categoryLinkTestObject = findTestObject('Object Repository/Filters/a_greenProductsLink')
+		return FiltersHelpers.storeFilteredProductLinkUrl(categoryLinkTestObject)
+	}
+
+	/***
+	 * @author moham
+	 */
+	public static void clickOnGreenProductsLink () {
+		WebUI.click(findTestObject('Object Repository/Filters/a_greenProductsLink'))
 	}
 }
