@@ -56,7 +56,7 @@ public class ProductActions {
 
 		return firstProductMap
 	}
-	
+
 	public static void clickOnViewDetailsButton () {
 		WebUI.click(findTestObject('Object Repository/ProductPage/button_firstProductViewDetails'))
 	}

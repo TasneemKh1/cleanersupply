@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>List_QuantityOfMyCart</name>
+   <name>h1_headingTitleOfChekoutPage</name>
    <tag></tag>
-   <elementGuidId>a7ad33b5-5ee4-499f-8540-0cdcb7564261</elementGuidId>
+   <elementGuidId>74714a0e-966c-4595-b2ce-527b99a73cf6</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//input[@name=&quot;quantity&quot;]</value>
-      </entry>
-      <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value></value>
+         <value>.section-heading h1</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

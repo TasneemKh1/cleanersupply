@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>List_QuantityOfMyCart</name>
+   <name>td_EstematedTax</name>
    <tag></tag>
-   <elementGuidId>a7ad33b5-5ee4-499f-8540-0cdcb7564261</elementGuidId>
+   <elementGuidId>1893032f-2309-46df-a68d-71fd271510db</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//input[@name=&quot;quantity&quot;]</value>
-      </entry>
-      <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//table[@class=&quot;order-summary__totals&quot;]//tr[3]//td[2]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

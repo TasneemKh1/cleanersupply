@@ -151,11 +151,11 @@ public class GeneralValidations {
 			assert titleOfProduct.get(i).getText().contains(productName[i]);
 			System.out.println(priceOfProduct.get(i).getText().replace('$', ''))
 			assert priceOfProduct.get(i).getText().replace('$', '').contains(price[i]);
-			//			System.out.println(QuantityOfProducts.get(i).getAttribute('value').replace('$', ''))
-			//			assert QuantityOfProducts.get(i).getAttribute('value').contains(quantity[i]);
+			System.out.println(QuantityOfProducts.get(i).getAttribute('value'))
+			assert QuantityOfProducts.get(i).getAttribute('value')==(quantity[i]);
 			System.out.println(totalPriceOfProducts.get(i).getText().replace('$', ''))
 			//let quantity=1
-			double totalPrice=1 * priceOfProduct.get(i).getText().replace('$', '').toDouble()
+			double totalPrice=QuantityOfProducts.get(i).getAttribute('value').toDouble() * priceOfProduct.get(i).getText().replace('$', '').toDouble()
 			assert totalPriceOfProducts.get(i).getText().replace('$', '').toDouble().equals(totalPrice);
 			System.out.println(skuNumberOfProducts.get(i).getText())
 			assert skuNumberOfProducts.get(i).getText().contains(sku[i]);
@@ -170,7 +170,7 @@ public class GeneralValidations {
 			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(totalPrice);
 			//NumberOfSubTotal
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]", "")))
-			assert Integer.parseInt(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]",""))==(1);
+			assert Integer.parseInt(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]",""))==(QuantityOfProducts.get(i).getAttribute('value').toInteger());
 
 		}
 	}
@@ -188,11 +188,12 @@ public class GeneralValidations {
 	 * @param elementID Id of element
 	 * @param attribute attribute of element
 	 * @param expectedValue expectedValue of element
+	 * @author fatma
 	 */
 	public static void verifyActionOnButton(String elementID,String attribute,String expectedValue) {
 		TestObject Element = findTestObject(elementID)
-		assert WebUI.getCSSValue(Element, attribute).contains(expectedValue)
 		System.out.println(WebUI.getCSSValue(Element, attribute))
+		assert WebUI.getCSSValue(Element, attribute).contains(expectedValue)
 	}
 	
 //	public static void verifyCheckBoxAfterSelection() {

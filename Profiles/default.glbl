@@ -198,5 +198,15 @@
       <description></description>
       <initValue>'test'</initValue>
       <name>comment</name>
+     </GlobalVariableEntity>
+      <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://www.cleanersupply.com/checkout/'</initValue>
+      <name>checkoutUrl</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Checkout - Cleaner\'s Supply'</initValue>
+      <name>titleOfCheckoutPage</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>
