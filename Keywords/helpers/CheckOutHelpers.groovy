@@ -46,7 +46,6 @@ public class CheckOutHelpers {
 		assert WebUI.getText(findTestObject('Object Repository/Checkout/div_HeadingTitleOfCheckoutInterstitialPage')).contains('SECURE CHECKOUT');
 		assert WebUI.getText(findTestObject('Object Repository/Checkout/div_TitleOfCheckOutAsGuest')).contains('Checkout as a guest or register'.toUpperCase());
 	}
-	
 	public static void verifyCheckoutTextPage() {
 		assert WebUI.getText(findTestObject('Object Repository/Checkout/div_HeadingTitleOfCheckoutInterstitialPage')).contains('SECURE CHECKOUT');
 		assert WebUI.getText(findTestObject('Object Repository/Checkout/h1_headingTitleOfChekoutPage')).contains('Checkout'.toUpperCase());
@@ -83,8 +82,7 @@ public class CheckOutHelpers {
 			assert skuNumberOfProducts.get(i).getText().contains(sku[i]);
 			System.out.println(stockNotificationOfProduct.get(i).getText())
 			assert stockNotificationOfProduct.get(i).getText().contains('In Stock!');
-			
-		    //SubTotalSummary
+		   //SubTotalSummary
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '')))
 			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', ''))==(totalPrice);
 			//Estimated Total
@@ -123,7 +121,6 @@ public class CheckOutHelpers {
 			//NumberOfSubTotal
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]", "")))
 			assert Integer.parseInt(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]",""))==(QuantityOfProducts.get(i).getAttribute('value').toInteger());
-			
 		}
 	}
 	
@@ -143,7 +140,7 @@ public class CheckOutHelpers {
 		CheckOutHelpers.verifyCheckoutInterstitialTextPage();
 		GeneralActions.clickOnElement('Object Repository/Checkout/span_CheckoutAsGuestRadio')
 		GeneralValidations.verifyActionOnButton('Object Repository/Checkout/span_CheckoutAsGuestRadio',"border-color","rgb(82, 36, 127)")
-	    CheckOutHelpers.verifyMyCartData([
+		CheckOutHelpers.verifyMyCartData([
 			"THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"
 		], ['1'], ['89.99'],['RCT210BL'])
 		CheckOutHelpers.verifyMyCartData(productName,quantity,price,sku)
@@ -153,11 +150,43 @@ public class CheckOutHelpers {
 		GeneralHelpers.newPageIsOpened(GlobalVariable.checkoutUrl, GlobalVariable.titleOfCheckoutPage)
 		CheckOutHelpers.verifyCheckoutTextPage();
 	}
+	
 	public static void EnterValuesForShippingAddress(){
-		GeneralActions.typeIntoInputField(findTestObject('Object Repository/Checkout/shipping Address Section/input-Company'), GlobalVariable.CompanyName)
-		GeneralActions.typeIntoInputField(findTestObject('Object Repository/Checkout/shipping Address Section/firstName'), GlobalVariable.CompanyName)
-
-		
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/input-Company'), GlobalVariable.CompanyName)
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/firstName'), GlobalVariable.firstName)
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/lastName'), GlobalVariable.lastName)
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/address line1'), GlobalVariable.address1)
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/address line2'), GlobalVariable.address2)
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/zipCode'), Integer.toString(GlobalVariable.zipCode))
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/city'), GlobalVariable.city)
+		GeneralActions.chooseFromSelector('Object Repository/Checkout/shipping Address Section/btn-state','Object Repository/Checkout/shipping Address Section/select-State','California')
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/phone'), Integer.toString(GlobalVariable.phone))
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/phone-Extension'),Integer.toString( GlobalVariable.ext))
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/email'),GlobalVariable.email)
+		GeneralActions.clickOnElement('Object Repository/Checkout/shipping Address Section/checkbox-signUp')
 	}
 	
+	public static void EnterValuesForPaymentMethod(){
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/cardName'), GlobalVariable.cardName)
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/cardNumber'), Integer.toString(GlobalVariable.cardNumber))
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/cvv'), Integer.toString(GlobalVariable.cvv))
+		GeneralActions.chooseFromSelector('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/btn-expirationMonth','Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/select-ExpirationMonth','8')
+		GeneralActions.chooseFromSelector('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/btn-expirationYear','Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/select-ExpirationYear','2026')
+		WebUI.verifyElementPresent(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/sectionDisappeared'), GlobalVariable.visiablityItemTimeOut)
+		GeneralActions.clickOnElement('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/checkbox-billing address')
+		WebUI.verifyElementNotPresent(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/sectionDisappeared'), GlobalVariable.visiablityItemTimeOut)
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/po'), GlobalVariable.po)
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/comments'), GlobalVariable.comment)
+	}
+	
+	public static void proceedToReviewOrderFinish() {
+		EnterValuesForShippingAddress()
+		EnterValuesForPaymentMethod()
+		GeneralActions.clickOnElement('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/a-reviewOrderBtn')
+	}
+	
+	public static void TypeInFieldAndWerifyValue(TestObject inputTestObject, String expectedValue){
+		GeneralActions.typeIntoInputField(inputTestObject, expectedValue)
+		GeneralValidations.verifyInputValue (inputTestObject, expectedValue)
+	}
 }

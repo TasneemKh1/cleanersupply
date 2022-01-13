@@ -44,8 +44,20 @@ public class GeneralActions {
 	 * @param testObjID the Id of element 
 	 * @author fatma
 	 */
-	public static String mouseOverOnElement(String testObjID) {
+	public static void mouseOverOnElement(String testObjID) {
 		TestObject Element=findTestObject(testObjID)
 		WebUI.mouseOver(Element);
 	}
+	/***
+	 * @author tasneem
+	 * */
+	public static void chooseFromSelector(String BtnId,String SelectID,String value) {
+		clickOnElement(BtnId)
+		TestObject Element=findTestObject(SelectID)
+		WebUI.selectOptionByValue(Element,value, false)
+		
+	}
+	
+	
+	
 }
