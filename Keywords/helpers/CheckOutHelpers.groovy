@@ -114,7 +114,7 @@ public class CheckOutHelpers {
 		GeneralActions.mouseOverOnElement('Object Repository/Cart/button_ProceedToCheckout')
 		GeneralValidations.verifyActionOnButton('Object Repository/Cart/button_ProceedToCheckout',"box-shadow","rgba(0, 0, 0, 0.3) 0px 0px 10px 2px")
 		GeneralActions.clickOnElement('Object Repository/Cart/button_ProceedToCheckout')
-	
+	}
 	public static void EnterValuesForShippingAddress(){
 		GeneralActions.typeIntoInputField(findTestObject('Object Repository/Checkout/shipping Address Section/input-Company'), GlobalVariable.CompanyName)
 		GeneralActions.typeIntoInputField(findTestObject('Object Repository/Checkout/shipping Address Section/firstName'), GlobalVariable.CompanyName)
