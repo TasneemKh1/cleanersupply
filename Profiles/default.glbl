@@ -114,4 +114,9 @@
       <initValue>'Cleaner\'s Supply - Dry Cleaning Supplies'</initValue>
       <name>titleOfMainPage</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'Gateway'</initValue>
+      <name>CompanyName</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

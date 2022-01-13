@@ -111,5 +111,4 @@ public class GeneralValidations {
 			System.out.println(WebUI.getText(WebUI.convertWebElementToTestObject(priceOfProduct.get(i))).replace('$', ''))
 		}
 	}
-	
 }
