@@ -17,19 +17,25 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import helpers.GeneralHelpers
+import actions.FiltersActions
 import actions.SelectCategoriesActions
 import validations.GeneralValidations
 
 import helpers.CheckOutHelpers
+// ----------- Navigate to https://www.cleanersupply.com/----------
 GeneralHelpers.initScenario();
+// ----------- Hover on 'Tags & Forms' header items.     ----------
 SelectCategoriesActions.hoverOnTagsAndFormMenu();
 GeneralValidations.verifyHover("Object Repository/Header/a_tagsAndForm","rgb(255, 255, 255)","rgba(82, 36, 127, 1)","Object Repository/Header/ul_tagsAndForm","open-desktop");
+// ----------- Select 'Computers & Registers' category.  ----------
 SelectCategoriesActions.hoverOnComputerAndRegisterTab();
-//GeneralValidations.verifyHover("Object Repository/CategoryPage/a_ComputerAndRegister"," ","rgba(82, 36, 127, 1)"," "," ");
+GeneralValidations.verifyHover("Object Repository/CategoryPage/a_ComputerAndRegister"," ","rgba(82, 36, 127, 1)"," "," ");
 SelectCategoriesActions.clickOnComputerAndRegisterTab();
-//GeneralHelpers.newPageIsOpened(GlobalVariable.computerAndRegisterPageUrl, GlobalVariable.titleOfComputerRegisterPage)
-//GeneralValidations.verifyBreadcrump('//li[@class="active"]//a[@href="/Tags-Forms/Computer-Register/"]', GlobalVariable.breadcrumpOfComputerAndRegister)
-//GeneralValidations.verifyTitleOfHeading(GlobalVariable.headingTitleOFComputerAndRegisterPage)
+GeneralHelpers.newPageIsOpened(GlobalVariable.computerAndRegisterPageUrl, GlobalVariable.titleOfComputerRegisterPage)
+GeneralValidations.verifyBreadcrump('Object Repository/CategoryPage/li_BreadcrumpOfComputerAndRegisterPAge', GlobalVariable.breadcrumpOfComputerAndRegister)
+GeneralValidations.verifyTitleOfHeading(GlobalVariable.headingTitleOFComputerAndRegisterPage)
+// ----------- From the manufacturer section, select the 'Casio' manufacturer and select 'SP1000' Model. -------
+filtersGroupsNumber = FiltersActions.storeFiltersGroupsNumber()
 TestObject product=findTestObject('Object Repository/ProductPage/a_ComputerProduct')
 WebUI.click(product)
 TestObject addToCart=findTestObject('Object Repository/ProductPage/button_addToCart')
