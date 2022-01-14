@@ -17,6 +17,8 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import actions.FiltersActions as FiltersActions
 import actions.HeaderActions as HeaderActions
 import actions.ProductActions as ProductActions
+import helpers.CartHelpers as CartHelpers
+import helpers.CheckOutHelpers as CheckOutHelpers
 import helpers.FiltersHelpers as FiltersHelpers
 import helpers.GeneralHelpers as GeneralHelpers
 import helpers.ProductHelpers as ProductHelpers
@@ -148,3 +150,10 @@ ProductHelpers.updateProductsLists(productsTitles, productsPrices, productsQuant
 
 // --------- edit quantity value to be 3 ---------
 ProductHelpers.verifyUpdateQuantityAndAddToCart(secondQuantity, discountedPrice, 2, productsPrices, productsQuantities)
+
+// ---------------------------------------------------------------------------------
+WebUI.click(findTestObject('Object Repository/Header/li_cartLink'))
+
+//CheckOutHelpers.verifyMyCartData(CartHelpers.makeListReadyForCartAndCheckout(false, productsTitles), CartHelpers.makeListReadyForCartAndCheckout(
+//        true, productsQuantities), CartHelpers.makeListReadyForCartAndCheckout(true, productsPrices), CartHelpers.makeListReadyForCartAndCheckout(
+//        false, productsSKU))
