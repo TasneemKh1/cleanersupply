@@ -29,10 +29,21 @@ import org.openqa.selenium.WebElement
 import internal.GlobalVariable
 
 public class ProductActions {
+	/***
+	 * Remove the dollar sign from price string
+	 * @author moham
+	 * @param priceTestObject
+	 * @return String
+	 */
 	public static String formatPrice (TestObject priceTestObject) {
 		return WebUI.getText(priceTestObject).trim().substring(1)
 	}
 
+	/***
+	 * Return product details from the result page before navigating to product page
+	 * @author moham
+	 * @return HashMap
+	 */
 	public static HashMap storeFirstProductDetails () {
 		HashMap<String, String> firstProductMap = new HashMap<>()
 		TestObject productLinkTestObject = findTestObject('Object Repository/ProductPage/a_firstProductLink')
@@ -60,27 +71,62 @@ public class ProductActions {
 		return firstProductMap
 	}
 
+	/***
+	 * @author moham
+	 */
 	public static void clickOnViewDetailsButton () {
 		WebUI.click(findTestObject('Object Repository/ProductPage/button_firstProductViewDetails'))
 	}
 
+	/***
+	 * @author moham
+	 */
 	public static void clickOnXlargeButton () {
 		WebUI.click(findTestObject('Object Repository/ProductPage/a_xLargeLink'))
 	}
 
+	/***
+	 * @author moham
+	 */
+	public static void clickOnLargeButton () {
+		WebUI.click(findTestObject('Object Repository/Header/input_search'))
+		WebUI.scrollToElement(findTestObject('Object Repository/ProductPage/h1_productTitle'), GlobalVariable.visiablityItemTimeOut)
+		WebUI.click(findTestObject('Object Repository/ProductPage/a_largeLink'))
+	}
+
+	/***
+	 * @author moham
+	 */
 	public static void clickOnGreenButton () {
 		WebUI.click(findTestObject('Object Repository/ProductPage/a_greenProductsLink'))
 	}
 
+	/***
+	 * @author moham
+	 */
+	public static void clickOnRoyalBlueButton () {
+		WebUI.click(findTestObject('Object Repository/ProductPage/a_royalBlueProducts'))
+	}
+
+	/***
+	 * @author moham
+	 */
 	public static String storeDiscountedPrice() {
 		return WebUI.getText(findTestObject('Object Repository/ProductPage/td_productDiscountedPrice'))
 	}
 
+	/***
+	 * @author moham
+	 * @param quantity
+	 */
 	public static void typeIntoQuantityInput (int quantity) {
 		GeneralActions.typeIntoInputField(findTestObject('Object Repository/ProductPage/input_quantity'), Keys.BACK_SPACE + quantity.toString())
 		WebUI.click(findTestObject('Object Repository/ProductPage/div_stockNotification'))
 	}
 
+	/***
+	 * @author moham
+	 */
 	public static void clickOnAddToCartButton () {
 		TestObject addToCartButton = findTestObject('Object Repository/ProductPage/button_add-to-cart')
 		WebUI.click(addToCartButton)
