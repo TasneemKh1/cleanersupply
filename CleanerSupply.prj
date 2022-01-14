@@ -6,6 +6,7 @@
    <UUID>337a62e4-229d-491b-bd30-48ce9bcc9556</UUID>
    <migratedVersion>5.9.0</migratedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
+   <projectFileLocation>/Users/tasneem/Katalon Studio/CleanerSupply/CleanerSupply.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>

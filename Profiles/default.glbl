@@ -21,7 +21,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>['TEE1', 'TES263', 'TES288', 'RA20', 'LAB12', 'HA1000', 'TEF7', 'HSM2000', 'TEM1']</initValue>
+      <initValue>['TEF3', 'MPW1', 'RA20', 'LAB12', 'HA1000', 'TES275', 'TEF7', 'RA20P5', 'LAB12', 'HA1000', 'CNVB55BK', 'HSM2000', 'TEM1']</initValue>
       <name>productIDList</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -198,8 +198,8 @@
       <description></description>
       <initValue>'test'</initValue>
       <name>comment</name>
-     </GlobalVariableEntity>
-      <GlobalVariableEntity>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
       <description></description>
       <initValue>'https://www.cleanersupply.com/checkout/'</initValue>
       <name>checkoutUrl</name>

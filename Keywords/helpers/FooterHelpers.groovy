@@ -58,9 +58,13 @@ public class FooterHelpers {
 		FooterActions.mouseOverOnLinks(contactByEmail)
 		//String contactByEmailLink = WebUI.getAttribute(contactByEmail, 'href')
 		FooterActions.clickOnBtn(contactByEmail)
+		WebUI.delay(GlobalVariable.visiablityItemTimeOut)
 		WebUI.switchToWindowIndex(0)
 	}
-
+	/**
+	 * @Description verify Contacting By chat Button open a new window
+	 *@author tasneem
+	 * */
 	public static void contactingByChat() {
 		TestObject link=findTestObject('Object Repository/Footer/a-chat');
 		if(!WebUI.getText(link).contains('Offline')) {
@@ -71,13 +75,13 @@ public class FooterHelpers {
 			assert WebUI.getUrl().contains(chatLink)
 			FooterActions.closeOpenedTab()
 		}
-
 	}
 
 	/**
 	 * @Description verify each link in footer opens the right corresponding page
 	 * *@author tasneem
-	 *@param testObjID ,section
+	 *@param String testObjID 
+	 *@param String section
 	 * */
 	public static void verifyEachLinkInFooter (String testObjID ,String section) {
 		List<WebElement> linkList2= WebUI.findWebElements(findTestObject(testObjID), GlobalVariable.visiablityItemTimeOut)
@@ -130,7 +134,6 @@ public class FooterHelpers {
 
 				WebUI.back()
 				GeneralHelpers.newPageIsOpened(GlobalVariable.baseURL,GlobalVariable.titleOfMainPage)
-
 			}else if(section.equals("col4")) {
 				FooterActions.mouseOverOnLinks(link)
 				FooterActions.clickOnBtn(link)
@@ -148,17 +151,24 @@ public class FooterHelpers {
 				WebUI.back()
 				GeneralHelpers.newPageIsOpened(GlobalVariable.baseURL,GlobalVariable.titleOfMainPage)
 			}
-			
-
 		}
 	}
-	
+	/**
+	 * @Description verify hovering over feed back button then clicking on it
+	 * *@author tasneem
+	 *
+	 * */
 	public static void verifyClickingOnFeedBackModal () {
 		TestObject sendFeedback=FooterActions.mouseOverSendFeedBack();
 		FooterValidations.VerifyShadowWhenHoveringOnBtn(sendFeedback,'rgba(0, 0, 0, 0.3) 0px 0px 10px 2px')
 		FooterActions.clickOnBtn(sendFeedback)
-		
 	}
+
+	/**
+	 * @Description check feed-back modal from classes added to body to heading in modal then closing it
+	 * *@author tasneem
+	 *
+	 * */
 	public static void checkFeedBackModal () {
 		Boolean x=true;
 		FooterValidations.verifyBodyClasses(x)
@@ -168,9 +178,13 @@ public class FooterHelpers {
 		x=false;
 		FooterValidations.verifyBodyClasses(x)
 		FooterValidations.verifyModalIsDisplayed(x)
-		
 	}
-	
+
+	/**
+	 * @Description check Background Image For Region Dropdown and check checkCountryName then clicking on dropdown
+	 * *@author tasneem
+	 *
+	 * */
 	public static void checkRegionDropDownValue() {
 		List<WebElement> dropdownValues = WebUI.findWebElements(findTestObject('Object Repository/Footer/span-region-dropdown'), GlobalVariable.visiablityItemTimeOut)
 		FooterValidations.checkBackgroundImageForRegionDropdownAndClass( dropdownValues,'/Content/Images/assets/footer-region-usa.png','usa')
@@ -178,19 +192,21 @@ public class FooterHelpers {
 		FooterActions.clickOnRegionDropdown()
 		FooterValidations.checkClassOpenIsAddedToDropDown()
 	}
-	
+
+	/**
+	 * @Description check selecting canada from dropdown
+	 * *@author tasneem
+	 *
+	 * */
 	public static void selectCanadianRegion() {
 		List<WebElement> dropdownList = WebUI.findWebElements(findTestObject('Object Repository/Footer/li-dropdown'), GlobalVariable.visiablityItemTimeOut)
 		FooterValidations.checkUSAIsSelectedByDefault( dropdownList)
 		TestObject selectorForRegion =FooterActions.SelectCanadaFromDropdown()
 		FooterValidations.checkSelectedItemIndropdown(selectorForRegion)
-		
+
 		List<WebElement> dropdownValues = WebUI.findWebElements(findTestObject('Object Repository/Footer/span-region-dropdown'), GlobalVariable.visiablityItemTimeOut)
 		FooterValidations.checkBackgroundImageForRegionDropdownAndClass( dropdownValues,'/Content/Images/assets/footer-region-canada.png','can')
 		FooterValidations.checkCountryName( dropdownValues,'Canada')
 		FooterValidations.checkAlertAfterChangingRegionIntoCanada()
 	}
-	
-	
-	
 }
