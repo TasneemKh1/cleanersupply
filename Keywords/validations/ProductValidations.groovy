@@ -65,7 +65,6 @@ public class ProductValidations {
 			String price =  WebUI.getText(WebUI.convertWebElementToTestObject(productPricesElements.get(i)))
 			String save = WebUI.getText(WebUI.convertWebElementToTestObject(productSavesElements.get(i)))
 			double expectedPrice = productPrice * (100 - formatPercentage(save)) / 100
-			System.out.println((double) Math.round(expectedPrice * 100) / 100)
 			assert formatPrice(price) == (double) Math.round(expectedPrice * 100) / 100
 		}
 	}
@@ -83,14 +82,24 @@ public class ProductValidations {
 	public static void verifyIfGreenFilterIsSelected () {
 		ProductHelpers.verifyIfFilterButtonIsSelected(findTestObject('Object Repository/ProductPage/a_greenProductsLink'))
 	}
-	
+
 	public static void verifyIfDiscountIsApplied (double discountedPrice) {
 		TestObject productPriceTestObject = findTestObject('Object Repository/ProductPage/span_productPrice')
 		double actualPrice = formatPrice(WebUI.getText(productPriceTestObject))
 		assert discountedPrice.equals(actualPrice)
 	}
-	
+
 	public static void verifyStockNotification() {
 		assert WebUI.getAttribute(findTestObject('Object Repository/ProductPage/div_stockNotification'), "class").contains("in-stock")
+	}
+
+	public static void verifyQuantityInputValue (int quantity) {
+		GeneralValidations.verifyInputValue(findTestObject('Object Repository/ProductPage/input_quantity'), quantity.toString())
+	}
+
+	public static void verifyProductTotalPriceInCart (double price, int quantity) {
+		double totalPrice = (double) (price * quantity)
+		String totalPriceString = '$'.toString() +  String.format("%.2f", totalPrice)
+		HeaderValidations.verifyCartLabel(totalPriceString)
 	}
 }

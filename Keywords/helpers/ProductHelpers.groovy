@@ -25,7 +25,7 @@ public class ProductHelpers {
 	public static void verifyIfFilterButtonIsSelected (TestObject buttonTestObject) {
 		assert WebUI.getAttribute(buttonTestObject, "class").contains("selected")
 	}
-	
+
 	public static double verifypriceAndListPriceAndVolumePrice (String minPrice, String maxPrice, String minListPrice, String maxListPrice) {
 		double actualPrice =  ProductValidations.verifyProductPrice(minPrice, maxPrice)
 		ProductValidations.verifyProductPriceList(minListPrice, maxListPrice)

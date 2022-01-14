@@ -107,10 +107,9 @@ public class GeneralValidations {
 		assert WebUI.getCSSValue(Element, 'color').contains('#fff')
 		assert WebUI.getCSSValue(Element, 'background-color').contains('#58585a')
 		assert WebUI.getCSSValue(Element, 'text-decoration').contains('none')
-		
 	}
-	
-	
+
+
 	/***
 	 * verify Breadcrump Text
 	 * @param element id of element
@@ -195,9 +194,9 @@ public class GeneralValidations {
 		System.out.println(WebUI.getCSSValue(Element, attribute))
 		assert WebUI.getCSSValue(Element, attribute).contains(expectedValue)
 	}
-	
-//	public static void verifyCheckBoxAfterSelection() {
-//	
-//		
-//	}
+
+	//	public static void verifyCheckBoxAfterSelection() {
+	//
+	//
+	//	}
 }

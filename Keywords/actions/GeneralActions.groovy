@@ -55,9 +55,5 @@ public class GeneralActions {
 		clickOnElement(BtnId)
 		TestObject Element=findTestObject(SelectID)
 		WebUI.selectOptionByValue(Element,value, false)
-		
 	}
-	
-	
-	
 }

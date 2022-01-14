@@ -38,6 +38,8 @@ String plasticBagsLinkUrl
 int filtersGroupsNumber
 String greenProductsLinkUrl
 int greenProductsNumber
+int firstQuantity = 5
+int secondQuantity = 3
 HashMap<String, String> firstProductMap
 List productsTitles = new ArrayList()
 List productsPrices = new ArrayList()
@@ -110,16 +112,19 @@ ProductValidations.verifyProductSKU()
 ProductActions.clickOnGreenButton()
 ProductValidations.verifyIfGreenFilterIsSelected()
 productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(firstProductMap.get('minPrice'), firstProductMap.get(
-	'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
+        'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
 String productSKU = ProductValidations.verifyProductSKU()
 double discountedPrice = ProductValidations.formatPrice(ProductActions.storeDiscountedPrice())
 ProductValidations.verifyStockNotification()
-productsTitles.push(firstProductMap.get("productTitle"))
+productsTitles.push(firstProductMap.get('productTitle'))
 productsPrices.push(discountedPrice)
-productsQuantities.push(3)
+productsQuantities.push(firstQuantity)
 productsSKU.push(productSKU)
 
 // --------- edit quantity value to be 5 ---------
-//ProductValidations.verifyIfDiscountIsApplied(discountedPrice)
-
-
+ProductActions.typeIntoQuantityInput(firstQuantity)
+ProductValidations.verifyQuantityInputValue(firstQuantity)
+ProductValidations.verifyIfDiscountIsApplied(discountedPrice)
+ProductActions.clickOnAddToCartButton()
+HeaderValidations.verifyCartItemsNumber(1)
+ProductValidations.verifyProductTotalPriceInCart(discountedPrice, firstQuantity)
