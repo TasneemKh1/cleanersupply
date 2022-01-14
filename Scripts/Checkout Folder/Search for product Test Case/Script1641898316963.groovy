@@ -19,11 +19,12 @@ import actions.HeaderActions as HeaderActions
 import actions.ProductActions as ProductActions
 import helpers.FiltersHelpers as FiltersHelpers
 import helpers.GeneralHelpers as GeneralHelpers
+import helpers.ProductHelpers as ProductHelpers
 import internal.GlobalVariable as GlobalVariable
-import validations.FiltersValidations
-import validations.GeneralValidations
-import validations.HeaderValidations
-import validations.ProductValidations
+import validations.FiltersValidations as FiltersValidations
+import validations.GeneralValidations as GeneralValidations
+import validations.HeaderValidations as HeaderValidations
+import validations.ProductValidations as ProductValidations
 import validations.SearchResults as SearchResults
 import org.openqa.selenium.Keys as Keys
 import java.util.HashMap as HashMap
@@ -37,7 +38,13 @@ String plasticBagsLinkUrl
 int filtersGroupsNumber
 String greenProductsLinkUrl
 int greenProductsNumber
+int firstQuantity = 5
+int secondQuantity = 3
 HashMap<String, String> firstProductMap
+List productsTitles = new ArrayList()
+List productsPrices = new ArrayList()
+List productsQuantities = new ArrayList()
+List productsSKU = new ArrayList()
 
 // --------- Navigate to 'Home Page' ---------
 GeneralHelpers.initScenario()
@@ -87,9 +94,57 @@ FiltersValidations.verifyGreenProductsFilterApplied(greenProductsLinkUrl, greenP
 // --------- Navigate to the resulted product page ---------
 firstProductMap = ProductActions.storeFirstProductDetails()
 ProductActions.clickOnViewDetailsButton()
-GeneralHelpers.verifyCurrentUrlAndPageTitle(firstProductMap.get("productUrl"), firstProductMap.get("productTitle"))
-double productPrice =  ProductValidations.verifyProductPrice(firstProductMap.get("minPrice"), firstProductMap.get("maxPrice"))
-ProductValidations.verifyProductPriceList(firstProductMap.get("minListPrice"), firstProductMap.get("maxListPrice"))
+GeneralHelpers.verifyCurrentUrlAndPageTitle(firstProductMap.get('productUrl'), firstProductMap.get('productTitle'))
+double productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(firstProductMap.get('minPrice'), firstProductMap.get(
+        'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
+ProductValidations.verifyNumberOfAvailableColors(firstProductMap.get('availableColors'))
 ProductValidations.verifybreadcrumbIsVisible()
-ProductValidations.verifyNumberOfAvailableColors(firstProductMap.get("availableColors"))
-ProductValidations.verifyVolumePricing(productPrice)
+ProductValidations.verifyProductSKU()
+
+// --------- select 'X-Large' size ---------
+ProductActions.clickOnXlargeButton()
+ProductValidations.verifyIfXLargeFilterIsSelected()
+productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(firstProductMap.get('minPrice'), firstProductMap.get(
+        'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
+ProductHelpers.verifySkuAndTitle('X-Large')
+
+// --------- select 'Green' color ---------
+ProductActions.clickOnGreenButton()
+ProductValidations.verifyIfGreenFilterIsSelected()
+productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(firstProductMap.get('minPrice'), firstProductMap.get(
+        'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
+String productSKU = ProductValidations.verifyProductSKU()
+String productTitle = ProductValidations.verifyProductTitle('Green')
+double discountedPrice = ProductValidations.formatPrice(ProductActions.storeDiscountedPrice())
+ProductHelpers.StockNotificationAndSelectedColorText('Green')
+
+// --------- update products lists ---------
+ProductHelpers.updateProductsLists(productsTitles, productsPrices, productsQuantities, productsSKU, productTitle, discountedPrice, 
+    firstQuantity, productSKU)
+
+// --------- edit quantity value to be 5 ---------
+ProductHelpers.verifyUpdateQuantityAndAddToCart(firstQuantity, discountedPrice, 1, productsPrices, productsQuantities)
+
+// --------- select 'Large' size ---------
+ProductActions.clickOnLargeButton()
+ProductValidations.verifyIfLargeFilterIsSelected()
+productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(firstProductMap.get('minPrice'), firstProductMap.get(
+        'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
+ProductHelpers.verifySkuAndTitle('Large')
+
+// --------- select 'Royal Blue' color ---------
+ProductActions.clickOnRoyalBlueButton()
+ProductValidations.verifyIfRoyalBlueFilterIsSelected()
+productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(firstProductMap.get('minPrice'), firstProductMap.get(
+        'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
+productSKU = ProductValidations.verifyProductSKU()
+productTitle = ProductValidations.verifyProductTitle('Royal Blue')
+discountedPrice = ProductValidations.formatPrice(ProductActions.storeDiscountedPrice())
+ProductHelpers.StockNotificationAndSelectedColorText('Royal Blue')
+
+// --------- update products lists ---------
+ProductHelpers.updateProductsLists(productsTitles, productsPrices, productsQuantities, productsSKU, productTitle, discountedPrice, 
+    secondQuantity, productSKU)
+
+// --------- edit quantity value to be 3 ---------
+ProductHelpers.verifyUpdateQuantityAndAddToCart(secondQuantity, discountedPrice, 2, productsPrices, productsQuantities)

@@ -64,6 +64,7 @@ public class GeneralActions {
 		WebUI.selectOptionByValue(Element,value, false)
 	}
 
+
 	public static void SetTextForInputsFields(TestObject inputTestObject, String value) {
 		WebUI.setText(inputTestObject, value)
 	}

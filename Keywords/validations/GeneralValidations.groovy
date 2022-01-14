@@ -200,4 +200,5 @@ public class GeneralValidations {
 		assert WebUI.getText(findTestObject('Object Repository/Header/Cart/products-count')).contains(productsCountTxt);	
 
 	}
+
 }

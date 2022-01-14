@@ -18,9 +18,7 @@ public class CheckOutHelpers {
 		//Navigate to the cart
 		Navigations.navigateToCart();
 		//Click on 'Proceed To Checkout'
-		GeneralValidations.verifyCartProductData([
-			"THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"
-		], ['1'], ['89.99'],['RCT210BL'])
+		GeneralValidations.verifyCartProductData(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
 		//		TestObject processedToCheckOutButton = findTestObject('Object Repository/Cart/button_ProceedToCheckout')
 		//		WebUI.click(processedToCheckOutButton)
 		//		GeneralHelpers.newPageIsOpened(GlobalVariable.cartUrl, ' Shopping Cart ')
@@ -128,9 +126,7 @@ public class CheckOutHelpers {
 		CheckOutHelpers.verifyCheckoutInterstitialTextPage();
 		GeneralActions.clickOnElement('Object Repository/Checkout/span_CheckoutAsGuestRadio')
 		GeneralValidations.verifyActionOnButton('Object Repository/Checkout/span_CheckoutAsGuestRadio',"border-color","rgb(82, 36, 127)")
-		CheckOutHelpers.verifyMyCartData([
-			"THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"
-		], ['1'], ['89.99'],['RCT210BL'])
+		CheckOutHelpers.verifyMyCartData(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
 		CheckOutHelpers.verifyMyCartData(productName,quantity,price,sku)
 		GeneralActions.mouseOverOnElement('Object Repository/Checkout/button_ContinueButton')
 		GeneralValidations.verifyActionOnButton('Object Repository/Checkout/button_ContinueButton',"box-shadow","rgba(0, 0, 0, 0.3) 0px 0px 10px 2px")
