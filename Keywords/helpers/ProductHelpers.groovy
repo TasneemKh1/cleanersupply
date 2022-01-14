@@ -65,6 +65,7 @@ public class ProductHelpers {
 		ProductActions.clickOnAddToCartButton()
 		HeaderValidations.verifyCartItemsNumber(itemsNumber)
 		ProductValidations.verifyProductTotalPriceInCart(productsPrices, productsQuantities)
+		ProductValidations.verifyQuantityInputValue(1)
 	}
 
 	/***
