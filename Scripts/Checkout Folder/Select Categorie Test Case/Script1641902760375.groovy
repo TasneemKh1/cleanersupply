@@ -18,6 +18,7 @@ import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import helpers.GeneralHelpers
 import actions.FiltersActions
+import actions.GeneralActions
 import actions.SelectCategoriesActions
 import validations.GeneralValidations
 
@@ -38,11 +39,11 @@ GeneralValidations.verifyTitleOfHeading(GlobalVariable.headingTitleOFComputerAnd
 filtersGroupsNumber = FiltersActions.storeFiltersGroupsNumber()
 TestObject product=findTestObject('Object Repository/ProductPage/a_ComputerProduct')
 WebUI.click(product)
-TestObject addToCart=findTestObject('Object Repository/ProductPage/button_addToCart')
-WebUI.click(addToCart)
-
-CheckOutHelpers.checkOutSenario()
+//--click on add to cart button --
+GeneralValidations.verifyClickOnAddToCartButton()
+// ----------- Navigate to the cart. ----------------
+CheckOutHelpers.navigateToCart(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
+// ----------- Click on 'Proceed To Checkout' -----------
 CheckOutHelpers.proceedToCheckOut(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
-
-
-
+// ----------- Select 'Checkut As Guest' and move to the next step. ---------------
+CheckOutHelpers.selectCheckoutAsGuest(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
