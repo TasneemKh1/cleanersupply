@@ -60,4 +60,9 @@ public class FiltersValidations {
 		TestObject greenProductsLinkParent = findTestObject('Object Repository/Filters/li_greenProductsLinkParent')
 		FiltersHelpers.verifyFilterApplied(expectedURL, greenProductsNumber, filtersGroupsNumber,  greenProductsLinkParent, filterName)
 	}
+	
+	public static void verifyManufacturerFilterHeader() {
+		TestObject ManufacturerFilter = findTestObject('Object Repository/Filters/li_greenProductsLinkParent')
+		
+	}
 }

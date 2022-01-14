@@ -66,7 +66,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Computer &amp; Register Tags &amp; Forms'</initValue>
+      <initValue>'COMPUTER &amp; REGISTER TAGS &amp; FORMS'</initValue>
       <name>headingTitleOFComputerAndRegisterPage</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -198,8 +198,8 @@
       <description></description>
       <initValue>'test'</initValue>
       <name>comment</name>
-     </GlobalVariableEntity>
-      <GlobalVariableEntity>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
       <description></description>
       <initValue>'https://www.cleanersupply.com/checkout/'</initValue>
       <name>checkoutUrl</name>
