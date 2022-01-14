@@ -40,7 +40,7 @@ public class CheckOutHelpers {
 	}
 	/***
 	 * verifyMyCartData Verify all data of products in my cart section
-     * @param productName the name of product
+	 * @param productName the name of product
 	 * @param quantity the quantity of product
 	 * @param price the price of product
 	 * @param sku the sku of product
@@ -70,7 +70,7 @@ public class CheckOutHelpers {
 			assert skuNumberOfProducts.get(i).getText().contains(sku[i]);
 			System.out.println(stockNotificationOfProduct.get(i).getText())
 			assert stockNotificationOfProduct.get(i).getText().contains('In Stock!');
-		   //SubTotalSummary
+			//SubTotalSummary
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '')))
 			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', ''))==(totalPrice);
 			//Estimated Total
@@ -78,31 +78,31 @@ public class CheckOutHelpers {
 			String estimatedTax = WebUI.getText(findTestObject('Object Repository/Cart/td_EstematedTax'));
 			//shipping
 			System.out.println(WebUI.getText(findTestObject('Object Repository/Cart/td_Shipping')))
-			
+
 			String shipping = WebUI.getText(findTestObject('Object Repository/Cart/td_Shipping'));
 
 			if (estimatedTax !='T.B.D.' && shipping =='FREE') {
-			Double total=Double.parseDouble(estimatedTax) + totalPrice
-			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(total);
-			//TotalPriceOfOrder
-			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replace('$', '')))
-			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replace('$', ''))==(total);
-			
+				Double total=Double.parseDouble(estimatedTax) + totalPrice
+				assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(total);
+				//TotalPriceOfOrder
+				System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replace('$', '')))
+				assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replace('$', ''))==(total);
+
 			}else if (estimatedTax =='T.B.D.' && shipping !='FREE'){
 				Double total=Double.parseDouble(shipping) + totalPrice
 				assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(total);
 				assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replace('$', ''))==(total);
-				
+
 			}else if(estimatedTax =='T.B.D.' && shipping =='FREE') {
 				Double total= totalPrice
-				assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(total);	
+				assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(total);
 				assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replace('$', ''))==(total);
-				
+
 			}else{
 				Double total= totalPrice+Double.parseDouble(estimatedTax)+Double.parseDouble(estimatedTax)
 				assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(total);
-				assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replace('$', ''))==(total);	
-			}			
+				assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replace('$', ''))==(total);
+			}
 			//Total
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '')))
 			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(totalPrice);
@@ -111,10 +111,10 @@ public class CheckOutHelpers {
 			assert Integer.parseInt(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]",""))==(QuantityOfProducts.get(i).getAttribute('value').toInteger());
 		}
 	}
-	
+
 	/***
 	 * proceed To CheckOut Scenario
-     * @param productName the name of product
+	 * @param productName the name of product
 	 * @param quantity the quantity of product
 	 * @param price the price of product
 	 * @param sku the sku of product
@@ -138,7 +138,7 @@ public class CheckOutHelpers {
 		GeneralHelpers.newPageIsOpened(GlobalVariable.checkoutUrl, GlobalVariable.titleOfCheckoutPage)
 		CheckOutHelpers.verifyCheckoutTextPage();
 	}
-	
+
 	public static void EnterValuesForShippingAddress(){
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/input-Company'), GlobalVariable.CompanyName)
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/firstName'), GlobalVariable.firstName)
@@ -153,7 +153,7 @@ public class CheckOutHelpers {
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/email'),GlobalVariable.email)
 		GeneralActions.clickOnElement('Object Repository/Checkout/shipping Address Section/checkbox-signUp')
 	}
-	
+
 	public static void EnterValuesForPaymentMethod(){
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/cardName'), GlobalVariable.cardName)
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/cardNumber'), Integer.toString(GlobalVariable.cardNumber))
@@ -166,13 +166,13 @@ public class CheckOutHelpers {
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/po'), GlobalVariable.po)
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/comments'), GlobalVariable.comment)
 	}
-	
+
 	public static void proceedToReviewOrderFinish() {
 		EnterValuesForShippingAddress()
 		EnterValuesForPaymentMethod()
 		GeneralActions.clickOnElement('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/a-reviewOrderBtn')
 	}
-	
+
 	public static void TypeInFieldAndWerifyValue(TestObject inputTestObject, String expectedValue){
 		GeneralActions.typeIntoInputField(inputTestObject, expectedValue)
 		GeneralValidations.verifyInputValue (inputTestObject, expectedValue)

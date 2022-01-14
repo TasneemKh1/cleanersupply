@@ -63,24 +63,50 @@ public class FooterActions {
 		WebUI.switchToWindowIndex(0)
 	}
 
+	/***
+	 * @author tasneem
+	 * @Description mouse Over On Links
+	 * @param TestObject
+	 * ***/
 	public static void mouseOverOnLinks(TestObject link) {
 		WebUI.mouseOver(link);
 		assert WebUI.getCSSValue(link, "text-decoration-line").equals("underline")
 	}
+
+	/***
+	 * @author tasneem
+	 * @Description mouse Over Send FeedBack button
+	 * @return TestObject of Send FeedBack button
+	 * ***/
 	public static TestObject mouseOverSendFeedBack() {
 		TestObject Btn=findTestObject('Object Repository/Footer/a-leave-feedback');
 		WebUI.mouseOver(Btn)
 
 		return Btn
 	}
+	/***
+	 * @author tasneem
+	 * @Description close feedback modal
+	 * 
+	 * ***/
 	public static void closeModal() {
 		TestObject closeModal=findTestObject('Object Repository/Footer/modal/btn-close-modal');
 		WebUI.click(closeModal)
 	}
+	/***
+	 * @author tasneem
+	 * @Description click On Region Dropdown
+	 *
+	 * ***/
 	public static void clickOnRegionDropdown() {
-	TestObject dropdownBtn=findTestObject('Object Repository/Footer/btn-Region-dropdown');
-	WebUI.click(dropdownBtn)
+		TestObject dropdownBtn=findTestObject('Object Repository/Footer/btn-Region-dropdown');
+		WebUI.click(dropdownBtn)
 	}
+	/***
+	 * @author tasneem
+	 * @Description Select Canada From Dropdown
+	 *
+	 * ***/
 	public static TestObject SelectCanadaFromDropdown() {
 		TestObject selectorForRegion=findTestObject('Object Repository/Footer/region-selector');
 		WebUI.selectOptionByValue(selectorForRegion, 'https://www.cleanersupply.ca/', false)

@@ -39,6 +39,9 @@ public class GeneralActions {
 		TestObject Element=findTestObject(testObjID)
 		WebUI.click(Element)
 	}
+	public static void clickOnElement(TestObject testObj) {
+		WebUI.click(testObj)
+	}
 	/***
 	 * mouse Over On Element
 	 * @param testObjID the Id of element 
@@ -48,6 +51,10 @@ public class GeneralActions {
 		TestObject Element=findTestObject(testObjID)
 		WebUI.mouseOver(Element);
 	}
+
+	public static void mouseOverOnElement(TestObject Element) {
+		WebUI.mouseOver(Element);
+	}
 	/***
 	 * @author tasneem
 	 * */
@@ -55,9 +62,9 @@ public class GeneralActions {
 		clickOnElement(BtnId)
 		TestObject Element=findTestObject(SelectID)
 		WebUI.selectOptionByValue(Element,value, false)
-		
 	}
-	
-	
-	
+
+	public static void SetTextForInputsFields(TestObject inputTestObject, String value) {
+		WebUI.setText(inputTestObject, value)
+	}
 }

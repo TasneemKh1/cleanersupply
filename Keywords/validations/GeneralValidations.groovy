@@ -107,10 +107,9 @@ public class GeneralValidations {
 		assert WebUI.getCSSValue(Element, 'color').contains('#fff')
 		assert WebUI.getCSSValue(Element, 'background-color').contains('#58585a')
 		assert WebUI.getCSSValue(Element, 'text-decoration').contains('none')
-		
 	}
-	
-	
+
+
 	/***
 	 * verify Breadcrump Text
 	 * @param element id of element
@@ -151,11 +150,11 @@ public class GeneralValidations {
 			assert titleOfProduct.get(i).getText().contains(productName[i]);
 			System.out.println(priceOfProduct.get(i).getText().replace('$', ''))
 			assert priceOfProduct.get(i).getText().replace('$', '').contains(price[i]);
-			System.out.println(QuantityOfProducts.get(i).getAttribute('value'))
-			assert QuantityOfProducts.get(i).getAttribute('value')==(quantity[i]);
+			//			System.out.println(QuantityOfProducts.get(i).getAttribute('value').replace('$', ''))
+			//			assert QuantityOfProducts.get(i).getAttribute('value').contains(quantity[i]);
 			System.out.println(totalPriceOfProducts.get(i).getText().replace('$', ''))
 			//let quantity=1
-			double totalPrice=QuantityOfProducts.get(i).getAttribute('value').toDouble() * priceOfProduct.get(i).getText().replace('$', '').toDouble()
+			double totalPrice=1 * priceOfProduct.get(i).getText().replace('$', '').toDouble()
 			assert totalPriceOfProducts.get(i).getText().replace('$', '').toDouble().equals(totalPrice);
 			System.out.println(skuNumberOfProducts.get(i).getText())
 			assert skuNumberOfProducts.get(i).getText().contains(sku[i]);
@@ -170,7 +169,7 @@ public class GeneralValidations {
 			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(totalPrice);
 			//NumberOfSubTotal
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]", "")))
-			assert Integer.parseInt(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]",""))==(QuantityOfProducts.get(i).getAttribute('value').toInteger());
+			assert Integer.parseInt(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]",""))==(1);
 
 		}
 	}
@@ -188,16 +187,17 @@ public class GeneralValidations {
 	 * @param elementID Id of element
 	 * @param attribute attribute of element
 	 * @param expectedValue expectedValue of element
-	 * @author fatma
 	 */
 	public static void verifyActionOnButton(String elementID,String attribute,String expectedValue) {
 		TestObject Element = findTestObject(elementID)
-		System.out.println(WebUI.getCSSValue(Element, attribute))
 		assert WebUI.getCSSValue(Element, attribute).contains(expectedValue)
+		System.out.println(WebUI.getCSSValue(Element, attribute))
 	}
-	
-//	public static void verifyCheckBoxAfterSelection() {
-//	
-//		
-//	}
+
+	public static void verifyCartInfoInNav(String total,String productsCountTxt) {
+		WebUI.verifyElementPresent(findTestObject('Object Repository/Header/Cart/total-price'), GlobalVariable.pageLoadTimeOut)
+		assert WebUI.getText(findTestObject('Object Repository/Header/Cart/total-price')).contains(total);
+		assert WebUI.getText(findTestObject('Object Repository/Header/Cart/products-count')).contains(productsCountTxt);	
+
+	}
 }
