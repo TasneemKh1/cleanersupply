@@ -20,7 +20,10 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.xml.bind.annotation.XmlElementDecl.GLOBAL
+
 import org.junit.experimental.theories.suppliers.TestedOn
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebElement
 
 import internal.GlobalVariable
@@ -59,5 +62,28 @@ public class ProductActions {
 
 	public static void clickOnViewDetailsButton () {
 		WebUI.click(findTestObject('Object Repository/ProductPage/button_firstProductViewDetails'))
+	}
+
+	public static void clickOnXlargeButton () {
+		WebUI.click(findTestObject('Object Repository/ProductPage/a_xLargeLink'))
+	}
+
+	public static void clickOnGreenButton () {
+		WebUI.click(findTestObject('Object Repository/ProductPage/a_greenProductsLink'))
+	}
+
+	public static String storeDiscountedPrice() {
+		return WebUI.getText(findTestObject('Object Repository/ProductPage/td_productDiscountedPrice'))
+	}
+
+	public static void typeIntoQuantityInput (int quantity) {
+		GeneralActions.typeIntoInputField(findTestObject('Object Repository/ProductPage/input_quantity'), Keys.BACK_SPACE + quantity.toString())
+		WebUI.click(findTestObject('Object Repository/ProductPage/div_stockNotification'))
+	}
+
+	public static void clickOnAddToCartButton () {
+		TestObject addToCartButton = findTestObject('Object Repository/ProductPage/button_add-to-cart')
+		WebUI.click(addToCartButton)
+		WebUI.waitForElementNotHasAttribute(addToCartButton, "disabled", GlobalVariable.visiablityItemTimeOut)
 	}
 }
