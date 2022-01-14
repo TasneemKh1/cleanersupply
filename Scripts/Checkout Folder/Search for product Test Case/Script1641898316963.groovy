@@ -106,7 +106,7 @@ ProductActions.clickOnXlargeButton()
 ProductValidations.verifyIfXLargeFilterIsSelected()
 productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(firstProductMap.get('minPrice'), firstProductMap.get(
         'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
-ProductValidations.verifyProductSKU()
+ProductHelpers.verifySkuAndTitle('X-Large')
 
 // --------- select 'Green' color ---------
 ProductActions.clickOnGreenButton()
@@ -114,17 +114,37 @@ ProductValidations.verifyIfGreenFilterIsSelected()
 productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(firstProductMap.get('minPrice'), firstProductMap.get(
         'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
 String productSKU = ProductValidations.verifyProductSKU()
+String productTitle = ProductValidations.verifyProductTitle('Green')
 double discountedPrice = ProductValidations.formatPrice(ProductActions.storeDiscountedPrice())
-ProductValidations.verifyStockNotification()
-productsTitles.push(firstProductMap.get('productTitle'))
-productsPrices.push(discountedPrice)
-productsQuantities.push(firstQuantity)
-productsSKU.push(productSKU)
+ProductHelpers.StockNotificationAndSelectedColorText('Green')
+
+// --------- update products lists ---------
+ProductHelpers.updateProductsLists(productsTitles, productsPrices, productsQuantities, productsSKU, productTitle, discountedPrice, 
+    firstQuantity, productSKU)
 
 // --------- edit quantity value to be 5 ---------
-ProductActions.typeIntoQuantityInput(firstQuantity)
-ProductValidations.verifyQuantityInputValue(firstQuantity)
-ProductValidations.verifyIfDiscountIsApplied(discountedPrice)
-ProductActions.clickOnAddToCartButton()
-HeaderValidations.verifyCartItemsNumber(1)
-ProductValidations.verifyProductTotalPriceInCart(discountedPrice, firstQuantity)
+ProductHelpers.verifyUpdateQuantityAndAddToCart(firstQuantity, discountedPrice, 1, productsPrices, productsQuantities)
+
+// --------- select 'Large' size ---------
+ProductActions.clickOnLargeButton()
+ProductValidations.verifyIfLargeFilterIsSelected()
+productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(firstProductMap.get('minPrice'), firstProductMap.get(
+        'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
+ProductHelpers.verifySkuAndTitle('Large')
+
+// --------- select 'Royal Blue' color ---------
+ProductActions.clickOnRoyalBlueButton()
+ProductValidations.verifyIfRoyalBlueFilterIsSelected()
+productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(firstProductMap.get('minPrice'), firstProductMap.get(
+        'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
+productSKU = ProductValidations.verifyProductSKU()
+productTitle = ProductValidations.verifyProductTitle('Royal Blue')
+discountedPrice = ProductValidations.formatPrice(ProductActions.storeDiscountedPrice())
+ProductHelpers.StockNotificationAndSelectedColorText('Royal Blue')
+
+// --------- update products lists ---------
+ProductHelpers.updateProductsLists(productsTitles, productsPrices, productsQuantities, productsSKU, productTitle, discountedPrice, 
+    secondQuantity, productSKU)
+
+// --------- edit quantity value to be 3 ---------
+ProductHelpers.verifyUpdateQuantityAndAddToCart(secondQuantity, discountedPrice, 2, productsPrices, productsQuantities)
