@@ -50,4 +50,9 @@ public class HeaderActions {
 	public static void cliclOnSearchButton () {
 		WebUI.click(findTestObject('Object Repository/Header/button_searchAction'))
 	}
+	
+	public static void mouseOverDescription(TestObject link) {
+		WebUI.mouseOver(link);
+		assert WebUI.getCSSValue(link, "text-decoration-line").equals("underline")
+	}
 }
