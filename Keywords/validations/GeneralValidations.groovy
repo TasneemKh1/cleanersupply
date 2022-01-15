@@ -144,7 +144,8 @@ public class GeneralValidations {
 			assert stockNotificationOfProduct.get(i).getText().contains('In Stock!');
 
 			//SubTotalSummary
-			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary'))))
+
+			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '').replace(',', '')))
 			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '').replace(',', ''))==(totalPrice);
 			//Total
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '')))

@@ -19,6 +19,7 @@ HeaderValidations.verifyCartItemsNumber(0)
 HeaderValidations.verifyCartLabel('Cart')
 HeaderHelpers.navigatingToQuickOrder()
 GeneralValidations.verifyCurrentPageHeading('Object Repository/QuickOrder/span-QuickOrderHeading','QUICK');
+
 List<String>listOfProducts = QuickOrderHelpers.fillingQuickOrderInputs()
 List<String> names=listOfProducts.get(0);
 List<String> Quantities=listOfProducts.get(1);
@@ -26,7 +27,6 @@ List<String> Prices=listOfProducts.get(2);
 List<String> productID=listOfProducts.get(3);
 
 QuickOrderHelpers.VerifyAddToCart()
-
 GeneralValidations.verifyCartInfoInNav(WebUI.getText(findTestObject('Object Repository/Checkout/OrderSummery/total')),'5')
 //GeneralHelpers.navigatingToCart()
 CheckOutHelpers.navigateToCart(names.reverse(),Quantities.reverse(),Prices.reverse(),productID.reverse())
