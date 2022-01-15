@@ -61,7 +61,29 @@ public class FiltersValidations {
 		FiltersHelpers.verifyFilterApplied(expectedURL, greenProductsNumber, filtersGroupsNumber,  greenProductsLinkParent, filterName)
 	}
 
-	public static void verifyManufacturerFilterHeader() {
-		TestObject ManufacturerFilter = findTestObject('Object Repository/Filters/li_greenProductsLinkParent')
+	public static void verifyManufacturerFilterContent() {
+		TestObject ManufacturerFilter = findTestObject('Object Repository/Filters/ManufacturerFilter/div_ManufactureSection')
+		TestObject ManufacturerOption = findTestObject('Object Repository/Filters/ManufacturerFilter/span_ManufacturerOptionSelect')
+		assert WebUI.getText(ManufacturerFilter).contains('FILTER BY MANUFACTURER');
+
+		if(WebUI.getAttribute(ManufacturerFilter, "aria-expanded").contains('true')){
+			assert WebUI.getText(ManufacturerOption).contains('Manufacturer');
+		}else {
+			WebUI.click(ManufacturerFilter)
+			assert WebUI.getText(ManufacturerOption).contains('Manufacturer');
+		}
 	}
+		/***
+		*verifyManufacturerFilterApplied
+		* Verify current URL, filters groups numbers, if filter is selected, applied criteria and number of products in subheading
+		* @author fatma
+		* @param expectedURL
+		* @param filtersGroupsNumber
+		* @param filterName
+		 */
+	   public static void verifyManufacturerFilterApplied (String expectedURL, Integer filtersGroupsNumber, String filterName) {
+		   TestObject filterOption = findTestObject('Object Repository/Filters/ManufacturerFilter/option_Casio')
+		   FiltersHelpers.verifyFilterManufacturerApplied(expectedURL, filtersGroupsNumber, filterOption, filterName)
+	   }
+	
 }

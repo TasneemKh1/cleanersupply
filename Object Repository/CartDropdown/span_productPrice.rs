@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>span_ManufacturerOptionSelect</name>
+   <name>span_productPrice</name>
    <tag></tag>
-   <elementGuidId>4dcbbca0-7c64-4abb-b49c-352f5f8ff9fa</elementGuidId>
+   <elementGuidId>f21bf07a-73b7-431f-8a9b-a4f431285c9c</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>XPATH</key>
-         <value>//button[@title=&quot;Manufacturer&quot;]/span[1]</value>
-      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value></value>
+         <value>.product-price</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

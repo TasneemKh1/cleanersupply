@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>span_ManufacturerOptionSelect</name>
+   <name>option_Casio</name>
    <tag></tag>
-   <elementGuidId>4dcbbca0-7c64-4abb-b49c-352f5f8ff9fa</elementGuidId>
+   <elementGuidId>4efbe98f-1226-4d92-a21a-0080f340c348</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//button[@title=&quot;Manufacturer&quot;]/span[1]</value>
+         <value>//option[@value='https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio']</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
          <value></value>
       </entry>
    </selectorCollection>

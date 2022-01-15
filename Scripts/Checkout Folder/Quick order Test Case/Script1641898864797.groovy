@@ -31,15 +31,28 @@ GeneralValidations.verifyCartInfoInNav(WebUI.getText(findTestObject('Object Repo
 CheckOutHelpers.navigateToCart(names.reverse(),Quantities.reverse(),Prices.reverse(),productID.reverse())
 
 //QuickOrderHelpers.checkButtonStyleOnHoveringthenClickOnIT('Object Repository/Checkout/OrderSummery/Btn-proceedToCheckout')
+//--------------------cart--------------------------------------
+//GeneralHelpers.navigatingToCart()
+//CheckOutHelpers.navigateToCart(names.reverse(),Quantities.reverse(),Prices.reverse(),productID.reverse())
+////check
+//// ----------- Click on 'Proceed To Checkout' -----------
+//CheckOutHelpers.proceedToCheckOut()
+//// ----------- Select 'Checkut As Guest' and move to the next step. ---------------
+//CheckOutHelpers.selectCheckoutAsGuest(names.reverse(),Quantities.reverse(),Prices.reverse(),productID.reverse())
+// ----------- endCart--------------------
+
 GeneralActions.mouseOverOnElement(findTestObject('Object Repository/Checkout/OrderSummery/Btn-proceedToCheckout'))
-//QuickOrderValidations.VerifyShadowWhenHoveringOnBtn(findTestObject('Object Repository/Checkout/OrderSummery/Btn-proceedToCheckout'))
+QuickOrderValidations.VerifyShadowWhenHoveringOnBtn(findTestObject('Object Repository/Checkout/OrderSummery/Btn-proceedToCheckout'))
 WebUI.click(findTestObject('Object Repository/Checkout/OrderSummery/Btn-proceedToCheckout'));
 
-///checkout-interstitial
+//checkout-interstitial
 GeneralHelpers.newPageIsOpened('/checkout-interstitial',"Checkout Interstitial - Cleaner's Supply")
 assert WebUI.getText(findTestObject('Object Repository/Checkout/checkout Interstitial/div-heading')).contains('SECURE CHECKOUT')
 //check side menu
 
+//GeneralActions.mouseOverOnElement(findTestObject('Object Repository/Checkout/checkout Interstitial/btn-continue'))
+QuickOrderValidations.VerifyShadowWhenHoveringOnBtn(findTestObject('Object Repository/Checkout/checkout Interstitial/btn-continue'))
+WebUI.click(findTestObject('Object Repository/Checkout/checkout Interstitial/btn-continue'));
 
 WebUI.verifyElementChecked(findTestObject('Object Repository/Checkout/checkout Interstitial/radio-checkout-guest'), GlobalVariable.pageLoadTimeOut)
 

@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>span_ManufacturerOptionSelect</name>
+   <name>h1_pageHeading</name>
    <tag></tag>
-   <elementGuidId>4dcbbca0-7c64-4abb-b49c-352f5f8ff9fa</elementGuidId>
+   <elementGuidId>d9fdac4f-b747-4863-9faa-6921b6ae533e</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>XPATH</key>
-         <value>//button[@title=&quot;Manufacturer&quot;]/span[1]</value>
-      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value></value>
+         <value>#shopping-cart-page h1</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

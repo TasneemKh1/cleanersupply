@@ -2,9 +2,10 @@ package validations
 
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import java.text.DecimalFormat
+
 import org.openqa.selenium.WebElement
 
-import com.kms.katalon.core.mobile.keyword.builtin.WaitForElementAttributeValueKeyword
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
@@ -126,35 +127,42 @@ public class GeneralValidations {
 		List<WebElement> totalPriceOfProducts =  WebUI.findWebElements(findTestObject('Object Repository/Cart/List_TotalPriceOfProducts'), GlobalVariable.visiablityItemTimeOut)
 		List<WebElement> skuNumberOfProducts =  WebUI.findWebElements(findTestObject('Object Repository/Cart/List_SkuNumberOfProduct'), GlobalVariable.visiablityItemTimeOut)
 		List<WebElement> rows_table =  WebUI.findWebElements(findTestObject('Object Repository/Cart/ListOfRowsInCart'), GlobalVariable.visiablityItemTimeOut)
-
-		for(int i = 0; i < rows_table.size(); ++i) {
+		System.out.println(rows_table.size())
+		double totalPrice = 0.0;
+		for(int i = 0; i <= rows_table.size()-1; ++i) {
 			System.out.println(titleOfProduct.get(i).getText())
 			assert titleOfProduct.get(i).getText().contains(productName[i]);
 			System.out.println(priceOfProduct.get(i).getText().replace('$', ''))
 			assert priceOfProduct.get(i).getText().replace('$', '').contains(price[i]);
-			System.out.println(QuantityOfProducts.get(i).getAttribute('value').replace('$', ''))
-			assert QuantityOfProducts.get(i).getAttribute('value').contains(quantity[i]);
+			System.out.println(QuantityOfProducts.get(i).getAttribute('value'))
+//			assert QuantityOfProducts.get(i).getAttribute('value').contains(quantity[i]);
 			System.out.println(totalPriceOfProducts.get(i).getText().replace('$', ''))
 			//let quantity=1
-			double totalPrice=QuantityOfProducts.get(i).getAttribute('value').toDouble() * priceOfProduct.get(i).getText().replace('$', '').toDouble()
-			assert totalPriceOfProducts.get(i).getText().replace('$', '').toDouble().equals(totalPrice);
+			double currentProductTotal=Integer.parseInt(QuantityOfProducts.get(i).getAttribute('value')) *Double.parseDouble(priceOfProduct.get(i).getText().replace('$','').replaceAll(",", ""))
+			totalPrice+= currentProductTotal
+//			Double totalPriceOfOneProduct=QuantityOfProducts.get(i).getAttribute('value').toInteger() * Double.parseDouble(priceOfProduct.get(i).getText().replace('$', '').replace(',','')) 
+			//		    Double totalPriceOfOneProduct = String.format("%.2f", new BigDecimal(Double.parseDouble(priceOfProduct.get(i).getText().replace('$', '').replace(',','')))  *  QuantityOfProducts.get(i).getAttribute('value'))
+			//			System.out.println(totalPriceOfOneProduct)
+			String priceStr = new DecimalFormat("#.00").format(currentProductTotal)
+            assert totalPriceOfProducts.get(i).getText().replaceAll(',',"").equals('$'+priceStr)
 			System.out.println(skuNumberOfProducts.get(i).getText())
 			assert skuNumberOfProducts.get(i).getText().contains(sku[i]);
 			System.out.println(stockNotificationOfProduct.get(i).getText())
 			assert stockNotificationOfProduct.get(i).getText().contains('In Stock!');
-
-			//SubTotalSummary
-
-			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '').replace(',', '')))
-			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '').replace(',', ''))==(totalPrice);
-			//Total
-			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '')))
-			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(totalPrice);
 			//NumberOfSubTotal
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]", "")))
-			assert Integer.parseInt(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]",""))==(QuantityOfProducts.get(i).getAttribute('value').toInteger());
+			assert Integer.parseInt(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]",""))==(rows_table.size());
+
 
 		}
+		//SubTotalSummary
+		System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '').replace(',', '')))
+		System.out.println(totalPrice)
+        String expectedTotal = new DecimalFormat("#.00").format(totalPrice)
+		 assert WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replaceAll(',',"").equals('$'+expectedTotal)
+			//Total
+		System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '').replaceAll(',',"")))
+        assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+expectedTotal)
 	}
 	/***
 	 * Verify if input value matches the typed one
@@ -182,7 +190,6 @@ public class GeneralValidations {
 		assert WebUI.getText(findTestObject('Object Repository/Header/Cart/total-price')).contains(total);
 		assert WebUI.getText(findTestObject('Object Repository/Header/Cart/products-count')).contains(productsCountTxt);
 	}
-
 	/***
 	 * verify Click On Add To Cart Button
 	 * @author fatma
@@ -190,12 +197,24 @@ public class GeneralValidations {
 	public static void verifyClickOnAddToCartButton() {
 		TestObject AddToCartButton = findTestObject('Object Repository/ProductPage/button_addToCart')
 		GeneralActions.clickOnElement('Object Repository/ProductPage/button_addToCart')
-		if(WebUI.waitForElementAttributeValue(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)) {
-			assert WebUI.getCSSValue(AddToCartButton, 'cursor').contains('not-allowed')
-			assert WebUI.getCSSValue(AddToCartButton, 'background').contains('rgb(109, 110, 113) none repeat scroll 0% 0% / auto padding-box border-box')
-			assert WebUI.getCSSValue(AddToCartButton, 'color').contains('rgba(255, 255, 255, 1)')
-		}
-
+		//		WebUI.waitForElementAttributeValue(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
+		assert WebUI.getCSSValue(AddToCartButton, 'cursor').contains('not-allowed')
+		assert WebUI.getCSSValue(AddToCartButton, 'background').contains('rgb(109, 110, 113) none repeat scroll 0% 0% / auto padding-box border-box')
+		assert WebUI.getCSSValue(AddToCartButton, 'color').contains('rgba(255, 255, 255, 1)')
 		//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
 	}
+	/***
+	 * verifyHoverOnSelectMenu
+	 * @param elementID
+	 * @author fatma
+	 */
+	public static void verifyHoverOnSelectMenu(String elementID) {
+		TestObject Element = findTestObject(elementID)
+		if(WebUI.waitForElementAttributeValue(Element, "class", 'change-status', GlobalVariable.pageLoadTimeOut)) {
+			assert WebUI.getCSSValue(Element, 'cursor').contains('not-allowed')
+			assert WebUI.getCSSValue(Element, 'background').contains('rgb(109, 110, 113) none repeat scroll 0% 0% / auto padding-box border-box')
+			assert WebUI.getCSSValue(Element, 'color').contains('rgba(255, 255, 255, 1)')
+		}
+		//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
+  }
 }

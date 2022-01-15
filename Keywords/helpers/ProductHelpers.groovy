@@ -123,7 +123,11 @@ public class ProductHelpers {
 		String minPrice = ProductActions.formatPrice(WebUI.convertWebElementToTestObject(pricesGroupsWebElement.get(0)))
 		String maxPrice = ProductActions.formatPrice(WebUI.convertWebElementToTestObject(pricesGroupsWebElement.get(1)))
 		String minListPrice = ProductActions.formatPrice(WebUI.convertWebElementToTestObject(listPricesGroupsWebElement.get(0)))
-//		String maxListPrice = ProductActions.formatPrice(WebUI.convertWebElementToTestObject(listPricesGroupsWebElement.get(1)))
+		String maxListPrice = "100000";
+		if(listPricesGroupsWebElement.size()>1) {
+			 maxListPrice = ProductActions.formatPrice(WebUI.convertWebElementToTestObject(listPricesGroupsWebElement.get(1)))
+		}
+		
 //		String availableColors = WebUI.getText(productColorsAvilabilityTestObject).split("\\s+").getAt(2).trim()
 
 		firstProductMap.put("productUrl", productUrl)
@@ -131,7 +135,7 @@ public class ProductHelpers {
 		firstProductMap.put("minPrice", minPrice)
 		firstProductMap.put("maxPrice", maxPrice)
 		firstProductMap.put("minListPrice", minListPrice)
-//		firstProductMap.put("maxListPrice", maxListPrice)
+		firstProductMap.put("maxListPrice", maxListPrice)
 //		firstProductMap.put("availableColors", availableColors)
 
 		return firstProductMap
