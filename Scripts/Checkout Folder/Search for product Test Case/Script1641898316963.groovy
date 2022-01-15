@@ -158,18 +158,23 @@ ProductHelpers.verifyUpdateQuantityAndAddToCart(secondQuantity, discountedPrice,
 
 // ---------------------------------------------------------------------------------
 // ---------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
 modifiedProductsTitles = CartHelpers.makeListReadyForCartAndCheckout(false, productsTitles)
 modifiedProductsQuantities = CartHelpers.makeListReadyForCartAndCheckout(true, productsQuantities)
 modifiedProductsPrices = CartHelpers.makeListReadyForCartAndCheckout(true, productsPrices)
 modifiedProductsSKU = CartHelpers.makeListReadyForCartAndCheckout(false, productsSKU)
-
-//['LARGE COMFORTER BAG W/NON-WOVEN SIDES - 24" X 27" X 8" - 12/PACK - ROYAL BLUE', 'X-LARGE COMFORTER BAG W/NON-WOVEN SIDES - 26" X 29" X 10" - 12/PACK - GREEN']
-//['3', '5']
-//['12.72', '14.52']
-//['COMF24RO', 'COMF26GN']
+//CartHelpers.verifyCartDropdown(['LARGE COMFORTER BAG W/NON-WOVEN SIDES - 24" X 27" X 8" - 12/PACK - ROYAL BLUE', 'X-LARGE COMFORTER BAG W/NON-WOVEN SIDES - 26" X 29" X 10" - 12/PACK - GREEN'], ['3', '5'], ['12.72', '14.52'], ['COMF24RO', 'COMF26GN'])
 
 WebUI.mouseOver(findTestObject('Object Repository/Header/li_cartLink'))
 WebUI.verifyElementVisible(findTestObject('Object Repository/CartDropdown/div_cartDropdown'))
 CartHelpers.verifyCartDropdown(modifiedProductsTitles, modifiedProductsQuantities, modifiedProductsPrices, modifiedProductsSKU)
-//CartHelpers.verifyCartDropdown(['LARGE COMFORTER BAG W/NON-WOVEN SIDES - 24" X 27" X 8" - 12/PACK - ROYAL BLUE', 'X-LARGE COMFORTER BAG W/NON-WOVEN SIDES - 26" X 29" X 10" - 12/PACK - GREEN'], ['3', '5'], ['12.72', '14.52'], ['COMF24RO', 'COMF26GN'])
+
 WebUI.click(findTestObject('Object Repository/CartDropdown/a_viewCart'))
+CartHelpers.verifyCartinShoppingCartPage(modifiedProductsTitles, modifiedProductsQuantities, modifiedProductsPrices, modifiedProductsSKU)
+
+WebUI.click(findTestObject('Object Repository/CartDropdown/button_increaseQuantity'))
+WebUI.click(findTestObject('Object Repository/CartDropdown/button_decreaseQuantity'))
+productsQuantities.set(0, 4)
+productsQuantities.set(1, 4)
+modifiedProductsQuantities = CartHelpers.makeListReadyForCartAndCheckout(true, productsQuantities)
+CartHelpers.verifyCartinShoppingCartPage(modifiedProductsTitles, modifiedProductsQuantities, modifiedProductsPrices, modifiedProductsSKU)

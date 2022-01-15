@@ -45,7 +45,21 @@ public class CartHelpers {
 		List <WebElement> productsTotalElements = WebUI.findWebElements(findTestObject('Object Repository/CartDropdown/td_productTotal'), GlobalVariable.visiablityItemTimeOut)
 		TestObject itemsNumberObject = findTestObject('Object Repository/CartDropdown/span_itemsNumber')
 		TestObject totalAmountObject = findTestObject('Object Repository/CartDropdown/span_totalAmount')
-		verifyCartInfo(titles, quantities, prices, skus, productsNamesElements, productsQuantitesElements, productsPricesElements, productsSkuElements, productsTotalElements, itemsNumberObject, totalAmountObject, false)
+		verifyCartInfo(titles, quantities, prices, skus, productsNamesElements, productsQuantitesElements, productsPricesElements, productsSkuElements, productsTotalElements, itemsNumberObject, totalAmountObject, totalAmountObject, false)
+	}
+
+	public static void verifyCartinShoppingCartPage (List titles, List quantities, List prices, List skus) {
+		List <WebElement> productsNamesElements = WebUI.findWebElements(findTestObject('Object Repository/Cart/List_TitleOfProductsCart'), GlobalVariable.visiablityItemTimeOut)
+		List <WebElement> productsQuantitesElements = WebUI.findWebElements(findTestObject('Object Repository/Cart/List_QuantityOfProductsCart'), GlobalVariable.visiablityItemTimeOut)
+		List <WebElement> productsPricesElements = WebUI.findWebElements(findTestObject('Object Repository/Cart/List_PriceOfProductsCart'), GlobalVariable.visiablityItemTimeOut)
+		List <WebElement> productsSkuElements = WebUI.findWebElements(findTestObject('Object Repository/Cart/List_SkuNumberOfProduct'), GlobalVariable.visiablityItemTimeOut)
+		List <WebElement> productsTotalElements = WebUI.findWebElements(findTestObject('Object Repository/Cart/List_TotalPriceOfProducts'), GlobalVariable.visiablityItemTimeOut)
+		TestObject itemsNumberObject = findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')
+		TestObject totalAmountObject = findTestObject('Object Repository/Cart/td_SubTotalSummary')
+		TestObject totalInShoppingCardPage = findTestObject('Object Repository/Cart/td_Total')
+		GeneralHelpers.newPageIsOpened("shopping-cart", "Shopping Cart")
+		assert (WebUI.getText(findTestObject('Object Repository/CartDropdown/h1_pageHeading')).trim().toLowerCase()).contains("Shopping Cart".toLowerCase())
+		verifyCartInfo(titles, quantities, prices, skus, productsNamesElements, productsQuantitesElements, productsPricesElements, productsSkuElements, productsTotalElements, itemsNumberObject, totalAmountObject, totalInShoppingCardPage, true)
 	}
 
 	public static void verifyCartInfo (
@@ -60,6 +74,7 @@ public class CartHelpers {
 			List productsTotalElements,
 			TestObject itemsNumberObject,
 			TestObject totalAmountObject,
+			TestObject totalInShoppingCardPage,
 			boolean isQuantityInput
 	) {
 		double totalAmount = 0
@@ -74,7 +89,7 @@ public class CartHelpers {
 			String expectedQuantity
 			// check id quantity is value or text
 			if (isQuantityInput) {
-				expectedQuantity = WebUI.getText(expectedQuantityObject).trim()
+				expectedQuantity = WebUI.getAttribute(expectedQuantityObject, "value").trim()
 			} else {
 				expectedQuantity = WebUI.getText(expectedQuantityObject).trim()
 			}
@@ -98,9 +113,11 @@ public class CartHelpers {
 			String itemsNumber = WebUI.getText(itemsNumberObject)
 			itemsNumber = itemsNumber.replaceAll("[^\\d.]", "")
 			assert itemsNumber.equals((titles.size()).toString())
-			//total amount
 		}
+		// sub total amount
 		String expextedTotalAmount = WebUI.getText(totalAmountObject).trim().replace('$', '')
 		assert expextedTotalAmount.equals(formatter.format(totalAmount))
+		// total amount
+		assert (WebUI.getText(totalInShoppingCardPage).trim().replace('$', '')).equals(expextedTotalAmount)
 	}
 }
