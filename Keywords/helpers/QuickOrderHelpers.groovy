@@ -45,7 +45,7 @@ public class QuickOrderHelpers {
 				GlobalVariable.minQuantityNumber
 	}
 
-	public static void fillingQuickOrderInputs() {
+	public static List fillingQuickOrderInputs() {
 		//WebUI.waitForPageLoad(GlobalVariable.pageLoadTimeOut)
 		List<WebElement> StockInput = WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/input-stockID'), GlobalVariable.visiablityItemTimeOut)
 		List<WebElement> QuickStockTable = []
@@ -69,19 +69,20 @@ public class QuickOrderHelpers {
 
 
 
-			QuickStockTable.add(GlobalVariable.productIDList[i])
+
 			System.out.println(GlobalVariable.productIDList[i])
-			QuickStockTable.add(Integer.toString(randomQuntity))
+
 			TestObject imgSrcQuickOrder = WebUI.convertWebElementToTestObject(imgQuickOrder.get(i))
-			QuickStockTable.add(WebUI.getAttribute(imgSrcQuickOrder, 'src'));
+			//QuickStockTable.add(WebUI.getAttribute(imgSrcQuickOrder, 'src'));
 			System.out.println(WebUI.getAttribute(imgSrcQuickOrder, 'src'))
 			GeneralActions.mouseOverOnElement(WebUI.convertWebElementToTestObject(productNameQuickOrder.get(i)));
 			QuickStockTable.add(WebUI.getText(WebUI.convertWebElementToTestObject(productNameQuickOrder.get(i))));
+			QuickStockTable.add(Integer.toString(randomQuntity))
 			System.out.println(WebUI.getText(WebUI.convertWebElementToTestObject(productNameQuickOrder.get(i))));
-			QuickStockTable.add('In Stock!')
+			//QuickStockTable.add('In Stock!')
 			String  price=verifyPrice(i)
 			QuickStockTable.add(price)
-
+			QuickStockTable.add(GlobalVariable.productIDList[i])
 			List<WebElement> totalPriceQuickOrder = WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/div-totalPrice'),
 					GlobalVariable.visiablityItemTimeOut)
 			TestObject total=WebUI.convertWebElementToTestObject(totalPriceQuickOrder.get(i));
@@ -92,11 +93,12 @@ public class QuickOrderHelpers {
 			//assert WebUI.getText(total).replace(",",'').contains(totalVal);
 			QuickOrderValidations.verifyTotalPriceisDisplayed(total,totalVal)
 			QuickOrderValidations.verifyDollarSignIsdisplayed(total)
-			QuickStockTable.add(totalVal)
+			//QuickStockTable.add(totalVal)
 			System.out.println(QuickStockTable)
-			
 
+			
 		}
+		return QuickStockTable
 	}
 
 	public static  void verifyproductStatus(int i,TestObject removeBtn) {
