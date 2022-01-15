@@ -161,12 +161,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>5004003234</initValue>
+      <initValue>'5004005656'</initValue>
       <name>phone</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>100</initValue>
+      <initValue>'6x'</initValue>
       <name>ext</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -181,7 +181,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>4242424242424242</initValue>
+      <initValue>'4242424242424242'</initValue>
       <name>cardNumber</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -208,5 +208,10 @@
       <description></description>
       <initValue>'Checkout - Cleaner\'s Supply'</initValue>
       <name>titleOfCheckoutPage</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio'</initValue>
+      <name>manufacturerFilterUrl</name>
    </GlobalVariableEntity>
 </GlobalVariableEntities>

@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>checkbox-signUp</name>
+   <name>li_CasioSelected</name>
    <tag></tag>
-   <elementGuidId>dc514025-1ab4-4ced-a560-8da92a47f2e1</elementGuidId>
+   <elementGuidId>0a8ea3da-618f-46e8-892d-9e6c86601c13</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>[name=&quot;sign-up&quot;]</value>
-      </entry>
-      <entry>
          <key>XPATH</key>
-         <value>//div[@class=&quot;checkbox m-0&quot;]</value>
+         <value>//*[@id=&quot;collapse1&quot;]//li[1]//ul//li</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

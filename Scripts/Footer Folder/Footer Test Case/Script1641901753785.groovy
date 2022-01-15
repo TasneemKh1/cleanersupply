@@ -28,7 +28,7 @@ FooterHelpers.checkFeedBackModal()
 FooterValidations.verifyLogoVisibleInFooter()
 //WebUI.verifyElementVisible(findTestObject('Object Repository/Footer/img-bbb-logo'))
 FooterHelpers.verifyEachLinkInFooter('Object Repository/Footer/a-rights','rights')
-
+WebUI.closeBrowser()
 
 
 

@@ -4,16 +4,26 @@
    <name>phone-Extension</name>
    <tag></tag>
    <elementGuidId>d25c260b-74d3-4ffb-b7ec-a9a0d1ae2544</elementGuidId>
+   <imagePath></imagePath>
    <selectorCollection>
       <entry>
          <key>CSS</key>
          <value>[name=&quot;shp1-phoneExtension&quot;]</value>
       </entry>
       <entry>
+         <key>IMAGE</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//input[@name=&quot;shp1-phoneExtension&quot;]
+</value>
+      </entry>
+      <entry>
          <key>BASIC</key>
          <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

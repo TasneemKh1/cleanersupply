@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>email</name>
+   <name>address-section</name>
    <tag></tag>
-   <elementGuidId>28590685-0bc8-4fc8-b252-28971b7f5c43</elementGuidId>
+   <elementGuidId>3c547202-4323-4bb2-ba30-07a97ac423b0</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>[name=&quot;shp1-email&quot;]</value>
+         <key>XPATH</key>
+         <value>//*[@id=&quot;selected-shipping-address&quot;]/div/div/div[1]/address</value>
       </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

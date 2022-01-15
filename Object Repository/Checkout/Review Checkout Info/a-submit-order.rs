@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>checkbox-signUp</name>
+   <name>a-submit-order</name>
    <tag></tag>
-   <elementGuidId>dc514025-1ab4-4ced-a560-8da92a47f2e1</elementGuidId>
+   <elementGuidId>6c727f6d-14fe-43c8-be4c-c4a4d33dcc23</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>[name=&quot;sign-up&quot;]</value>
-      </entry>
-      <entry>
          <key>XPATH</key>
-         <value>//div[@class=&quot;checkbox m-0&quot;]</value>
+         <value>//div[@class=&quot;order-summary&quot;]/div[2]/div[@class=&quot;text-center&quot;]/a</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

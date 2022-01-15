@@ -115,4 +115,13 @@ public class FiltersActions {
 	public static void clickOnGreenProductsLink () {
 		WebUI.click(findTestObject('Object Repository/Filters/a_greenProductsLink'))
 	}
+	
+	/***
+	 * @author fatma
+	 * @return Manufacter number
+	 */
+	public static Integer storeManufacturerNumber () {
+		TestObject ManufacterTestObject = findTestObject('Object Repository/Filters/ManufacturerFilter/div_ManufacturerMaterial')
+		return FiltersHelpers.storeFilteredProductNumber(ManufacterTestObject)
+	}
 }
