@@ -214,4 +214,24 @@
       <initValue>'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio'</initValue>
       <name>manufacturerFilterUrl</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['Epson Printer Indelibond Ink Ribbons #TM290, ERC27 - 6/Box']</initValue>
+      <name>casioName</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['40.98']</initValue>
+      <name>casioPrice</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['RIB290']</initValue>
+      <name>casioSku</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>['10']</initValue>
+      <name>casioQuantity</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
