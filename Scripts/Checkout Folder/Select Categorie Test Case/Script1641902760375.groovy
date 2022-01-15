@@ -17,11 +17,13 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import helpers.GeneralHelpers
+import helpers.ProductHelpers
 import actions.FiltersActions
 import actions.GeneralActions
+import actions.ProductActions
 import actions.SelectCategoriesActions
 import validations.GeneralValidations
-
+import validations.ProductValidations
 import helpers.CheckOutHelpers
 // ----------- Navigate to https://www.cleanersupply.com/----------
 GeneralHelpers.initScenario();
@@ -37,8 +39,17 @@ GeneralValidations.verifyBreadcrump('Object Repository/CategoryPage/li_Breadcrum
 GeneralValidations.verifyTitleOfHeading(GlobalVariable.headingTitleOFComputerAndRegisterPage)
 // ----------- From the manufacturer section, select the 'Casio' manufacturer and select 'SP1000' Model. -------
 filtersGroupsNumber = FiltersActions.storeFiltersGroupsNumber()
-TestObject product=findTestObject('Object Repository/ProductPage/a_ComputerProduct')
-WebUI.click(product)
+//TestObject product=findTestObject('Object Repository/ProductPage/a_ComputerProduct')
+//WebUI.click(product)
+// --------- Navigate to the resulted product page ---------
+firstProductMap = ProductHelpers.storeFirstProductManufacturerDetails()
+ProductActions.clickOnViewDetailsButtonOnManufacturerFilter()
+GeneralHelpers.verifyCurrentUrlAndPageTitle(firstProductMap.get('productUrl'), firstProductMap.get('productTitle'))
+double productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(firstProductMap.get('minPrice'), firstProductMap.get(
+		'maxPrice'), firstProductMap.get('minListPrice'), firstProductMap.get('maxListPrice'))
+ProductValidations.verifyNumberOfAvailableColors(firstProductMap.get('availableColors'))
+ProductValidations.verifybreadcrumbIsVisible()
+ProductValidations.verifyProductSKU()
 //--click on add to cart button --
 GeneralValidations.verifyClickOnAddToCartButton()
 // ----------- Navigate to the cart. ----------------

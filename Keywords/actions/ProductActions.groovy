@@ -132,4 +132,12 @@ public class ProductActions {
 		WebUI.click(addToCartButton)
 		WebUI.waitForElementNotHasAttribute(addToCartButton, "disabled", GlobalVariable.visiablityItemTimeOut)
 	}
+	
+	/***
+	 * clickOnViewDetailsButtonOnManufacturerFilter
+	 * @author fatma
+	 */
+	public static void clickOnViewDetailsButtonOnManufacturerFilter () {
+		WebUI.click(findTestObject('Object Repository/ProductPage/button_ViewFirstProductMaufacturer'))
+	}
 }
