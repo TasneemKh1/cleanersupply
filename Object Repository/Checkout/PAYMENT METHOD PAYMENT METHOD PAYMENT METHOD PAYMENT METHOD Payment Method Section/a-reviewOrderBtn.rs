@@ -7,13 +7,17 @@
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>a[href=&quot;javascript:void(0)&quot;]</value>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@class=&quot;button-holder&quot;]/a</value>
       </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>CSS</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

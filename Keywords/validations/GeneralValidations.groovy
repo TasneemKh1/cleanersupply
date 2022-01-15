@@ -177,8 +177,6 @@ public class GeneralValidations {
 	public static void verifyCartInfoInNav(String total,String productsCountTxt) {
 		WebUI.verifyElementPresent(findTestObject('Object Repository/Header/Cart/total-price'), GlobalVariable.pageLoadTimeOut)
 		assert WebUI.getText(findTestObject('Object Repository/Header/Cart/total-price')).contains(total);
-		assert WebUI.getText(findTestObject('Object Repository/Header/Cart/products-count')).contains(productsCountTxt);	
-
+		assert WebUI.getText(findTestObject('Object Repository/Header/Cart/products-count')).contains(productsCountTxt);
 	}
-
 }
