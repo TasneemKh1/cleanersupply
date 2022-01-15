@@ -22,6 +22,7 @@ import actions.ProductActions
 import internal.GlobalVariable
 import validations.HeaderValidations
 import validations.ProductValidations
+import org.openqa.selenium.WebElement
 
 public class ProductHelpers {
 	/***
@@ -103,5 +104,36 @@ public class ProductHelpers {
 		productsPrices.push(productPrice)
 		productsQuantities.push(productQuantity)
 		productsSKU.push(productSKU)
+	}
+	/***
+	 * storeFirstProductManufacturerDetails
+	 * @return HashMap
+	 * @author fatma
+	 */
+	public static HashMap storeFirstProductManufacturerDetails () {
+		HashMap<String, String> firstProductMap = new HashMap<>()
+		TestObject productLinkTestObject = findTestObject('Object Repository/ProductPage/div_FirstProductManufacturer')
+		TestObject productTilteTestObject = findTestObject('Object Repository/ProductPage/h1_TitleOfProductManufacturer')
+//		TestObject productColorsAvilabilityTestObject = findTestObject('Object Repository/ProductPage/span_firstProductColorsAvailability')
+		List<WebElement> pricesGroupsWebElement = WebUI.findWebElements(findTestObject('Object Repository/ProductPage/span_priceOfFirstProductManu'), GlobalVariable.visiablityItemTimeOut)
+		List<WebElement> listPricesGroupsWebElement = WebUI.findWebElements(findTestObject('Object Repository/ProductPage/span_ListPriceOfProductManu'), GlobalVariable.visiablityItemTimeOut)
+
+		String productUrl = WebUI.getAttribute(productLinkTestObject, "href")
+		String productTitle = WebUI.getText(productTilteTestObject).trim()
+		String minPrice = ProductActions.formatPrice(WebUI.convertWebElementToTestObject(pricesGroupsWebElement.get(0)))
+		String maxPrice = ProductActions.formatPrice(WebUI.convertWebElementToTestObject(pricesGroupsWebElement.get(1)))
+		String minListPrice = ProductActions.formatPrice(WebUI.convertWebElementToTestObject(listPricesGroupsWebElement.get(0)))
+//		String maxListPrice = ProductActions.formatPrice(WebUI.convertWebElementToTestObject(listPricesGroupsWebElement.get(1)))
+//		String availableColors = WebUI.getText(productColorsAvilabilityTestObject).split("\\s+").getAt(2).trim()
+
+		firstProductMap.put("productUrl", productUrl)
+		firstProductMap.put("productTitle", productTitle)
+		firstProductMap.put("minPrice", minPrice)
+		firstProductMap.put("maxPrice", maxPrice)
+		firstProductMap.put("minListPrice", minListPrice)
+//		firstProductMap.put("maxListPrice", maxListPrice)
+//		firstProductMap.put("availableColors", availableColors)
+
+		return firstProductMap
 	}
 }

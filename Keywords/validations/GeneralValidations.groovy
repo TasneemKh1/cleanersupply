@@ -4,9 +4,11 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
 import org.openqa.selenium.WebElement
 
+import com.kms.katalon.core.mobile.keyword.builtin.WaitForElementAttributeValueKeyword
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import actions.GeneralActions
 import internal.GlobalVariable
 
 public class GeneralValidations {
@@ -143,7 +145,7 @@ public class GeneralValidations {
 
 			//SubTotalSummary
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '')))
-			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', ''))==(totalPrice);
+			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '').replace(',', ''))==(totalPrice);
 			//Total
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '')))
 			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(totalPrice);
@@ -178,5 +180,19 @@ public class GeneralValidations {
 		WebUI.verifyElementPresent(findTestObject('Object Repository/Header/Cart/total-price'), GlobalVariable.pageLoadTimeOut)
 		assert WebUI.getText(findTestObject('Object Repository/Header/Cart/total-price')).contains(total);
 		assert WebUI.getText(findTestObject('Object Repository/Header/Cart/products-count')).contains(productsCountTxt);
+	}
+
+	/***
+	 * verify Click On Add To Cart Button
+	 * @author fatma
+	 */
+	public static void verifyClickOnAddToCartButton() {
+		TestObject AddToCartButton = findTestObject('Object Repository/ProductPage/button_addToCart')
+		GeneralActions.clickOnElement('Object Repository/ProductPage/button_addToCart')
+//		WebUI.waitForElementAttributeValue(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
+		assert WebUI.getCSSValue(AddToCartButton, 'cursor').contains('not-allowed')
+		assert WebUI.getCSSValue(AddToCartButton, 'background').contains('rgb(109, 110, 113) none repeat scroll 0% 0% / auto padding-box border-box')
+		assert WebUI.getCSSValue(AddToCartButton, 'color').contains('rgba(255, 255, 255, 1)')
+//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
 	}
 }

@@ -15,15 +15,20 @@ import validations.QuickOrderValidations
 
 
 public class CheckOutHelpers {
-	public static void checkOutSenario() {
+	/***
+	 * navigate to cart Scenario 
+     * @param productName the name of product
+	 * @param quantity the quantity of product
+	 * @param price the price of product
+	 * @param sku the sku of product
+	 * @author fatma
+	 */
+	public static void navigateToCart(List productName,List quantity ,List price,List sku) {
 		//Navigate to the cart
 		Navigations.navigateToCart();
-		//Click on 'Proceed To Checkout'
-		GeneralValidations.verifyCartProductData(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
-		//		TestObject processedToCheckOutButton = findTestObject('Object Repository/Cart/button_ProceedToCheckout')
-		//		WebUI.click(processedToCheckOutButton)
-		//		GeneralHelpers.newPageIsOpened(GlobalVariable.cartUrl, ' Shopping Cart ')
-		//		GeneralValidations.verifyTitleOfHeading(' Shopping Cart ')
+		GeneralHelpers.newPageIsOpened(GlobalVariable.cartUrl,"Shopping Cart - Cleaner's Supply")
+	    GeneralValidations.verifyTitleOfHeading('SHOPPING CART CONTINUE SHOPPING')
+		GeneralValidations.verifyCartProductData(productName,quantity,price,sku)	
 	}
 	/***
 	 * Verify Checkout Interstitial Text Page
@@ -125,6 +130,17 @@ public class CheckOutHelpers {
 		GeneralActions.clickOnElement('Object Repository/Cart/button_ProceedToCheckout')
 		GeneralHelpers.newPageIsOpened(GlobalVariable.checkoutInterstitialUrl, GlobalVariable.titleOfCheckoutInterstitialCleanerSupply)
 		CheckOutHelpers.verifyCheckoutInterstitialTextPage();
+	}
+	
+	/***
+	 * select checkout As Guest
+	 * @param productName the name of product
+	 * @param quantity the quantity of product
+	 * @param price the price of product
+	 * @param sku the sku of product
+	 * @autor fatma
+	 */
+	public static void selectCheckoutAsGuest(List productName,List quantity ,List price,List sku) {
 		GeneralActions.clickOnElement('Object Repository/Checkout/span_CheckoutAsGuestRadio')
 		GeneralValidations.verifyActionOnButton('Object Repository/Checkout/span_CheckoutAsGuestRadio',"border-color","rgb(82, 36, 127)")
 		CheckOutHelpers.verifyMyCartData(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])

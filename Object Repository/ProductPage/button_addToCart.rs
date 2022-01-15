@@ -6,12 +6,11 @@
    <elementGuidId>045c6b74-0719-425d-ab90-69bc0d45e623</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>CSS</key>
+         <value>.quantity-form .add-button > button</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>.add-button</value>
+         <key>BASIC</key>
       </entry>
    </selectorCollection>
    <selectorMethod>CSS</selectorMethod>
