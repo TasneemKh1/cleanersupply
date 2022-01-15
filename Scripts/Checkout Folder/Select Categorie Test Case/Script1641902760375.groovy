@@ -56,14 +56,22 @@ double productPrice = ProductHelpers.verifypriceAndListPriceAndVolumePrice(first
 //ProductValidations.verifyNumberOfAvailableColors(firstProductMap.get('availableColors'))
 ProductValidations.verifybreadcrumbIsVisible()
 ProductValidations.verifyProductSKU()
+// --------- edit quantity value to be 5 ---------
+double discountedPrice = ProductValidations.formatPrice(ProductActions.storeDiscountedPriceManufacturer())
+List<Double> productsPrices = new ArrayList()
+productsPrices.add(15.54)
+List<Integer> productsQuantities = new ArrayList()
+productsQuantities.add(10)
+ProductHelpers.verifyUpdateQuantityAndAddToCart(10, discountedPrice, 1, productsPrices, productsQuantities)
+
 //--click on add to cart button --
-GeneralValidations.verifyClickOnAddToCartButton()
+//GeneralValidations.verifyClickOnAddToCartButton()
 // ----------- Navigate to the cart. ----------------
-CheckOutHelpers.navigateToCart(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
+CheckOutHelpers.navigateToCart(GlobalVariable.casioName,GlobalVariable.casioQuantity,GlobalVariable.casioPrice,GlobalVariable.casioSku)
 // ----------- Click on 'Proceed To Checkout' -----------
 CheckOutHelpers.proceedToCheckOut()
 // ----------- Select 'Checkut As Guest' and move to the next step. ---------------
-CheckOutHelpers.selectCheckoutAsGuest(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
+CheckOutHelpers.selectCheckoutAsGuest(GlobalVariable.casioName,GlobalVariable.casioQuantity,GlobalVariable.casioPrice,GlobalVariable.casioSku)
 // ----------- 
 CheckOutHelpers.proceedToReviewOrderFinish()
 GeneralHelpers.newPageIsOpened('/checkout',"Checkout - Cleaner's Supply")

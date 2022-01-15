@@ -226,12 +226,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>['Epson Printer Indelibond Ink Ribbons #TM290, ERC27 - 6/Box']</initValue>
+      <initValue>['EPSON PRINTER INDELIBOND INK RIBBONS #TM290, ERC27 - 6/BOX']</initValue>
       <name>casioName</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>['40.98']</initValue>
+      <initValue>['15.54']</initValue>
       <name>casioPrice</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
