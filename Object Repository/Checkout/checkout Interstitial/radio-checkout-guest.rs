@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>checkbox-signUp</name>
+   <name>radio-checkout-guest</name>
    <tag></tag>
-   <elementGuidId>dc514025-1ab4-4ced-a560-8da92a47f2e1</elementGuidId>
+   <elementGuidId>e2f11805-b348-486f-9211-1a17277f70c2</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>[name=&quot;sign-up&quot;]</value>
+         <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@class=&quot;checkbox m-0&quot;]</value>
-      </entry>
-      <entry>
-         <key>BASIC</key>
+         <value>//form/div[1]/div/label/input</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>checkbox-signUp</name>
+   <name>a-details</name>
    <tag></tag>
-   <elementGuidId>dc514025-1ab4-4ced-a560-8da92a47f2e1</elementGuidId>
+   <elementGuidId>e3ede2f9-f84f-48c2-aa50-218b0fa5eed3</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>[name=&quot;sign-up&quot;]</value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[@class=&quot;checkbox m-0&quot;]</value>
+         <value>a[class=&quot;info-action&quot;]</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

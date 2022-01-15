@@ -1,6 +1,7 @@
 package helpers
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebElement
 
 import com.kms.katalon.core.testobject.TestObject
@@ -10,7 +11,7 @@ import actions.GeneralActions
 import actions.Navigations
 import internal.GlobalVariable
 import validations.GeneralValidations
-
+import validations.QuickOrderValidations
 
 
 public class CheckOutHelpers {
@@ -152,29 +153,39 @@ public class CheckOutHelpers {
 	}
 
 	public static void EnterValuesForShippingAddress(){
-		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/input-Company'), GlobalVariable.CompanyName)
-		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/firstName'), GlobalVariable.firstName)
-		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/lastName'), GlobalVariable.lastName)
-		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/address line1'), GlobalVariable.address1)
-		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/address line2'), GlobalVariable.address2)
-		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/zipCode'), Integer.toString(GlobalVariable.zipCode))
-		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/city'), GlobalVariable.city)
-		GeneralActions.chooseFromSelector('Object Repository/Checkout/shipping Address Section/btn-state','Object Repository/Checkout/shipping Address Section/select-State','California')
-		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/phone'), Integer.toString(GlobalVariable.phone))
-		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/phone-Extension'),Integer.toString( GlobalVariable.ext))
-		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/email'),GlobalVariable.email)
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/input-Company'), GlobalVariable.CompanyName);
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/firstName'), GlobalVariable.firstName);
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/lastName'), GlobalVariable.lastName);
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/address line1'), GlobalVariable.address1);
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/address line2'), GlobalVariable.address2);
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/zipCode'), Integer.toString(GlobalVariable.zipCode));
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/city'), GlobalVariable.city);
+		GeneralActions.chooseFromSelector('Object Repository/Checkout/shipping Address Section/btn-state','Object Repository/Checkout/shipping Address Section/select-State','California');
+		SetTextInFieldAndVerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/input_Phone_shp1-daytimePhoneNumber'), GlobalVariable.phone);
+		WebUI.sendKeys(findTestObject('Object Repository/Checkout/shipping Address Section/phoneExtension'), Keys.chord(Keys.TAB))
+		WebUI.sendKeys(findTestObject('Object Repository/Checkout/shipping Address Section/phoneExtension') , GlobalVariable.ext)
+		WebUI.sendKeys(findTestObject('Object Repository/Checkout/shipping Address Section/phoneExtension'), Keys.chord(Keys.TAB))
+		
+		//assert WebUI.getCSSValue(findTestObject('Object Repository/Checkout/shipping Address Section/phoneExtension'), 'value').equals(GlobalVariable.ext)
+		//WebUI.sendKeys(findTestObject('Object Repository/Checkout/shipping Address Section/phone-Extension'), Keys.chord(Keys.BACK_SPACE))
+		
+		
+		//TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/phone-Extension'),GlobalVariable.ext);
+		WebUI.setText(findTestObject('Object Repository/Checkout/shipping Address Section/input_Email_shp1-email'),GlobalVariable.email);
+		GeneralValidations.verifyInputValue(findTestObject('Object Repository/Checkout/shipping Address Section/input_Email_shp1-email'),GlobalVariable.email);
 		GeneralActions.clickOnElement('Object Repository/Checkout/shipping Address Section/checkbox-signUp')
 	}
 
 	public static void EnterValuesForPaymentMethod(){
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/cardName'), GlobalVariable.cardName)
-		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/cardNumber'), Integer.toString(GlobalVariable.cardNumber))
+		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/cardNumber'), GlobalVariable.cardNumber)
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/cvv'), Integer.toString(GlobalVariable.cvv))
 		GeneralActions.chooseFromSelector('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/btn-expirationMonth','Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/select-ExpirationMonth','8')
 		GeneralActions.chooseFromSelector('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/btn-expirationYear','Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/select-ExpirationYear','2026')
-		WebUI.verifyElementPresent(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/sectionDisappeared'), GlobalVariable.visiablityItemTimeOut)
-		GeneralActions.clickOnElement('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/checkbox-billing address')
-		WebUI.verifyElementNotPresent(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/sectionDisappeared'), GlobalVariable.visiablityItemTimeOut)
+		//WebUI.verifyElementPresent(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/sectionDisappeared'), GlobalVariable.visiablityItemTimeOut)
+		//GeneralActions.clickOnElement('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/checkbox-billing address')
+		
+		//WebUI.verifyElementNotPresent(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/sectionDisappeared'), GlobalVariable.visiablityItemTimeOut)
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/po'), GlobalVariable.po)
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/comments'), GlobalVariable.comment)
 	}
@@ -182,11 +193,24 @@ public class CheckOutHelpers {
 	public static void proceedToReviewOrderFinish() {
 		EnterValuesForShippingAddress()
 		EnterValuesForPaymentMethod()
-		GeneralActions.clickOnElement('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/a-reviewOrderBtn')
+		hoverAndClick('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/a-reviewOrderBtn')
+		
 	}
 
 	public static void TypeInFieldAndWerifyValue(TestObject inputTestObject, String expectedValue){
 		GeneralActions.typeIntoInputField(inputTestObject, expectedValue)
 		GeneralValidations.verifyInputValue (inputTestObject, expectedValue)
+	}
+
+	public static void SetTextInFieldAndVerifyValue(TestObject inputTestObject, String expectedValue){
+		//replaceFirst("(\\d{3})(\\d{3})(\\d+)","$1-$2-$3");
+		GeneralActions.SetTextForInputsFields(inputTestObject, expectedValue)
+		String x=expectedValue.substring(0,3)+"-"+expectedValue.substring(3,6)+"-"+expectedValue.substring(6,10)
+		GeneralValidations.verifyInputValue (inputTestObject, x)
+	}
+	public static void hoverAndClick(String testObjId) {
+		GeneralActions.mouseOverOnElement(testObjId)
+		QuickOrderValidations.VerifyShadowWhenHoveringOnBtn(findTestObject(testObjId))
+		GeneralActions.clickOnElement(testObjId)
 	}
 }

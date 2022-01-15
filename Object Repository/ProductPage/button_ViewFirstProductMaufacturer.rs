@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>checkbox-signUp</name>
+   <name>button_ViewFirstProductMaufacturer</name>
    <tag></tag>
-   <elementGuidId>dc514025-1ab4-4ced-a560-8da92a47f2e1</elementGuidId>
+   <elementGuidId>1522807d-bcf4-4da9-ae35-2609e4abb094</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>[name=&quot;sign-up&quot;]</value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[@class=&quot;checkbox m-0&quot;]</value>
+         <value>div.product-list-container div:nth-child(2) > div:nth-child(1) a button</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>CSS</selectorMethod>
    <useRalativeImagePath>false</useRalativeImagePath>
 </WebElementEntity>

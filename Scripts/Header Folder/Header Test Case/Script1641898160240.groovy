@@ -17,3 +17,9 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+import helpers.GeneralHelpers
+
+
+GeneralHelpers.initScenario()
+assert WebUI.getText(findTestObject('Object Repository/Header/Header Top/span-Free-Shipping')).equals('FREE SHIPPING & RETURNS ON ORDERS OVER $99 ')
+

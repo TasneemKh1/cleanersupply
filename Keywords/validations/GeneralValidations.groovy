@@ -132,11 +132,11 @@ public class GeneralValidations {
 			assert titleOfProduct.get(i).getText().contains(productName[i]);
 			System.out.println(priceOfProduct.get(i).getText().replace('$', ''))
 			assert priceOfProduct.get(i).getText().replace('$', '').contains(price[i]);
-			//			System.out.println(QuantityOfProducts.get(i).getAttribute('value').replace('$', ''))
-			//			assert QuantityOfProducts.get(i).getAttribute('value').contains(quantity[i]);
+		    System.out.println(QuantityOfProducts.get(i).getAttribute('value').replace('$', ''))
+			assert QuantityOfProducts.get(i).getAttribute('value').contains(quantity[i]);
 			System.out.println(totalPriceOfProducts.get(i).getText().replace('$', ''))
 			//let quantity=1
-			double totalPrice=1 * priceOfProduct.get(i).getText().replace('$', '').toDouble()
+			double totalPrice=QuantityOfProducts.get(i).getAttribute('value').toDouble() * priceOfProduct.get(i).getText().replace('$', '').toDouble()
 			assert totalPriceOfProducts.get(i).getText().replace('$', '').toDouble().equals(totalPrice);
 			System.out.println(skuNumberOfProducts.get(i).getText())
 			assert skuNumberOfProducts.get(i).getText().contains(sku[i]);
@@ -144,14 +144,15 @@ public class GeneralValidations {
 			assert stockNotificationOfProduct.get(i).getText().contains('In Stock!');
 
 			//SubTotalSummary
-			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '')))
-			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', ''))==(totalPrice);
+
+			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '').replace(',', '')))
+			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '').replace(',', ''))==(totalPrice);
 			//Total
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '')))
 			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', ''))==(totalPrice);
 			//NumberOfSubTotal
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]", "")))
-			assert Integer.parseInt(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]",""))==(1);
+			assert Integer.parseInt(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]",""))==(QuantityOfProducts.get(i).getAttribute('value').toInteger());
 
 		}
 	}
@@ -202,8 +203,12 @@ public class GeneralValidations {
 	 */
 	public static void verifyHoverOnSelectMenu(String elementID) {
 		TestObject Element = findTestObject(elementID)
-		assert WebUI.getCSSValue(Element, 'color').contains('rgba(255, 255, 255, 1)')
-		assert WebUI.getCSSValue(Element, 'background-color').contains('rgba(88, 88, 90, 1)')
-		assert WebUI.getCSSValue(Element, 'text-decoration').contains('none')
+		if(WebUI.waitForElementAttributeValue(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)) 
+		{assert WebUI.getCSSValue(AddToCartButton, 'cursor').contains('not-allowed')
+		assert WebUI.getCSSValue(AddToCartButton, 'background').contains('rgb(109, 110, 113) none repeat scroll 0% 0% / auto padding-box border-box')
+		assert WebUI.getCSSValue(AddToCartButton, 'color').contains('rgba(255, 255, 255, 1)')
+		}		
+//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
+
 	}
 }
