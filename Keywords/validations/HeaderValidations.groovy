@@ -21,6 +21,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
+import actions.GeneralActions
 
 public class HeaderValidations {
 	/***
@@ -103,7 +104,15 @@ public class HeaderValidations {
 		assert WebUI.getText(firstLabelTestObject).trim().toLowerCase().equals("categories")
 		assert WebUI.getText(secondLabelTestObject).trim().toLowerCase().equals("products")
 	}
-
+	/*
+	 * *@author tasneem
+	 * 
+	 * **/
+	public static void verifySearchAutoCompleteContentLabelsForStockTerm () {
+		List<WebElement> searchAutoCompleteContentLabels = WebUI.findWebElements(findTestObject('Object Repository/Header/div_searchAutoCompleteContentLabels'), GlobalVariable.visiablityItemTimeOut)
+		TestObject firstLabelTestObject = WebUI.convertWebElementToTestObject(searchAutoCompleteContentLabels.get(0))
+		assert WebUI.getText(firstLabelTestObject).trim().toLowerCase().equals("products")
+	}
 	/***
 	 * Verify if search autoComplete categories include the search term
 	 * @author moham
@@ -115,5 +124,16 @@ public class HeaderValidations {
 			TestObject categoriesTestObject = WebUI.convertWebElementToTestObject(searchAutoCompleteCategories.get(i))
 			assert WebUI.getText(categoriesTestObject).toLowerCase().contains(expectedTerm.toLowerCase())
 		}
+	}
+	/**
+	 * @author tasneem
+	 * */
+	public static void hoverOverItemsInSuggestionsAtHeader () {
+		List<WebElement> searchAutoCompleteCategories = WebUI.findWebElements(findTestObject('Object Repository/Header/li-boxSuggestions'), GlobalVariable.visiablityItemTimeOut)
+		TestObject firstItemInSuggestions=WebUI.convertWebElementToTestObject(searchAutoCompleteCategories.get(0))
+		GeneralActions.mouseOverOnElement(firstItemInSuggestions)
+		assert WebUI.getCSSValue(firstItemInSuggestions, 'background-color').equals('rgba(82, 36, 127, 1)')
+		assert WebUI.getCSSValue(firstItemInSuggestions, 'color').equals('rgba(255, 255, 255, 1)')
+		
 	}
 }

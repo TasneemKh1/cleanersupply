@@ -105,7 +105,7 @@ public class QuickOrderHelpers {
 			//QuickStockTable.add(totalVal)
 			System.out.println(QuickStockTable)
 
-			
+
 		}
 		listOfarray.add(productNames)
 		System.out.println("name added"+listOfarray)
@@ -113,7 +113,7 @@ public class QuickOrderHelpers {
 		listOfarray.add(productPrice)
 		listOfarray.add(productID)
 		System.out.println("all"+listOfarray)
-		
+
 		return listOfarray
 	}
 
@@ -156,6 +156,11 @@ public class QuickOrderHelpers {
 		QuickOrderValidations.VerifyShadowWhenHoveringOnBtn(addToCartBtn)
 		WebUI.click(addToCartBtn)
 
+	}
+	public static void checkButtonStyleOnHoveringthenClickOnIT(String testObjId) {
+		GeneralActions.mouseOverOnElement(findTestObject(testObjId))
+		QuickOrderValidations.VerifyShadowWhenHoveringOnBtn(findTestObject(testObjId))
+		WebUI.click(findTestObject(testObjId));
 	}
 
 }

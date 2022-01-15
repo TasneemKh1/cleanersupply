@@ -209,4 +209,14 @@
       <initValue>'Checkout - Cleaner\'s Supply'</initValue>
       <name>titleOfCheckoutPage</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'cotton'</initValue>
+      <name>cottonTerm</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'#STE3'</initValue>
+      <name>stockIdTerm</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

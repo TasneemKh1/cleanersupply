@@ -132,7 +132,7 @@ public class GeneralValidations {
 			assert titleOfProduct.get(i).getText().contains(productName[i]);
 			System.out.println(priceOfProduct.get(i).getText().replace('$', ''))
 			assert priceOfProduct.get(i).getText().replace('$', '').contains(price[i]);
-		    System.out.println(QuantityOfProducts.get(i).getAttribute('value').replace('$', ''))
+			System.out.println(QuantityOfProducts.get(i).getAttribute('value').replace('$', ''))
 			assert QuantityOfProducts.get(i).getAttribute('value').contains(quantity[i]);
 			System.out.println(totalPriceOfProducts.get(i).getText().replace('$', ''))
 			//let quantity=1
@@ -190,12 +190,12 @@ public class GeneralValidations {
 	public static void verifyClickOnAddToCartButton() {
 		TestObject AddToCartButton = findTestObject('Object Repository/ProductPage/button_addToCart')
 		GeneralActions.clickOnElement('Object Repository/ProductPage/button_addToCart')
-		if(WebUI.waitForElementAttributeValue(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)) 
-		{assert WebUI.getCSSValue(AddToCartButton, 'cursor').contains('not-allowed')
-		assert WebUI.getCSSValue(AddToCartButton, 'background').contains('rgb(109, 110, 113) none repeat scroll 0% 0% / auto padding-box border-box')
-		assert WebUI.getCSSValue(AddToCartButton, 'color').contains('rgba(255, 255, 255, 1)')
+		if(WebUI.waitForElementAttributeValue(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)) {
+			assert WebUI.getCSSValue(AddToCartButton, 'cursor').contains('not-allowed')
+			assert WebUI.getCSSValue(AddToCartButton, 'background').contains('rgb(109, 110, 113) none repeat scroll 0% 0% / auto padding-box border-box')
+			assert WebUI.getCSSValue(AddToCartButton, 'color').contains('rgba(255, 255, 255, 1)')
 		}
-		
-//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
+
+		//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
 	}
 }
