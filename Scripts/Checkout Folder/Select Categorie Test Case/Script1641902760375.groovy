@@ -20,11 +20,15 @@ import helpers.GeneralHelpers
 import actions.FiltersActions
 import actions.GeneralActions
 import actions.SelectCategoriesActions
+import validations.FiltersValidations
 import validations.GeneralValidations
-
+import validations.HeaderValidations
 import helpers.CheckOutHelpers
+import helpers.FiltersHelpers
 // ----------- Navigate to https://www.cleanersupply.com/----------
 GeneralHelpers.initScenario();
+HeaderValidations.verifyCartItemsNumber(0)
+HeaderValidations.verifyCartLabel('Cart')
 // ----------- Hover on 'Tags & Forms' header items.     ----------
 SelectCategoriesActions.hoverOnTagsAndFormMenu();
 GeneralValidations.verifyHover("Object Repository/Header/a_tagsAndForm","rgb(255, 255, 255)","rgba(82, 36, 127, 1)","Object Repository/Header/ul_tagsAndForm","open-desktop");
@@ -36,7 +40,16 @@ GeneralHelpers.newPageIsOpened(GlobalVariable.computerAndRegisterPageUrl, Global
 GeneralValidations.verifyBreadcrump('Object Repository/CategoryPage/li_BreadcrumpOfComputerAndRegisterPAge', GlobalVariable.breadcrumpOfComputerAndRegister)
 GeneralValidations.verifyTitleOfHeading(GlobalVariable.headingTitleOFComputerAndRegisterPage)
 // ----------- From the manufacturer section, select the 'Casio' manufacturer and select 'SP1000' Model. -------
+//ManufacterNumber = FiltersActions.storeManufacturerNumber()
+ManufacterLinkUrl = 'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio'
 filtersGroupsNumber = FiltersActions.storeFiltersGroupsNumber()
+//packagingProductsLinkUrl = FiltersActions.storePackingProductsLinkUrl()
+FiltersValidations.verifyManufacturerFilterContent()
+GeneralActions.clickOnElement('Object Repository/Filters/ManufacturerFilter/span_ManufacturerOptionSelect')
+FiltersHelpers.verifyHoverOnManufacturerDropdowns('Object Repository/Filters/ManufacturerFilter/a_CasioSelected')
+GeneralActions.clickOnElement('Object Repository/Filters/ManufacturerFilter/a_CasioSelected')
+FiltersValidations.verifyCasioManufacturerFilterApplied(ManufacterLinkUrl, filtersGroupsNumber, 'Casio')
+
 TestObject product=findTestObject('Object Repository/ProductPage/a_ComputerProduct')
 WebUI.click(product)
 //--click on add to cart button --

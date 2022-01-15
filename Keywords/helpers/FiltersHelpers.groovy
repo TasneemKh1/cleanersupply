@@ -6,6 +6,8 @@ import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
+import java.awt.geom.GeneralPath
+
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
@@ -19,6 +21,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import actions.FiltersActions
+import actions.GeneralActions
 import internal.GlobalVariable
 import validations.GeneralValidations
 
@@ -72,5 +75,54 @@ public class FiltersHelpers {
 		String stringNumber = stringArray.getAt(1).trim()
 		int productsNumber = Integer.parseInt(stringNumber.substring(0, stringNumber.length() - 1))
 		assert (filterNumber >= productsNumber)
+	}
+	/***
+	 * choose From Selector
+	 * @param BtnId
+	 * @param value
+	 * @author fatma
+	 */
+	public static void chooseFromSelector(String BtnId,String value) {
+		GeneralActions.clickOnElement(BtnId)
+		GeneralValidations.verifyHoverOnDropdowns(BtnId)
+		WebUI.selectOptionByValue(BtnId,value, false)
+	}
+	/***
+	 * verifyFilterManufacturerApplied Verify current URL, filters groups numbers, if filter is selected, applied criteria and number of products in subheading
+	 * @author fatma
+	 * @param expectedURL
+	 * @param filterNumber
+	 * @param filtersGroupsNumber
+	 * @param filterLinkParent
+	 * @param filterName
+	 */
+	public static void verifyFilterManufacturerApplied (String expectedURL, int filtersGroupsNumber, TestObject filterLinkParent, String filterName) {
+		TestObject pageSubHeading = findTestObject('Object Repository/SearchResultPage/h2_pageSubHeading')
+		TestObject lastAppliedCriteriaLink = findTestObject('Filters/a_appliedCriteria')
+		// Wait until overlay is disappeared
+		WebUI.waitForElementNotVisible(findTestObject('Object Repository/General/div_overlay'), 2)
+		// Verify current URL
+		GeneralValidations.verifyCurrentPageURL(expectedURL)
+		// Verify filters groups numbers
+		assert (FiltersActions.storeFiltersGroupsNumber() < filtersGroupsNumber)
+		// Verify if filter is selected
+//		assert WebUI.getAttribute(filterLinkParent, "selected").contains("selected")
+		// Verify applied criteria
+		assert WebUI.getText(lastAppliedCriteriaLink).trim().toLowerCase().contains(filterName.toLowerCase())
+		// Verify number of products in subheading
+		String pageSubHeadingText = WebUI.getText(pageSubHeading)
+		String [] stringArray = pageSubHeadingText.split("\\(")
+		String stringNumber = stringArray.getAt(1).trim()
+		int productsNumber = Integer.parseInt(stringNumber.substring(0, stringNumber.length() - 1))
+//		assert (filterNumber >= productsNumber)
+	}
+	/***
+	 * verifyHoverOnDropdowns
+	 * @param BtnId
+	 * @author fatma
+	 */
+	public static void verifyHoverOnManufacturerDropdowns(String BtnId) {
+		GeneralActions.mouseOverOnElement(BtnId)
+		GeneralValidations.verifyHoverOnSelectMenu(BtnId)
 	}
 }

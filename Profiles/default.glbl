@@ -209,4 +209,9 @@
       <initValue>'Checkout - Cleaner\'s Supply'</initValue>
       <name>titleOfCheckoutPage</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio'</initValue>
+      <name>manufacturerFilterUrl</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

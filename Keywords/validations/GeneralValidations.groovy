@@ -189,10 +189,21 @@ public class GeneralValidations {
 	public static void verifyClickOnAddToCartButton() {
 		TestObject AddToCartButton = findTestObject('Object Repository/ProductPage/button_addToCart')
 		GeneralActions.clickOnElement('Object Repository/ProductPage/button_addToCart')
-//		WebUI.waitForElementAttributeValue(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
+		//		WebUI.waitForElementAttributeValue(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
 		assert WebUI.getCSSValue(AddToCartButton, 'cursor').contains('not-allowed')
 		assert WebUI.getCSSValue(AddToCartButton, 'background').contains('rgb(109, 110, 113) none repeat scroll 0% 0% / auto padding-box border-box')
 		assert WebUI.getCSSValue(AddToCartButton, 'color').contains('rgba(255, 255, 255, 1)')
-//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
+		//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
+	}
+	/***
+	 * verifyHoverOnSelectMenu
+	 * @param elementID
+	 * @author fatma
+	 */
+	public static void verifyHoverOnSelectMenu(String elementID) {
+		TestObject Element = findTestObject(elementID)
+		assert WebUI.getCSSValue(Element, 'color').contains('rgba(255, 255, 255, 1)')
+		assert WebUI.getCSSValue(Element, 'background-color').contains('rgba(88, 88, 90, 1)')
+		assert WebUI.getCSSValue(Element, 'text-decoration').contains('none')
 	}
 }
