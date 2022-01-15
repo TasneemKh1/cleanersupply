@@ -16,7 +16,7 @@ import validations.GeneralValidations
 public class CheckOutHelpers {
 	/***
 	 * navigate to cart Scenario 
-     * @param productName the name of product
+	 * @param productName the name of product
 	 * @param quantity the quantity of product
 	 * @param price the price of product
 	 * @param sku the sku of product
@@ -26,8 +26,8 @@ public class CheckOutHelpers {
 		//Navigate to the cart
 		Navigations.navigateToCart();
 		GeneralHelpers.newPageIsOpened(GlobalVariable.cartUrl,"Shopping Cart - Cleaner's Supply")
-	    GeneralValidations.verifyTitleOfHeading('SHOPPING CART CONTINUE SHOPPING')
-		GeneralValidations.verifyCartProductData(productName,quantity,price,sku)	
+		GeneralValidations.verifyTitleOfHeading('SHOPPING CART CONTINUE SHOPPING')
+		GeneralValidations.verifyCartProductData(productName,quantity,price,sku)
 	}
 	/***
 	 * Verify Checkout Interstitial Text Page
@@ -130,7 +130,7 @@ public class CheckOutHelpers {
 		GeneralHelpers.newPageIsOpened(GlobalVariable.checkoutInterstitialUrl, GlobalVariable.titleOfCheckoutInterstitialCleanerSupply)
 		CheckOutHelpers.verifyCheckoutInterstitialTextPage();
 	}
-	
+
 	/***
 	 * select checkout As Guest
 	 * @param productName the name of product
