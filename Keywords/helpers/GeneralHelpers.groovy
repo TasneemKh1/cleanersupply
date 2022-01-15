@@ -64,7 +64,6 @@ public class GeneralHelpers {
 		GeneralValidations.verifyCurrentPageURL(expectedUrl)
 		GeneralValidations.verifyCurrentPageTitle(expectedTitle)
 	}
-
 	/***
 	 * navigating To Cart
 	 * @author fatma
