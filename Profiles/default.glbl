@@ -214,4 +214,9 @@
       <initValue>'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio'</initValue>
       <name>manufacturerFilterUrl</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'[\'Epson Printer Indelibond Ink Ribbons #TM290, ERC27 - 6/Box\']'</initValue>
+      <name>casioName</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

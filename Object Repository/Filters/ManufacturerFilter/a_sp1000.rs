@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>span_ManufacturerOptionSelect</name>
+   <name>a_sp1000</name>
    <tag></tag>
-   <elementGuidId>4dcbbca0-7c64-4abb-b49c-352f5f8ff9fa</elementGuidId>
+   <elementGuidId>9180ea0a-c4fc-43d4-a875-4d99f5d3e18a</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//button[@title=&quot;Manufacturer&quot;]/span[1]</value>
+         <value>//span[text()='SP1000']</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
-      </entry>
-      <entry>
-         <key>CSS</key>
          <value></value>
       </entry>
    </selectorCollection>

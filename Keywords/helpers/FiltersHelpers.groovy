@@ -8,6 +8,8 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
 import java.awt.geom.GeneralPath
 
+import org.openqa.selenium.WebElement
+
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
@@ -96,25 +98,30 @@ public class FiltersHelpers {
 	 * @param filterLinkParent
 	 * @param filterName
 	 */
-	public static void verifyFilterManufacturerApplied (String expectedURL, int filtersGroupsNumber, TestObject filterLinkParent, String filterName) {
+	public static void verifyFilterManufacturerApplied (String expectedURL, Integer filtersGroupsNumber, TestObject filterLinkParent, String filterName) {
 		TestObject pageSubHeading = findTestObject('Object Repository/SearchResultPage/h2_pageSubHeading')
 		TestObject lastAppliedCriteriaLink = findTestObject('Filters/a_appliedCriteria')
 		// Wait until overlay is disappeared
 		WebUI.waitForElementNotVisible(findTestObject('Object Repository/General/div_overlay'), 2)
 		// Verify current URL
 		GeneralValidations.verifyCurrentPageURL(expectedURL)
-		// Verify filters groups numbers
-		assert (FiltersActions.storeFiltersGroupsNumber() < filtersGroupsNumber)
 		// Verify if filter is selected
-//		assert WebUI.getAttribute(filterLinkParent, "selected").contains("selected")
+		//		assert WebUI.getAttribute(filterLinkParent, "selected").contains("selected")
 		// Verify applied criteria
 		assert WebUI.getText(lastAppliedCriteriaLink).trim().toLowerCase().contains(filterName.toLowerCase())
 		// Verify number of products in subheading
 		String pageSubHeadingText = WebUI.getText(pageSubHeading)
-		String [] stringArray = pageSubHeadingText.split("\\(")
-		String stringNumber = stringArray.getAt(1).trim()
-		int productsNumber = Integer.parseInt(stringNumber.substring(0, stringNumber.length() - 1))
-//		assert (filterNumber >= productsNumber)
+		if(filtersGroupsNumber!=null) {
+			// Verify filters groups numbers
+			assert (FiltersActions.storeFiltersGroupsNumber() < filtersGroupsNumber)
+			List<WebElement> selectedFilters = WebUI.findWebElements(findTestObject('Object Repository/Filters/span_FilterProductCount'),GlobalVariable.visiablityItemTimeOut)
+			int filtersCount = 0
+			for(WebElement element:selectedFilters) {
+				int currentCount=Integer.parseInt(element.getText().replaceAll("[^0-9]", ""))
+				filtersCount+=currentCount
+			}
+			assert filtersCount== Integer.parseInt(pageSubHeadingText.replaceAll("[^0-9]", ""))
+		}
 	}
 	/***
 	 * verifyHoverOnDropdowns

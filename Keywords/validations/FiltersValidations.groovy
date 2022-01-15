@@ -74,14 +74,14 @@ public class FiltersValidations {
 		}
 	}
 		/***
-		*verifyCasioManufacturerFilterApplied
+		*verifyManufacturerFilterApplied
 		* Verify current URL, filters groups numbers, if filter is selected, applied criteria and number of products in subheading
 		* @author fatma
 		* @param expectedURL
 		* @param filtersGroupsNumber
 		* @param filterName
 		 */
-	   public static void verifyCasioManufacturerFilterApplied (String expectedURL, int filtersGroupsNumber, String filterName) {
+	   public static void verifyManufacturerFilterApplied (String expectedURL, Integer filtersGroupsNumber, String filterName) {
 		   TestObject filterOption = findTestObject('Object Repository/Filters/ManufacturerFilter/option_Casio')
 		   FiltersHelpers.verifyFilterManufacturerApplied(expectedURL, filtersGroupsNumber, filterOption, filterName)
 	   }
