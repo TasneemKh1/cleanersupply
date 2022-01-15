@@ -1,16 +1,16 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
-
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import helpers.QuickOrderHelpers
+
+import actions.GeneralActions
+import helpers.CheckOutHelpers
 import helpers.GeneralHelpers
 import helpers.HeaderHelpers
+import helpers.QuickOrderHelpers
 import internal.GlobalVariable
 import validations.GeneralValidations
-import actions.GeneralActions
-import validations.QuickOrderValidations
-import helpers.CheckOutHelpers
 import validations.HeaderValidations
+import validations.QuickOrderValidations
 
 
 //open website & check title and url
@@ -23,7 +23,8 @@ List<String>listOfProducts = QuickOrderHelpers.fillingQuickOrderInputs()
 QuickOrderHelpers.VerifyAddToCart()
 
 GeneralValidations.verifyCartInfoInNav(WebUI.getText(findTestObject('Object Repository/Checkout/OrderSummery/total')),'5')
-GeneralHelpers.navigatingToCart()
+//GeneralHelpers.navigatingToCart()
+CheckOutHelpers.navigateToCart(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
 //check
 
 GeneralActions.mouseOverOnElement(findTestObject('Object Repository/Checkout/OrderSummery/Btn-proceedToCheckout'))
