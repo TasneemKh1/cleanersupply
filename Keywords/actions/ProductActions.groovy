@@ -140,4 +140,11 @@ public class ProductActions {
 	public static void clickOnViewDetailsButtonOnManufacturerFilter () {
 		WebUI.click(findTestObject('Object Repository/ProductPage/button_ViewFirstProductMaufacturer'))
 	}
+	/***
+	 * storeDiscountedPriceManufacturer
+	 * @author fatma
+	 */
+	public static String storeDiscountedPriceManufacturer() {
+		return WebUI.getText(findTestObject('Object Repository/Filters/ManufacturerFilter/div_producrDiscount'))
+	}
 }
