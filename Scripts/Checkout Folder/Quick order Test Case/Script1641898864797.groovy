@@ -50,13 +50,14 @@ GeneralHelpers.newPageIsOpened('/checkout-interstitial',"Checkout Interstitial -
 assert WebUI.getText(findTestObject('Object Repository/Checkout/checkout Interstitial/div-heading')).contains('SECURE CHECKOUT')
 //check side menu
 
-//GeneralActions.mouseOverOnElement(findTestObject('Object Repository/Checkout/checkout Interstitial/btn-continue'))
+WebUI.verifyElementChecked(findTestObject('Object Repository/Checkout/checkout Interstitial/radio-checkout-guest'), GlobalVariable.pageLoadTimeOut)
+ 
+GeneralActions.mouseOverOnElement(findTestObject('Object Repository/Checkout/checkout Interstitial/btn-continue'))
 QuickOrderValidations.VerifyShadowWhenHoveringOnBtn(findTestObject('Object Repository/Checkout/checkout Interstitial/btn-continue'))
 WebUI.click(findTestObject('Object Repository/Checkout/checkout Interstitial/btn-continue'));
 
-WebUI.verifyElementChecked(findTestObject('Object Repository/Checkout/checkout Interstitial/radio-checkout-guest'), GlobalVariable.pageLoadTimeOut)
 
-QuickOrderHelpers.checkButtonStyleOnHoveringthenClickOnIT('Object Repository/Checkout/checkout Interstitial/btn-continue')
+//QuickOrderHelpers.checkButtonStyleOnHoveringthenClickOnIT('Object Repository/Checkout/checkout Interstitial/btn-continue')
 //checkout page
 GeneralHelpers.newPageIsOpened('/checkout',"Checkout - Cleaner's Supply")
 GeneralValidations.verifyCurrentPageHeading('Object Repository/General/h1-pageHeading','CHECKOUT')
