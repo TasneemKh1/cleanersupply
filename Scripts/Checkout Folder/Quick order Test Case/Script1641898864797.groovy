@@ -20,6 +20,11 @@ HeaderValidations.verifyCartLabel('Cart')
 HeaderHelpers.navigatingToQuickOrder()
 GeneralValidations.verifyCurrentPageHeading('Object Repository/QuickOrder/span-QuickOrderHeading','QUICK');
 List<String>listOfProducts = QuickOrderHelpers.fillingQuickOrderInputs()
+List<String> names=listOfProducts.get(0);
+List<String> Quantities=listOfProducts.get(1);
+List<String> Prices=listOfProducts.get(2);
+List<String> productID=listOfProducts.get(3);
+
 QuickOrderHelpers.VerifyAddToCart()
 
 GeneralValidations.verifyCartInfoInNav(WebUI.getText(findTestObject('Object Repository/Checkout/OrderSummery/total')),'5')
@@ -69,3 +74,8 @@ assert paymentSection.contains("**** "+cardNumber.substring(cardNumber.length() 
 assert paymentSection.contains('8/'+'2026'.substring('2026'.length() - 2))
 GeneralValidations.verifyInputValue (findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/po'), GlobalVariable.po)
 GeneralValidations.verifyInputValue (findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/comments'), GlobalVariable.comment)
+
+GeneralActions.mouseOverOnElement(findTestObject('Object Repository/Checkout/Review Checkout Info/a-submit-order'))
+QuickOrderValidations.VerifyShadowWhenHoveringOnBtn(findTestObject('Object Repository/Checkout/Review Checkout Info/a-submit-order'))
+//WebUI.click(findTestObject('Object Repository/Checkout/Review Checkout Info/a-submit-order'));
+WebUI.closeBrowser();

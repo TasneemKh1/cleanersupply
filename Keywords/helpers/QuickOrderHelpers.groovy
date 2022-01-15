@@ -48,7 +48,12 @@ public class QuickOrderHelpers {
 	public static List fillingQuickOrderInputs() {
 		//WebUI.waitForPageLoad(GlobalVariable.pageLoadTimeOut)
 		List<WebElement> StockInput = WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/input-stockID'), GlobalVariable.visiablityItemTimeOut)
-		List<WebElement> QuickStockTable = []
+		List<WebElement> QuickStockTable = [];
+		List<String> listOfarray = [];
+		List<String> productNames = []
+		List<String> productQuantity = []
+		List<String> productPrice = []
+		List<String> productID = []
 		for (int i = 0; i < StockInput.size(); ++i) {
 			TestObject stockInputField = WebUI.convertWebElementToTestObject(StockInput.get(i))
 			verifyStockIdFields(stockInputField,GlobalVariable.productIDList[i],i)
@@ -77,12 +82,16 @@ public class QuickOrderHelpers {
 			System.out.println(WebUI.getAttribute(imgSrcQuickOrder, 'src'))
 			GeneralActions.mouseOverOnElement(WebUI.convertWebElementToTestObject(productNameQuickOrder.get(i)));
 			QuickStockTable.add(WebUI.getText(WebUI.convertWebElementToTestObject(productNameQuickOrder.get(i))));
+			productNames.add(WebUI.getText(WebUI.convertWebElementToTestObject(productNameQuickOrder.get(i))))
 			QuickStockTable.add(Integer.toString(randomQuntity))
+			productQuantity.add(Integer.toString(randomQuntity))
 			System.out.println(WebUI.getText(WebUI.convertWebElementToTestObject(productNameQuickOrder.get(i))));
 			//QuickStockTable.add('In Stock!')
 			String  price=verifyPrice(i)
 			QuickStockTable.add(price)
+			productPrice.add(price)
 			QuickStockTable.add(GlobalVariable.productIDList[i])
+			productID.add(GlobalVariable.productIDList[i])
 			List<WebElement> totalPriceQuickOrder = WebUI.findWebElements(findTestObject('Object Repository/QuickOrder/div-totalPrice'),
 					GlobalVariable.visiablityItemTimeOut)
 			TestObject total=WebUI.convertWebElementToTestObject(totalPriceQuickOrder.get(i));
@@ -98,7 +107,14 @@ public class QuickOrderHelpers {
 
 			
 		}
-		return QuickStockTable
+		listOfarray.add(productNames)
+		System.out.println("name added"+listOfarray)
+		listOfarray.add(productQuantity)
+		listOfarray.add(productPrice)
+		listOfarray.add(productID)
+		System.out.println("all"+listOfarray)
+		
+		return listOfarray
 	}
 
 	public static  void verifyproductStatus(int i,TestObject removeBtn) {
