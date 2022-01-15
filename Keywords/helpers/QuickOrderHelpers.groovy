@@ -96,8 +96,9 @@ public class QuickOrderHelpers {
 			//QuickStockTable.add(totalVal)
 			System.out.println(QuickStockTable)
 
-			return QuickStockTable
+			
 		}
+		return QuickStockTable
 	}
 
 	public static  void verifyproductStatus(int i,TestObject removeBtn) {
