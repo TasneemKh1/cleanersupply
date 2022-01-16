@@ -25,6 +25,11 @@ Checkout Scenarios suite =>
 
 ###Scenario 1
 
+
+https://user-images.githubusercontent.com/94033644/149650647-84c1f365-c5a8-4771-b408-64f2261486db.mp4
+
+
+
 1- Navigate to https://www.cleanersupply.com/
 
 2- Search for 'Plastic' term.
@@ -70,6 +75,11 @@ https://github.com/TasneemKh1/cleanersupply/blob/master/Test%20Cases/Checkout%20
 
 ###Scenario 2
 
+
+https://user-images.githubusercontent.com/94033644/149650492-821c7d44-6534-49b2-b725-da0f73ebab6f.mp4
+
+
+
 1- Navigate to https://www.cleanersupply.com/
 
 2- Hover on 'Tags & Forms' header items.
@@ -102,6 +112,11 @@ https://github.com/TasneemKh1/cleanersupply/blob/master/Test%20Cases/Checkout%20
 ***********************************************
 ###Scenario 3
 
+
+https://user-images.githubusercontent.com/94033644/149650228-b1fef352-4dbd-4bc9-9767-f03d1b7fa919.mp4
+
+
+
 1- Navigate to quick order page from the header.
 
 2- Add any 5 products to the quick order list with random quantites between 5 and 50.
@@ -129,6 +144,11 @@ https://github.com/TasneemKh1/cleanersupply/blob/master/Test%20Cases/Checkout%20
 ***********************************************
 
 ###Header Test Scenario: write test cases for the header section.
+
+
+https://user-images.githubusercontent.com/94033644/149650439-e2cfbd1e-9ca5-4a1b-8f4a-db3f00778c87.mp4
+
+
 test each link in header and verify the right corresponding page title ,URL and heading 
 check img logo in header
 search for keywords and stocks and check suggestions
@@ -137,6 +157,11 @@ view one of the nav dropdown
 
 
 **********************************
+
+
+https://user-images.githubusercontent.com/94033644/149650178-ac4d55f0-3e6f-480a-9b7f-9d2092c4c433.mp4
+
+
 ###Footer Test Scenario: write test cases for the footer section.
 test each link in footer and verify the right corresponding page title ,URL and heading 
 verify signing in for  EXCLUSIVE EMAIL 
@@ -147,6 +172,13 @@ verify leave feedback modal is opened
 
 ***********************************************
 ###Bugs found in the system
+
+
+https://user-images.githubusercontent.com/94033644/149650192-bceea63c-7e89-442e-9367-efa4eba01b12.mp4
+
+
 the product status changed from "in the stock" on the quick order page to out of stock in cart 
+
 the Tax does not work as expected
+
 filters count does not represent the total amount of products 
