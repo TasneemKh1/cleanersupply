@@ -218,5 +218,5 @@ public class GeneralValidations {
 			assert WebUI.getCSSValue(Element, 'color').contains('rgba(255, 255, 255, 1)')
 		}
 		//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
-  }
+	}
 }

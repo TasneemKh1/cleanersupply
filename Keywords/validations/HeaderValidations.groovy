@@ -134,6 +134,13 @@ public class HeaderValidations {
 		GeneralActions.mouseOverOnElement(firstItemInSuggestions)
 		assert WebUI.getCSSValue(firstItemInSuggestions, 'background-color').equals('rgba(82, 36, 127, 1)')
 		assert WebUI.getCSSValue(firstItemInSuggestions, 'color').equals('rgba(255, 255, 255, 1)')
-		
+	}
+	public static void checkClassOpenIsAddedToMyAccount() {
+		assert	WebUI.getAttribute(findTestObject('Object Repository/Header/li-MyCart-dropdown'), 'class').contains('open')
+
+	}
+	public static void checkMyAccountDropDownIsDisplayed() {
+		assert	WebUI.getCSSValue(findTestObject('Object Repository/Header/Cart/div-MyAccountDropDown'), 'display').contains('block')
+
 	}
 }
