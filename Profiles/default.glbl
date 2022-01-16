@@ -161,7 +161,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'5004005656'</initValue>
+      <initValue>'5555555555'</initValue>
       <name>phone</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -218,7 +218,7 @@
       <description></description>
       <initValue>'#STE3'</initValue>
       <name>stockIdTerm</name>
-       </GlobalVariableEntity>
+   </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
       <initValue>'https://www.cleanersupply.com/Tags-Forms/Computer-Register/?Manufacturer=Casio'</initValue>

@@ -12,6 +12,7 @@ import internal.GlobalVariable
 import validations.GeneralValidations
 import validations.HeaderValidations
 import validations.SearchResults
+import actions.SelectCategoriesActions
 
 GeneralHelpers.initScenario()
 GeneralValidations.verifyCurrentPageHeading('Object Repository/Header/Header Top/span-Free-Shipping','FREE SHIPPING & RETURNS ON ORDERS OVER $99')
@@ -65,6 +66,13 @@ HeaderHelpers.navigatingToQuickOrder()
 GeneralValidations.verifyCurrentPageHeading('Object Repository/QuickOrder/span-QuickOrderHeading','QUICK');
 
 HeaderHelpers.navigatingToReorder()
+HeaderHelpers.MyAccount()
 
-HeaderValidations.verifyCartItemsNumber(0)
-HeaderValidations.verifyCartLabel('Cart')
+HeaderHelpers.verifyCartEmptyForGuestUser()
+
+SelectCategoriesActions.hoverOnTagsAndFormMenu();
+GeneralValidations.verifyHover("Object Repository/Header/a_tagsAndForm","rgb(255, 255, 255)","rgba(82, 36, 127, 1)","Object Repository/Header/ul_tagsAndForm","open-desktop")
+GeneralActions.clickOnElement("Object Repository/Header/a_tagsAndForm")
+//GeneralHelpers.newPageIsOpened('shopping-cart/',GlobalVariable.titleListFor2ColInFooter[0])
+//GeneralValidations.verifyCurrentPageHeading('Object Repository/General/h1-pageHeading','SHOPPING CART')
+

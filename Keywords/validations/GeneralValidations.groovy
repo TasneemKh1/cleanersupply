@@ -135,16 +135,16 @@ public class GeneralValidations {
 			System.out.println(priceOfProduct.get(i).getText().replace('$', ''))
 			assert priceOfProduct.get(i).getText().replace('$', '').contains(price[i]);
 			System.out.println(QuantityOfProducts.get(i).getAttribute('value'))
-//			assert QuantityOfProducts.get(i).getAttribute('value').contains(quantity[i]);
+			//			assert QuantityOfProducts.get(i).getAttribute('value').contains(quantity[i]);
 			System.out.println(totalPriceOfProducts.get(i).getText().replace('$', ''))
 			//let quantity=1
 			double currentProductTotal=Integer.parseInt(QuantityOfProducts.get(i).getAttribute('value')) *Double.parseDouble(priceOfProduct.get(i).getText().replace('$','').replaceAll(",", ""))
 			totalPrice+= currentProductTotal
-//			Double totalPriceOfOneProduct=QuantityOfProducts.get(i).getAttribute('value').toInteger() * Double.parseDouble(priceOfProduct.get(i).getText().replace('$', '').replace(',','')) 
+			//			Double totalPriceOfOneProduct=QuantityOfProducts.get(i).getAttribute('value').toInteger() * Double.parseDouble(priceOfProduct.get(i).getText().replace('$', '').replace(',',''))
 			//		    Double totalPriceOfOneProduct = String.format("%.2f", new BigDecimal(Double.parseDouble(priceOfProduct.get(i).getText().replace('$', '').replace(',','')))  *  QuantityOfProducts.get(i).getAttribute('value'))
 			//			System.out.println(totalPriceOfOneProduct)
 			String priceStr = new DecimalFormat("#.00").format(currentProductTotal)
-            assert totalPriceOfProducts.get(i).getText().replaceAll(',',"").equals('$'+priceStr)
+			assert totalPriceOfProducts.get(i).getText().replaceAll(',',"").equals('$'+priceStr)
 			System.out.println(skuNumberOfProducts.get(i).getText())
 			assert skuNumberOfProducts.get(i).getText().contains(sku[i]);
 			System.out.println(stockNotificationOfProduct.get(i).getText())
@@ -158,11 +158,11 @@ public class GeneralValidations {
 		//SubTotalSummary
 		System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '').replace(',', '')))
 		System.out.println(totalPrice)
-        String expectedTotal = new DecimalFormat("#.00").format(totalPrice)
-		 assert WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replaceAll(',',"").equals('$'+expectedTotal)
-			//Total
+		String expectedTotal = new DecimalFormat("#.00").format(totalPrice)
+		assert WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replaceAll(',',"").equals('$'+expectedTotal)
+		//Total
 		System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '').replaceAll(',',"")))
-        assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+expectedTotal)
+		assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+expectedTotal)
 	}
 	/***
 	 * Verify if input value matches the typed one
@@ -216,5 +216,5 @@ public class GeneralValidations {
 			assert WebUI.getCSSValue(Element, 'color').contains('rgba(255, 255, 255, 1)')
 		}
 		//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
-  }
+	}
 }
