@@ -11,4 +11,10 @@
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <rerunImmediately>false</rerunImmediately>
    <testSuiteGuid>f2e0154e-466f-4ef9-b37f-8ec597dffa6c</testSuiteGuid>
+   <testCaseLink>
+      <guid>d68ef8ae-13b0-4d2b-8e10-ba586aba3cfd</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Header Folder/Header Test Case</testCaseId>
+   </testCaseLink>
 </TestSuiteEntity>

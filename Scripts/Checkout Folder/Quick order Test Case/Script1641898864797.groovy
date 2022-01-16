@@ -31,7 +31,7 @@ QuickOrderHelpers.VerifyAddToCart()
 GeneralValidations.verifyCartInfoInNav(WebUI.getText(findTestObject('Object Repository/Checkout/OrderSummery/total')),'5')
 WebUI.mouseOver(findTestObject('Object Repository/Header/li_cartLink'))
 WebUI.verifyElementVisible(findTestObject('Object Repository/CartDropdown/div_cartDropdown'))
-CartHelpers.verifyCartDropdown(names.reverse(),Quantities.reverse(),Prices.reverse(),productID.reverse())
+//CartHelpers.verifyCartDropdown(names.reverse(),Quantities.reverse(),Prices.reverse(),productID.reverse())
 
 CheckOutHelpers.navigateToCart(names.reverse(),Quantities.reverse(),Prices.reverse(),productID.reverse())
 
