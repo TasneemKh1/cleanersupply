@@ -67,10 +67,10 @@ public class CheckOutHelpers {
 			System.out.println(priceOfProduct.get(i).getText().replace('$', ''))
 			assert priceOfProduct.get(i).getText().replace('$', '').contains(price[i]);
 			System.out.println(QuantityOfProducts.get(i).getAttribute('value').replace('$', ''))
-//			assert QuantityOfProducts.get(i).getAttribute('value').contains(quantity[i]);
+			//			assert QuantityOfProducts.get(i).getAttribute('value').contains(quantity[i]);
 			System.out.println(totalPriceOfProducts.get(i).getText().replace('$', ''))
 			totalPrice+=QuantityOfProducts.get(i).getAttribute('value').toInteger() * priceOfProduct.get(i).getText().replace('$', '').toDouble()
-//			assert totalPriceOfProducts.get(i).getText().replace('$', '').toDouble().equals(totalPrice);
+			//			assert totalPriceOfProducts.get(i).getText().replace('$', '').toDouble().equals(totalPrice);
 			System.out.println(skuNumberOfProducts.get(i).getText())
 			assert skuNumberOfProducts.get(i).getText().contains(sku[i]);
 			System.out.println(stockNotificationOfProduct.get(i).getText())
@@ -79,47 +79,47 @@ public class CheckOutHelpers {
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]", "")))
 			assert Integer.parseInt(WebUI.getText(findTestObject('Object Repository/Cart/td_NumberOfSubTotalItem')).replaceAll("[^0-9]",""))==(rows_table.size());
 
-			}
-			//SubTotalSummary
-			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '').replace(",", "")))
-//			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', ''))==(totalPrice);
-		
-			//Estimated Total
-			System.out.println("estimatedTax: "+WebUI.getText(findTestObject('Object Repository/Cart/td_EstematedTax')))
-			String estimatedTax = WebUI.getText(findTestObject('Object Repository/Cart/td_EstematedTax'));
-			//shipping
-			System.out.println(WebUI.getText(findTestObject('Object Repository/Cart/td_Shipping')))
+		}
+		//SubTotalSummary
+		System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', '').replace(",", "")))
+		//			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_SubTotalSummary')).replace('$', ''))==(totalPrice);
 
-			String shipping = WebUI.getText(findTestObject('Object Repository/Cart/td_Shipping'));
-			String expectedTotal = new DecimalFormat("#.00").format(totalPrice)
-			if (estimatedTax !='T.B.D.' && shipping =='FREE') {
-				Double total=Double.parseDouble(estimatedTax) + totalPrice
-				assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '').replace('$,', ''))==(total);
-				//TotalPriceOfOrder
-				String NewTotal = new DecimalFormat("#.00").format(total)
-				System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replace('$', '')))
-				assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+NewTotal)
-				assert WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replaceAll(',',"").equals('$'+NewTotal)
-				
-			}else if (estimatedTax =='T.B.D.' && shipping !='FREE'){
-				Double total=Double.parseDouble(shipping) + totalPrice
-				String NewTotal = new DecimalFormat("#.00").format(total)
-				assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+NewTotal)
-				assert WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replaceAll(',',"").equals('$'+NewTotal)
-			}else if(estimatedTax =='T.B.D.' && shipping =='FREE') {
-				Double total= totalPrice
-				String NewTotal = new DecimalFormat("#.00").format(total)
-             	assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+NewTotal)
-				assert WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replaceAll(',',"").equals('$'+NewTotal)
-			}else{
-				Double total= totalPrice+Double.parseDouble(estimatedTax)+Double.parseDouble(estimatedTax)
-				String NewTotal = new DecimalFormat("#.00").format(total)
-				assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+NewTotal)
-				assert WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replaceAll(',',"").equals('$'+NewTotal)
-				}
-			//Total
-//			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '').replace(',', ''))==(totalPrice);
-			assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+expectedTotal)
+		//Estimated Total
+		System.out.println("estimatedTax: "+WebUI.getText(findTestObject('Object Repository/Cart/td_EstematedTax')))
+		String estimatedTax = WebUI.getText(findTestObject('Object Repository/Cart/td_EstematedTax'));
+		//shipping
+		System.out.println(WebUI.getText(findTestObject('Object Repository/Cart/td_Shipping')))
+
+		String shipping = WebUI.getText(findTestObject('Object Repository/Cart/td_Shipping'));
+		String expectedTotal = new DecimalFormat("#.00").format(totalPrice)
+		if (estimatedTax !='T.B.D.' && shipping =='FREE') {
+			Double total=Double.parseDouble(estimatedTax) + totalPrice
+			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '').replace('$,', ''))==(total);
+			//TotalPriceOfOrder
+			String NewTotal = new DecimalFormat("#.00").format(total)
+			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replace('$', '')))
+			assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+NewTotal)
+			assert WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replaceAll(',',"").equals('$'+NewTotal)
+
+		}else if (estimatedTax =='T.B.D.' && shipping !='FREE'){
+			Double total=Double.parseDouble(shipping) + totalPrice
+			String NewTotal = new DecimalFormat("#.00").format(total)
+			assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+NewTotal)
+			assert WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replaceAll(',',"").equals('$'+NewTotal)
+		}else if(estimatedTax =='T.B.D.' && shipping =='FREE') {
+			Double total= totalPrice
+			String NewTotal = new DecimalFormat("#.00").format(total)
+			assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+NewTotal)
+			assert WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replaceAll(',',"").equals('$'+NewTotal)
+		}else{
+			Double total= totalPrice+Double.parseDouble(estimatedTax)+Double.parseDouble(estimatedTax)
+			String NewTotal = new DecimalFormat("#.00").format(total)
+			assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+NewTotal)
+			assert WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replaceAll(',',"").equals('$'+NewTotal)
+		}
+		//Total
+		//			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '').replace(',', ''))==(totalPrice);
+		assert WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replaceAll(',',"").equals('$'+expectedTotal)
 	}
 
 	/***
@@ -145,7 +145,7 @@ public class CheckOutHelpers {
 	public static void selectCheckoutAsGuest(List productName,List quantity ,List price,List sku) {
 		GeneralActions.clickOnElement('Object Repository/Checkout/span_CheckoutAsGuestRadio')
 		GeneralValidations.verifyActionOnButton('Object Repository/Checkout/span_CheckoutAsGuestRadio',"border-color","rgb(82, 36, 127)")
-//		CheckOutHelpers.verifyMyCartData(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
+		//		CheckOutHelpers.verifyMyCartData(["THERMAL BPA-FREE 21# RECEIPT ROLLS W/BACK PRINT - 160'/ROLL - 50/CASE - BLUE W/WHITE HANGER"], ['1'], ['89.99'],['RCT210BL'])
 		CheckOutHelpers.verifyMyCartData(productName,quantity,price,sku)
 		GeneralActions.mouseOverOnElement('Object Repository/Checkout/button_ContinueButton')
 		GeneralValidations.verifyActionOnButton('Object Repository/Checkout/button_ContinueButton',"box-shadow","rgba(0, 0, 0, 0.3) 0px 0px 10px 2px")
@@ -167,11 +167,11 @@ public class CheckOutHelpers {
 		WebUI.sendKeys(findTestObject('Object Repository/Checkout/shipping Address Section/phoneExtension'), Keys.chord(Keys.TAB))
 		WebUI.sendKeys(findTestObject('Object Repository/Checkout/shipping Address Section/phoneExtension') , GlobalVariable.ext)
 		WebUI.sendKeys(findTestObject('Object Repository/Checkout/shipping Address Section/phoneExtension'), Keys.chord(Keys.TAB))
-		
+
 		//assert WebUI.getCSSValue(findTestObject('Object Repository/Checkout/shipping Address Section/phoneExtension'), 'value').equals(GlobalVariable.ext)
 		//WebUI.sendKeys(findTestObject('Object Repository/Checkout/shipping Address Section/phone-Extension'), Keys.chord(Keys.BACK_SPACE))
-		
-		
+
+
 		//TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/shipping Address Section/phone-Extension'),GlobalVariable.ext);
 		WebUI.setText(findTestObject('Object Repository/Checkout/shipping Address Section/input_Email_shp1-email'),GlobalVariable.email);
 		GeneralValidations.verifyInputValue(findTestObject('Object Repository/Checkout/shipping Address Section/input_Email_shp1-email'),GlobalVariable.email);
@@ -186,7 +186,7 @@ public class CheckOutHelpers {
 		GeneralActions.chooseFromSelector('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/btn-expirationYear','Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/select-ExpirationYear','2026')
 		//WebUI.verifyElementPresent(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/sectionDisappeared'), GlobalVariable.visiablityItemTimeOut)
 		//GeneralActions.clickOnElement('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/checkbox-billing address')
-		
+
 		//WebUI.verifyElementNotPresent(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/sectionDisappeared'), GlobalVariable.visiablityItemTimeOut)
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/po'), GlobalVariable.po)
 		TypeInFieldAndWerifyValue(findTestObject('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/comments'), GlobalVariable.comment)
@@ -196,7 +196,7 @@ public class CheckOutHelpers {
 		EnterValuesForShippingAddress()
 		EnterValuesForPaymentMethod()
 		hoverAndClick('Object Repository/Checkout/PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD PAYMENT METHOD Payment Method Section/a-reviewOrderBtn')
-		
+
 	}
 
 	public static void TypeInFieldAndWerifyValue(TestObject inputTestObject, String expectedValue){
