@@ -126,27 +126,27 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Gateway'</initValue>
+      <initValue>'GGateway'</initValue>
       <name>CompanyName</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Test'</initValue>
+      <initValue>'First'</initValue>
       <name>firstName</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Kh'</initValue>
+      <initValue>'Last'</initValue>
       <name>lastName</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'v'</initValue>
+      <initValue>'Address1'</initValue>
       <name>address1</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'v'</initValue>
+      <initValue>'Address2'</initValue>
       <name>address2</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -156,7 +156,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'v'</initValue>
+      <initValue>'City'</initValue>
       <name>city</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -166,7 +166,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'6x'</initValue>
+      <initValue>'209'</initValue>
       <name>ext</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -176,7 +176,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'test'</initValue>
+      <initValue>'Name'</initValue>
       <name>cardName</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -191,12 +191,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'test'</initValue>
+      <initValue>'123456'</initValue>
       <name>po</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'test'</initValue>
+      <initValue>'Comment'</initValue>
       <name>comment</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
@@ -226,12 +226,12 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>['Epson Printer Indelibond Ink Ribbons #TM290, ERC27 - 6/Box']</initValue>
+      <initValue>['EPSON PRINTER INDELIBOND INK RIBBONS #TM290, ERC27 - 6/BOX']</initValue>
       <name>casioName</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>['40.98']</initValue>
+      <initValue>['15.54']</initValue>
       <name>casioPrice</name>
    </GlobalVariableEntity>
    <GlobalVariableEntity>

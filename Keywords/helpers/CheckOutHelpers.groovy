@@ -93,8 +93,9 @@ public class CheckOutHelpers {
 		String shipping = WebUI.getText(findTestObject('Object Repository/Cart/td_Shipping'));
 		String expectedTotal = new DecimalFormat("#.00").format(totalPrice)
 		if (estimatedTax !='T.B.D.' && shipping =='FREE') {
-			Double total=Double.parseDouble(estimatedTax.replace('$', '')) + totalPrice
-			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '').replace(',', ''))==(total);
+			Double total=Double.parseDouble(estimatedTax) + totalPrice
+			assert Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/td_Total')).replace('$', '').replace('$,', ''))==(total);
+
 			//TotalPriceOfOrder
 			String NewTotal = new DecimalFormat("#.00").format(total)
 			System.out.println(Double.parseDouble(WebUI.getText(findTestObject('Object Repository/Cart/span_priceOfOrderTotal')).replace('$', '')))

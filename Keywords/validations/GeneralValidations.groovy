@@ -119,7 +119,7 @@ public class GeneralValidations {
 	 * @param sku the sku of product
 	 * @author fatma
 	 */
-	public static  void verifyCartProductData(List productName,List quantity ,List price,List sku) {
+	public static  void verifyCartProductData(List<String> productName,List quantity ,List price,List sku) {
 		List<WebElement> titleOfProduct = WebUI.findWebElements(findTestObject('Object Repository/Cart/List_TitleOfProductsCart'), GlobalVariable.visiablityItemTimeOut)
 		List<WebElement> priceOfProduct = WebUI.findWebElements(findTestObject('Object Repository/Cart/List_PriceOfProductsCart'), GlobalVariable.visiablityItemTimeOut)
 		List<WebElement> stockNotificationOfProduct =  WebUI.findWebElements(findTestObject('Object Repository/Cart/ListStockNotificationOfProduct'), GlobalVariable.visiablityItemTimeOut)
@@ -131,7 +131,7 @@ public class GeneralValidations {
 		double totalPrice = 0.0;
 		for(int i = 0; i <= rows_table.size()-1; ++i) {
 			System.out.println(titleOfProduct.get(i).getText())
-			assert titleOfProduct.get(i).getText().contains(productName[i]);
+			assert titleOfProduct.get(i).getText().toUpperCase().contains(productName[i].toUpperCase());
 			System.out.println(priceOfProduct.get(i).getText().replace('$', ''))
 			assert priceOfProduct.get(i).getText().replace('$', '').contains(price[i]);
 			System.out.println(QuantityOfProducts.get(i).getAttribute('value'))
@@ -201,6 +201,8 @@ public class GeneralValidations {
 		assert WebUI.getCSSValue(AddToCartButton, 'cursor').contains('not-allowed')
 		assert WebUI.getCSSValue(AddToCartButton, 'background').contains('rgb(109, 110, 113) none repeat scroll 0% 0% / auto padding-box border-box')
 		assert WebUI.getCSSValue(AddToCartButton, 'color').contains('rgba(255, 255, 255, 1)')
+		WebUI.waitForElementNotHasAttribute(AddToCartButton, "disabled", GlobalVariable.visiablityItemTimeOut)
+		
 		//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
 	}
 	/***

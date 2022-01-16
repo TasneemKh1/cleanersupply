@@ -14,7 +14,8 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-import actions.FiltersActions as FiltersActions
+import actions.FiltersActions
+import actions.GeneralActions
 import actions.HeaderActions as HeaderActions
 import actions.ProductActions as ProductActions
 import helpers.CartHelpers as CartHelpers
@@ -26,7 +27,8 @@ import internal.GlobalVariable as GlobalVariable
 import validations.FiltersValidations as FiltersValidations
 import validations.GeneralValidations as GeneralValidations
 import validations.HeaderValidations as HeaderValidations
-import validations.ProductValidations as ProductValidations
+import validations.ProductValidations
+import validations.QuickOrderValidations
 import validations.SearchResults as SearchResults
 import org.openqa.selenium.Keys as Keys
 import java.util.HashMap as HashMap
@@ -155,26 +157,49 @@ ProductHelpers.updateProductsLists(productsTitles, productsPrices, productsQuant
 
 // --------- edit quantity value to be 3 ---------
 ProductHelpers.verifyUpdateQuantityAndAddToCart(secondQuantity, discountedPrice, 2, productsPrices, productsQuantities)
-
-// ---------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------
 modifiedProductsTitles = CartHelpers.makeListReadyForCartAndCheckout(false, productsTitles)
 modifiedProductsQuantities = CartHelpers.makeListReadyForCartAndCheckout(true, productsQuantities)
 modifiedProductsPrices = CartHelpers.makeListReadyForCartAndCheckout(true, productsPrices)
 modifiedProductsSKU = CartHelpers.makeListReadyForCartAndCheckout(false, productsSKU)
-//CartHelpers.verifyCartDropdown(['LARGE COMFORTER BAG W/NON-WOVEN SIDES - 24" X 27" X 8" - 12/PACK - ROYAL BLUE', 'X-LARGE COMFORTER BAG W/NON-WOVEN SIDES - 26" X 29" X 10" - 12/PACK - GREEN'], ['3', '5'], ['12.72', '14.52'], ['COMF24RO', 'COMF26GN'])
 
+// --------- hover on cart icon ---------
 WebUI.mouseOver(findTestObject('Object Repository/Header/li_cartLink'))
 WebUI.verifyElementVisible(findTestObject('Object Repository/CartDropdown/div_cartDropdown'))
 CartHelpers.verifyCartDropdown(modifiedProductsTitles, modifiedProductsQuantities, modifiedProductsPrices, modifiedProductsSKU)
 
+// --------- verify shopping cart ---------
 WebUI.click(findTestObject('Object Repository/CartDropdown/a_viewCart'))
 CartHelpers.verifyCartinShoppingCartPage(modifiedProductsTitles, modifiedProductsQuantities, modifiedProductsPrices, modifiedProductsSKU)
 
+// --------- change products quantities from shopping cart ---------
 WebUI.click(findTestObject('Object Repository/CartDropdown/button_increaseQuantity'))
 WebUI.click(findTestObject('Object Repository/CartDropdown/button_decreaseQuantity'))
 productsQuantities.set(0, 4)
 productsQuantities.set(1, 4)
 modifiedProductsQuantities = CartHelpers.makeListReadyForCartAndCheckout(true, productsQuantities)
 CartHelpers.verifyCartinShoppingCartPage(modifiedProductsTitles, modifiedProductsQuantities, modifiedProductsPrices, modifiedProductsSKU)
+
+// ---------------------------------------------------------------------------------
+// ---------------------------------------------------------------------------------
+GeneralActions.mouseOverOnElement(findTestObject('Object Repository/Checkout/OrderSummery/Btn-proceedToCheckout'))
+QuickOrderValidations.VerifyShadowWhenHoveringOnBtn(findTestObject('Object Repository/Checkout/OrderSummery/Btn-proceedToCheckout'))
+// --------- move to checkout page ---------
+WebUI.click(findTestObject('Object Repository/Checkout/OrderSummery/Btn-proceedToCheckout'));
+GeneralHelpers.newPageIsOpened('/checkout-interstitial',"Checkout Interstitial - Cleaner's Supply")
+assert WebUI.getText(findTestObject('Object Repository/Checkout/checkout Interstitial/div-heading')).contains('SECURE CHECKOUT')
+WebUI.verifyElementChecked(findTestObject('Object Repository/Checkout/checkout Interstitial/radio-checkout-guest'), GlobalVariable.pageLoadTimeOut)
+GeneralActions.mouseOverOnElement(findTestObject('Object Repository/Checkout/checkout Interstitial/btn-continue'))
+QuickOrderValidations.VerifyShadowWhenHoveringOnBtn(findTestObject('Object Repository/Checkout/checkout Interstitial/btn-continue'))
+CheckOutHelpers.verifyMyCartData(modifiedProductsTitles, modifiedProductsQuantities, modifiedProductsPrices, modifiedProductsSKU)
+// --------- checkout as guest ---------
+WebUI.click(findTestObject('Object Repository/Checkout/checkout Interstitial/btn-continue'));
+GeneralHelpers.newPageIsOpened('/checkout',"Checkout - Cleaner's Supply")
+GeneralValidations.verifyCurrentPageHeading('Object Repository/General/h1-pageHeading','CHECKOUT')
+//CheckOutHelpers.verifyMyCartData(modifiedProductsTitles, modifiedProductsQuantities, modifiedProductsPrices, modifiedProductsSKU)
+// --------- enter shipping address and payment method ---------
+CheckOutHelpers.proceedToReviewOrderFinish()
+GeneralHelpers.newPageIsOpened('/checkout',"Checkout - Cleaner's Supply")
+// --------- review order ---------
+GeneralValidations.verifyCurrentPageHeading('Object Repository/General/h1-pageHeading','CHECKOUT')
+QuickOrderValidations.verifyReviewInfoInCheckout()
+WebUI.closeBrowser();

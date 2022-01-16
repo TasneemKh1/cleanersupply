@@ -64,6 +64,7 @@ public class ProductHelpers {
 		ProductValidations.verifyQuantityInputValue(productQuantity)
 		ProductValidations.verifyIfDiscountIsApplied(productPrice)
 		ProductActions.clickOnAddToCartButton()
+		//GeneralValidations.verifyClickOnAddToCartButton()
 		HeaderValidations.verifyCartItemsNumber(itemsNumber)
 		ProductValidations.verifyProductTotalPriceInCart(productsPrices, productsQuantities)
 		ProductValidations.verifyQuantityInputValue(1)
