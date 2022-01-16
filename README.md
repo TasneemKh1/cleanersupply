@@ -128,9 +128,25 @@ https://github.com/TasneemKh1/cleanersupply/blob/master/Test%20Cases/Checkout%20
 ```
 ***********************************************
 
-Header Test Scenario: write test cases for the header section.
+###Header Test Scenario: write test cases for the header section.
+test each link in header and verify the right corresponding page title ,URL and heading 
+check img logo in header
+search for keywords and stocks and check suggestions
+check each item in nav 
+view one of the nav dropdown
 
-Footer Test Scenario: write test cases for the footer section.
+
+**********************************
+###Footer Test Scenario: write test cases for the footer section.
+test each link in footer and verify the right corresponding page title ,URL and heading 
+verify signing in for  EXCLUSIVE EMAIL 
+check all link for social media 
+check region dropdown
+verify leave feedback modal is opened 
 
 
 ***********************************************
+###Bugs found in the system
+the product status changed from "in the stock" on the quick order page to out of stock in cart 
+the Tax does not work as expected
+filters count does not represent the total amount of products 

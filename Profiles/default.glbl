@@ -244,4 +244,9 @@
       <initValue>['10']</initValue>
       <name>casioQuantity</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'TEM1'</initValue>
+      <name>stockId2</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
