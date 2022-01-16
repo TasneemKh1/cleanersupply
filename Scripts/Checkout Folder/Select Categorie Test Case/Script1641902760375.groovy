@@ -1,12 +1,10 @@
-import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-
-import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import actions.FiltersActions
 import actions.GeneralActions
 import actions.ProductActions
 import actions.SelectCategoriesActions
+import helpers.CartHelpers
 import helpers.CheckOutHelpers
 import helpers.FiltersHelpers
 import helpers.GeneralHelpers
@@ -58,14 +56,29 @@ ProductValidations.verifyProductSKU()
 // --------- edit quantity value to be 10 ---------
 double discountedPrice = ProductValidations.formatPrice(ProductActions.storeDiscountedPriceManufacturer())
 List<Double> productsPrices = new ArrayList()
-productsPrices.add(15.54)
+List productsTitles = new ArrayList()
+List productsSKU = new ArrayList()
 List<Integer> productsQuantities = new ArrayList()
+productsPrices.add(15.54)
 productsQuantities.add(10)
+productsTitles.add('EPSON PRINTER INDELIBOND INK RIBBONS #TM290, ERC27 - 6/BOX')
+productsSKU.add('STOCK # RIB290')
 ProductHelpers.verifyUpdateQuantityAndAddToCart(10, discountedPrice, 1, productsPrices, productsQuantities)
+modifiedProductsTitles = CartHelpers.makeListReadyForCartAndCheckout(false, productsTitles)
+modifiedProductsQuantities = CartHelpers.makeListReadyForCartAndCheckout(true, productsQuantities)
+modifiedProductsPrices = CartHelpers.makeListReadyForCartAndCheckout(true, productsPrices)
+modifiedProductsSKU = CartHelpers.makeListReadyForCartAndCheckout(false, productsSKU)
 //click on add to cart button
 //GeneralValidations.verifyClickOnAddToCartButton()
 // ----------- Navigate to the cart. ----------------
+// --------- hover on cart icon ---------
+WebUI.mouseOver(findTestObject('Object Repository/Header/li_cartLink'))
+WebUI.verifyElementVisible(findTestObject('Object Repository/CartDropdown/div_cartDropdown'))
+CartHelpers.verifyCartDropdown(modifiedProductsTitles, modifiedProductsQuantities, modifiedProductsPrices, modifiedProductsSKU)
+
+// --------- verify shopping cart ---------
 CheckOutHelpers.navigateToCart(GlobalVariable.casioName,GlobalVariable.casioQuantity,GlobalVariable.casioPrice,GlobalVariable.casioSku)
+//GeneralHelpers.miniCartTest()
 // ----------- Click on 'Proceed To Checkout' -----------
 CheckOutHelpers.proceedToCheckOut()
 // ----------- Select 'Checkut As Guest' and move to the next step. ---------------
