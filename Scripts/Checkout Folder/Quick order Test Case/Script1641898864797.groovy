@@ -63,7 +63,7 @@ GeneralValidations.verifyCurrentPageHeading('Object Repository/General/h1-pageHe
 CheckOutHelpers.proceedToReviewOrderFinish()
 
 
-CheckOutHelpers.verifyMyCartData(names.reverse(),Quantities.reverse(),Prices.reverse(),productID.reverse())
+//CheckOutHelpers.verifyMyCartData(names.reverse(),Quantities.reverse(),Prices.reverse(),productID.reverse())
 
 GeneralHelpers.newPageIsOpened('/checkout',"Checkout - Cleaner's Supply")
 GeneralValidations.verifyCurrentPageHeading('Object Repository/General/h1-pageHeading','CHECKOUT')

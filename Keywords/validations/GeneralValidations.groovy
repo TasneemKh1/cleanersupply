@@ -202,7 +202,7 @@ public class GeneralValidations {
 		assert WebUI.getCSSValue(AddToCartButton, 'background').contains('rgb(109, 110, 113) none repeat scroll 0% 0% / auto padding-box border-box')
 		assert WebUI.getCSSValue(AddToCartButton, 'color').contains('rgba(255, 255, 255, 1)')
 		WebUI.waitForElementNotHasAttribute(AddToCartButton, "disabled", GlobalVariable.visiablityItemTimeOut)
-		
+
 		//		WebUI.waitForElementNotHasAttribute(AddToCartButton, "class", 'change-status', GlobalVariable.pageLoadTimeOut)
 	}
 	/***
